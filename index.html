@@ -21,14 +21,18 @@
     <meta property="og:title" content="Bolarinwa Gabriel" />
     <meta property="og:type" content="website" />
     <title>Bolarinwa Gabriel | Web Developer Portfolio</title>
-    <script type="module" crossorigin src="/assets/index-DKIFjamp.js"></script>
+    <script type="module" crossorigin src="/assets/index-C_P9xz_-.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BHYbrzZY.css">
   </head>
   <body>
     <script>
       window.addEventListener("load", () => {
       setTimeout(() => {
-        console.log("page-loaded");
+        document.querySelector('.loader-container').style.opacity = '0';
+        setTimeout(() => {
+          document.querySelector('.loader-container').style.display = 'none'
+        }, 200);
+        
       }, 100);
     });
     </script>
