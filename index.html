@@ -21,7 +21,7 @@
     <meta property="og:title" content="Bolarinwa Gabriel" />
     <meta property="og:type" content="website" />
     <title>Bolarinwa Gabriel | Web Developer Portfolio</title>
-    <script type="module" crossorigin src="/assets/index-CNp0LWRW.js"></script>
+    <script type="module" crossorigin src="/assets/index-BI00tJWT.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-xJ4iX2i3.css">
   </head>
   <body>
@@ -29,6 +29,14 @@
       if (window.location.protocol === "http:") {
         window.location.href = window.location.href.replace("http:", "https:");
       }
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.querySelector(".loader-container").style.opacity = "1";
+          setTimeout(() => {
+            document.querySelector(".loader-container").style.display = "none";
+          }, 100);
+        }, 200);
+      });
     </script>
   </body>
 </html>
