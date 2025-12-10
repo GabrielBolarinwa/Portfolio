@@ -21,18 +21,25 @@
     <meta property="og:title" content="Bolarinwa Gabriel" />
     <meta property="og:type" content="website" />
     <title>Bolarinwa Gabriel | Web Developer Portfolio</title>
-    <script type="module" crossorigin src="/assets/index-BSNBZn2S.js"></script>
+    <script type="module" crossorigin src="/assets/index-BXruXxMr.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CAcO1soK.css">
   </head>
   <body>
     <script>
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          document.querySelector(".loader-container").style.opacity = "0";
-          setTimeout(() => {
-            document.querySelector(".loader-container").style.display = "none";
-          }, 1100);
-        }, 1000);
+      Promise.all([
+        document.fonts.ready,
+        new Promise((res) => (window.onload = res)),
+      ]).then(() => {
+        document.querySelector(".loader-container").style.display = "none";
+      });
+      document.fonts.ready.then(() => {
+        document.body.offsetHeight;
+      });
+      document.fonts.ready.then(() => {
+        document.documentElement.style.display = "none";
+        requestAnimationFrame(() => {
+          document.documentElement.style.display = "";
+        });
       });
     </script>
   </body>
