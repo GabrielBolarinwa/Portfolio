@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Magnific Chaos Personal Use";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Magnific Chaos Personal Use"),
+    url("https://fonts.cdnfonts.com/s/70347/MagnificChaosPersonalUseRegular-x3J88.woff")
+      format("woff");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Allura";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Allura"),
+    url("https://fonts.cdnfonts.com/s/13037/Allura-Regular.woff") format("woff");
+  font-display: swap;
+}
