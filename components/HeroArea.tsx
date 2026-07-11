@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useWindowSize } from "@/app/hooks/useWindowSize";
+import { useWindowSize } from "@/src/hooks/useWindowSize";
 import Image from "next/image";
 
 function useTypedText(

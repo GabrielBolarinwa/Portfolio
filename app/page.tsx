@@ -1,20 +1,19 @@
 "use client";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { useEffect, useRef, useState } from "react";
+import { About } from "../components/About";
+import { BubblesBackground } from "../components/BubblesBackground";
+import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { HeroArea } from "../components/HeroArea";
-import { About } from "../components/About";
-import { Services } from "../components/Services";
-import { Portfolio } from "../components/Portfolio";
-import { Projects } from "../components/Projects";
-import { Footer } from "../components/Footer";
-import { useEffect, useRef, useState } from "react";
-import { BubblesBackground } from "../components/BubblesBackground";
 import { Loader } from "../components/Loader";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Projects } from "../components/Projects";
+import { Services } from "../components/Services";
 
-import "./assets/fontawesome-pro/css/all.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useReadyState } from "@/src/hooks/useReadyState";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
-import { useReadyState } from "@/app/hooks/useReadyState";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./assets/fontawesome-pro/css/all.min.css";
 
 function App() {
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -28,8 +27,6 @@ function App() {
   const servicesSection = useRef(null);
   const servicesRow1 = useRef(null);
   const servicesRow2 = useRef(null);
-  const portfolioSection = useRef(null);
-  const portfolioElements = useRef([]);
   const projectsSection = useRef(null);
 
   function addAnimationClass(element: HTMLElement) {
@@ -39,12 +36,11 @@ function App() {
     animationClass && element.classList.add(animationClass);
   }
 
-  const headerElem = useRef<HTMLElement | null>(null);
   useEffect(() => {
     const scrollMarginElements = [
       aboutSection,
       servicesSection,
-      portfolioSection,
+
       projectsSection,
     ];
     const animationElements = [];
@@ -52,7 +48,7 @@ function App() {
       scrollMarginElements.forEach((scrollMarginElement) => {
         if (scrollMarginElement.current) {
           (scrollMarginElement.current as HTMLElement).style.scrollMargin =
-            `${(headerElem.current as never as HTMLElement)?.offsetHeight}px`;
+            `var(--header-height)`;
         }
       });
     };
@@ -86,9 +82,7 @@ function App() {
     aboutElements.current.forEach((aboutElement) => {
       animationElements.push(aboutElement);
     });
-    portfolioElements.current.forEach((portfolioElement) => {
-      animationElements.push(portfolioElement);
-    });
+
     if (animationElements) {
       animationElements.forEach((animationElement) => {
         if (animationElement) {
@@ -121,7 +115,7 @@ function App() {
       <div className="bubbles-container">
         <BubblesBackground />
       </div>
-      <Header headerElem={headerElem} addAnimationClass={addAnimationClass} />
+      <Header addAnimationClass={addAnimationClass} />
       <main id="main" role="main" data-bs-spy="scroll" data-bs-target="#menu">
         <HeroArea />
         <About aboutRef={aboutSection} aboutElements={aboutElements} />
@@ -129,10 +123,6 @@ function App() {
           servicesSection={servicesSection}
           servicesRow1={servicesRow1}
           servicesRow2={servicesRow2}
-        />
-        <Portfolio
-          portfolioRef={portfolioSection}
-          portfolioElements={portfolioElements}
         />
         <Projects projectsRef={projectsSection} />
         <br />

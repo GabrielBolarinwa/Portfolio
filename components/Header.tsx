@@ -1,34 +1,42 @@
 "use client";
-import { RefObject, useEffect, useRef } from "react";
 import Menuspy from "menuspy";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 interface Props {
-  headerElem: RefObject<HTMLElement | null>;
   addAnimationClass: (element: HTMLElement) => void;
 }
 
-export function Header({ headerElem, addAnimationClass }: Props) {
+export function Header({ addAnimationClass }: Props) {
   const navbarButton = useRef<HTMLButtonElement | null>(null);
   const openMenu = () => {
     navbarButton.current?.classList.toggle("open");
   };
+  const headerRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     const ms = new Menuspy("header", {
       activeClass: "active",
       enableLocationHash: false,
       threshold: 0.5,
     });
-    headerElem.current && addAnimationClass(headerElem.current);
+    headerRef.current && addAnimationClass(headerRef.current);
     return () => {
       ms.destroy();
     };
-  }, [addAnimationClass, headerElem]);
+  }, [addAnimationClass]);
+  useEffect(() => {
+    if (!headerRef.current) return;
+    const innerHeight = headerRef.current.offsetHeight;
+    document.documentElement.style.setProperty(
+      "--header-height",
+      `${innerHeight}px`,
+    );
+  }, []);
 
   return (
     <header
       role="banner"
-      ref={headerElem}
+      ref={headerRef}
       className="w-100 row justify-content-center m-auto header"
       data-animation="slideInTop"
       style={
