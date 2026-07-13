@@ -22,15 +22,15 @@ export function Projects({ projectsRef }: Props) {
       <div>
         <h2 className="section-title">Projects</h2>
       </div>
-      <div className="container-fluid w-100">
+      <div className="px-4 w-full">
         <ul className="row mt-0">
           {projects.map((project, index) => (
             <li
               key={`project-${index}`}
-              className="project col-12 col-sm-8 col-md-6 col-lg-4"
+              className="project w-full sm:w-2/3 md:w-1/2 lg:w-1/3 relative"
               ref={setProjects}
             >
-              <figure className="card mb-3">
+              <figure className="card mb-3 relative flex flex-col">
                 <div className="project-preview-image">
                   <Image
                     decoding="async"
@@ -41,7 +41,7 @@ export function Projects({ projectsRef }: Props) {
                     height={"320"}
                   />
                 </div>
-                <figcaption className="card-body">
+                <figcaption className="card-body [word-break:break-word] flex-[1_1_auto]">
                   <div className="project-description">
                     <h3>{project.name}</h3>
                     <p>{project.description}</p>

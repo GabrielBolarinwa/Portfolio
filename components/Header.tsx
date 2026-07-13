@@ -115,18 +115,6 @@ export function Header({ addAnimationClass }: Props) {
               </a>
             </li>
             <li className="nav-item" role="list">
-              <a href="#portfolio" className="nav-link">
-                <span
-                  className="fas fa-image"
-                  style={{
-                    color: "var(--theme-color)",
-                    paddingRight: "15px",
-                  }}
-                ></span>{" "}
-                <span className="link-text">Portfolio</span>
-              </a>
-            </li>
-            <li className="nav-item" role="list">
               <a href="#projects" className="nav-link">
                 <span
                   className="fas fa-code"

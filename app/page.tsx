@@ -12,7 +12,6 @@ import { Services } from "../components/Services";
 
 import { useReadyState } from "@/src/hooks/useReadyState";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/fontawesome-pro/css/all.min.css";
 
 function App() {
@@ -106,11 +105,9 @@ function App() {
   return (
     <>
       <SpeedInsights />
-      {!loaded && (
-        <div className="loader-container">
-          <Loader />
-        </div>
-      )}
+      {!loaded && <div className="loader-container">
+        <Loader />
+      </div>}
 
       <div className="bubbles-container">
         <BubblesBackground />

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useWindowSize } from "@/src/hooks/useWindowSize";
 import Image from "next/image";
+import Link from "next/link";
 
 function useTypedText(
   texts: string[],
@@ -61,8 +62,8 @@ export function HeroArea() {
 
   const text = useTypedText(texts, 80, 2500, 2800);
   return (
-    <section className="hero-area d-flex justify-content-center">
-      <div className="d-flex flex-column gap-3 align-items-center justify-content-center text-center">
+    <section className="hero-area flex justify-center">
+      <div className="flex items-center justify-center gap-4 flex-col text-center">
         <Image
           src="/images/hero-img.webp"
           alt="Bolarinwa Gabriel Logo"
@@ -82,12 +83,12 @@ export function HeroArea() {
           </span>
         </p>
         <div className="cta-links">
-          <a href="#portfolio" className="cta cta-portfolio">
-            Portfolio{" "}
-          </a>
-          <a href="#about" className="cta cta-about">
+          <Link href="#portfolio" className="cta cta-portfolio">
+            Portfolio
+          </Link>
+          <Link href="#about" className="cta cta-about">
             About
-          </a>
+          </Link>
         </div>
         <div className="social-icons">
           <a

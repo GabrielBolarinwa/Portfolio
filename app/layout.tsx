@@ -4,7 +4,6 @@ import { Space_Grotesk, Inter, Allura } from "next/font/google";
 import "./style.css";
 import "./variables.css";
 import "./fonts.css";
-import BootstrapClient from "@/components/BootstrapClient";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -51,10 +50,7 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${allura.variable}`}
     >
-      <body>
-        {children}
-        <BootstrapClient />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
