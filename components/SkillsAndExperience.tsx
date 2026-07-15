@@ -1,5 +1,6 @@
 import { skillItems } from "@/src/constants";
 import React from "react";
+import { GraduationCap, Lightbulb } from "lucide-react";
 
 interface Props {
   setAnimationElements: (el: HTMLElement | null) => void;
@@ -12,18 +13,14 @@ function SkillsAndExperience(props: Props) {
   };
   return (
     <section className="skills_and_experience" id="skills_and_experience">
-      <div className="container-fluid">
+      <div className="w-full px-3 sm:px-4 md:px-5">
         <div
-          className="row skills_and_experience_container"
+          className="flex flex-wrap skills_and_experience_container"
           id="skills_and_experience_container"
         >
-          <div className="col-md-12 skills_and_experience_section education">
+          <div className="skills_and_experience_section education">
             <h3 className="skills_and_experience_header">
-              {" "}
-              <span
-                className="fa fa-graduation-cap"
-                style={{ paddingRight: "10px" }}
-              ></span>{" "}
+              <GraduationCap color={"#f00eaffff"} fill={"#00eaff"} size={30} />
               Education
             </h3>
             <br />
@@ -31,9 +28,7 @@ function SkillsAndExperience(props: Props) {
               <li
                 className="education_item"
                 ref={setAnimationElements}
-                style={
-                  { "--i": "0" } as React.CSSProperties as React.CSSProperties
-                }
+                style={{ "--i": "0" } as React.CSSProperties}
                 data-animation="slideInLeft"
                 tabIndex={0}
               >
@@ -80,20 +75,17 @@ function SkillsAndExperience(props: Props) {
               </li>
             </ul>
           </div>
-          <div className="col-md-12 skills_and_experience_section skills">
+          <div className="skills_and_experience_section skills">
             <h3 className="skills_and_experience_header">
-              <span
-                className="fa fa-lightbulb"
-                style={{ paddingRight: "10px" }}
-              ></span>{" "}
+              <Lightbulb color={"#00eaff"} fill={"#00eaff"} size={30} />
               Skills
             </h3>
             <br />
-            <ul className="skill-list" role="list">
+            <ul className="skill-list gap-8 w-4/5 mx-auto" role="list">
               {skillItems.map((skill, index) => (
                 <li
                   key={skill.id}
-                  className="skill-item col-11 col-sm-7 col-md-5 col-lg-3 html"
+                  className="skill-item w-11/12 sm:w-7/12 md:w-5/12 lg:w-3/12 html"
                   ref={multiRef}
                   role="listitem"
                   style={{ "--i": `0.${index + 1}` } as React.CSSProperties}
@@ -101,14 +93,11 @@ function SkillsAndExperience(props: Props) {
                   data-animation="hoverInTop"
                 >
                   <div className="text">
-                    <p>
-                      <span
-                        className={skill.iconClass}
-                        style={{ color: skill.iconColor }}
-                      ></span>{" "}
+                    <p className={"flex gap-2 items-center justify-center"}>
+                      <skill.icon color={skill.iconColor} size={24} />
                       {skill.skill}
                     </p>
-                    <p className="skill-rating">{skill.mastery}</p>
+                    <p className="skill-rating mt-2">{skill.mastery}</p>
                   </div>
                 </li>
               ))}

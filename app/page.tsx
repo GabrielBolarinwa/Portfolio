@@ -1,26 +1,12 @@
 "use client";
+import { About } from "@/components/About";
+import { HeroArea } from "@/components/HeroArea";
+import { Projects } from "@/components/Projects";
+import { Services } from "@/components/Services";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { useEffect, useRef, useState } from "react";
-import { About } from "../components/About";
-import { BubblesBackground } from "../components/BubblesBackground";
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
-import { HeroArea } from "../components/HeroArea";
-import { Loader } from "../components/Loader";
-import { Projects } from "../components/Projects";
-import { Services } from "../components/Services";
-
-import { useReadyState } from "@/src/hooks/useReadyState";
-import "bootstrap-icons/font/bootstrap-icons.min.css";
-import "./assets/fontawesome-pro/css/all.min.css";
+import { useEffect, useRef } from "react";
 
 function App() {
-  const [loaded, setLoaded] = useState<boolean>(false);
-  const readyState = useReadyState();
-  setTimeout(() => {
-    readyState && setLoaded(readyState);
-  }, 2000);
-
   const aboutSection = useRef(null);
   const aboutElements = useRef([]);
   const servicesSection = useRef(null);
@@ -34,7 +20,6 @@ function App() {
     const animationClass = element.getAttribute("data-animation");
     animationClass && element.classList.add(animationClass);
   }
-
   useEffect(() => {
     const scrollMarginElements = [
       aboutSection,
@@ -61,19 +46,6 @@ function App() {
       },
       { threshold: 0.5 },
     );
-    const checkAllLoaded = () => {
-      if (document.readyState === "complete") {
-        document.fonts.ready.then(() => {
-          if (document.fonts.status === "loaded") {
-            setLoaded(true);
-          }
-        });
-      }
-    };
-    if (!loaded) {
-      document.addEventListener("readystatechange", checkAllLoaded);
-      window.addEventListener("load", () => checkAllLoaded);
-    }
 
     if (window.innerWidth >= 768) {
       animationElements.push(servicesRow1.current, servicesRow2.current);
@@ -97,23 +69,14 @@ function App() {
 
     return () => {
       observer1.disconnect();
-      document.removeEventListener("readystatechange", checkAllLoaded);
-      window.removeEventListener("loaded", checkAllLoaded);
     };
-  }, [loaded]);
+  }, []);
 
   return (
     <>
       <SpeedInsights />
-      {!loaded && <div className="loader-container">
-        <Loader />
-      </div>}
 
-      <div className="bubbles-container">
-        <BubblesBackground />
-      </div>
-      <Header addAnimationClass={addAnimationClass} />
-      <main id="main" role="main" data-bs-spy="scroll" data-bs-target="#menu">
+      <main id="main" role="main">
         <HeroArea />
         <About aboutRef={aboutSection} aboutElements={aboutElements} />
         <Services
@@ -124,7 +87,6 @@ function App() {
         <Projects projectsRef={projectsSection} />
         <br />
       </main>
-      <Footer />
     </>
   );
 }

@@ -3,6 +3,14 @@ import { useEffect, useState } from "react";
 import { useWindowSize } from "@/src/hooks/useWindowSize";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  SiFacebook,
+  SiGithub,
+  SiGmail,
+  SiWhatsapp,
+  SiX,
+} from "@icons-pack/react-simple-icons";
+import LinkedIn from "@/components/svgs/LinkedIn";
 
 function useTypedText(
   texts: string[],
@@ -73,10 +81,10 @@ export function HeroArea() {
           height={width >= 768 ? "200" : "150"}
           loading="eager"
         />
-        <h1 className="hero-text display-5 fw-bolder">
+        <h1 className="hero-text text-5xl font-extrabold">
           Hi, I am Bolarinwa Gabriel
         </h1>
-        <p className="text-info fw-bolder fs-5">
+        <p className="text-theme font-extrabold text-lg">
           <span className="typed">A {text}</span>{" "}
           <span className="typed-cursor" aria-hidden="true">
             |
@@ -98,7 +106,7 @@ export function HeroArea() {
             aria-label="Facebook"
             title="Facebook"
           >
-            <span className="fa-brands fa-facebook"></span>
+            <SiFacebook className={"icon-facebook"} />
           </a>
           <a
             href="https://x.com/GabrielBol94988"
@@ -107,7 +115,7 @@ export function HeroArea() {
             aria-label="Twitter (X)"
             title="Twitter (X)"
           >
-            <span className="bi bi-twitter-x"></span>
+            <SiX />
           </a>
           <a
             href="https://github.com/GabrielBolarinwa/GabrielBolarinwa"
@@ -116,7 +124,7 @@ export function HeroArea() {
             title="GitHub"
             aria-label="GitHub"
           >
-            <span className="fa-brands fa-github" title="Github"></span>
+            <SiGithub />
           </a>
           <a
             href="https://www.linkedin.com/in/gabriel-bolarinwa-028418399"
@@ -125,7 +133,7 @@ export function HeroArea() {
             title="LinkedIn"
             aria-label="LinkedIn"
           >
-            <span className="bi bi-linkedin" title="LinkedIn"></span>
+            <LinkedIn color={"#0a66c2"} />
           </a>
 
           <a
@@ -135,7 +143,7 @@ export function HeroArea() {
             rel="nofollow"
             target="_blank"
           >
-            <span className="fa-brands fa-whatsapp"></span>
+            <SiWhatsapp className={"icon-whatsapp"} />
           </a>
           <a
             href="mailto:gabibola955@gmail.com"
@@ -144,7 +152,7 @@ export function HeroArea() {
             aria-label="Gmail"
             target="_blank"
           >
-            <span className="fa-brands fa-solid fa-envelope"></span>
+            <SiGmail color={"#ea4335"} />
           </a>
         </div>
       </div>

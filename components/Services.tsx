@@ -1,7 +1,7 @@
 "use client";
 import { services } from "@/src/constants";
 import { useWindowSize } from "@/src/hooks/useWindowSize";
-import { RefObject } from "react";
+import React, { RefObject } from "react";
 
 interface Props {
   servicesRow1: RefObject<HTMLUListElement | null>;
@@ -21,18 +21,19 @@ export function Services({
         <h2 className="text-center section-title">Services</h2>
         <ul
           ref={servicesRow1}
-          className="row"
+          className="flex flex-wrap justify-center items-center gap-4 w-full flex-col md:flex-row"
           data-animation={width < 768 ? "hoverInTop" : "lightSpeedInLeft"}
           style={{ "--i": "0" } as React.CSSProperties}
         >
           {services.slice(0, middleIndex).map((service, index) => (
-            <li key={`service-${index}`} className="service" tabIndex={0}>
+            <li
+              key={`service-${index}`}
+              className="service w-[80%] md:w-[30%]"
+              tabIndex={0}
+            >
               <div className="service-icon">
                 <div className="icon-container">
-                  <span
-                    className={`${service.icon}  service-icon`}
-                    aria-hidden="true"
-                  ></span>
+                  <service.icon />
                 </div>
               </div>
               <div className="service-content">
@@ -46,18 +47,19 @@ export function Services({
         </ul>
         <ul
           ref={servicesRow2}
-          className="row"
+          className="flex flex-wrap justify-center items-center gap-3 w-full flex-col md:flex-row"
           data-animation={width < 768 ? "hoverInTop" : "lightSpeedInRight"}
           style={{ "--i": "0.2" } as React.CSSProperties}
         >
           {services.slice(middleIndex).map((service, index) => (
-            <li key={`service-${index}`} className="service" tabIndex={0}>
+            <li
+              key={`service-${index}`}
+              className="service w-[80%] md:w-[30%]"
+              tabIndex={0}
+            >
               <div className="service-icon">
                 <div className="icon-container">
-                  <span
-                    className={`${service.icon}  service-icon`}
-                    aria-hidden="true"
-                  ></span>
+                  <service.icon />
                 </div>
               </div>
               <div className="service-content">

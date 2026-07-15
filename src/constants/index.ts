@@ -1,88 +1,100 @@
+import { Bug, CheckIcon, Monitor, Signal, Smartphone } from "lucide-react";
+import {
+  SiAngular,
+  SiCss,
+  SiFigma,
+  SiHtml5,
+  SiJavascript,
+  SiReact,
+  SiTypescript,
+  SiVuedotjs,
+} from "@icons-pack/react-simple-icons";
+
 export const skillItems = [
   {
     id: "1",
     skill: "HTML",
     mastery: "Expert",
-    iconClass: "fa-brands fa-html5",
+    icon: SiHtml5,
     iconColor: "#e34c26",
   },
   {
     id: "2",
     skill: "CSS",
     mastery: "Expert",
-    iconClass: "fa-brands fa-css3-alt",
+    icon: SiCss,
     iconColor: "#663399",
   },
   {
     id: "3",
     skill: "Javascript",
     mastery: "Expert",
-    iconClass: "fa-brands fa-js",
+    icon: SiJavascript,
     iconColor: "#f7df1e",
   },
   {
     id: "4",
     skill: "Typescript",
     mastery: "Expert",
-    iconClass: "bi bi-typescript",
+    icon: SiTypescript,
     iconColor: "#3178c6",
   },
   {
     id: "5",
     skill: "React",
     mastery: "Expert",
-    iconClass: "fa-brands fa-react",
+    icon: SiReact,
     iconColor: "#61dbfb",
   },
   {
     id: "6",
     skill: "Angular",
     mastery: "Advanced",
-    iconClass: "fa-brands fa-angular",
+    icon: SiAngular,
     iconColor: "#e40035",
   },
   {
     id: "7",
     skill: "Vue",
     mastery: "Expert",
-    iconClass: "fa-brands fa-vuejs",
+    icon: SiVuedotjs,
     iconColor: "#41b883",
   },
 ];
 
 export const services = [
   {
-    icon: "fa-solid fa-desktop",
+    icon: Monitor,
     serviceName: "Web Development",
     serviceDescription:
       "Build fast, responsive website with clean code and essential features",
   },
   {
-    icon: "bi bi-phone",
+    icon: Smartphone,
     serviceName: "Web App Development",
     serviceDescription:
       "Build dynamic web apps with React, Angular and Vue. Get flexible PWAs that adapt to your requirements",
   },
   {
-    icon: "fa-solid fa-signal",
+    icon: Signal,
     serviceName: "Web Performance Analysis and Optimization",
     serviceDescription:
       "Optimize code, assets and images for faster load times and enhanced security",
   },
   {
-    icon: "fa-solid fa-bug",
+    icon: Bug,
     serviceName: "Debugging",
     serviceDescription:
       "Identify and resolve bugs in codebases by tracing error sources per feature",
   },
   {
-    icon: "fa-solid fa-check",
+    icon: CheckIcon,
     serviceName: "Code Testing",
     serviceDescription:
       "Test code thoroughly for render and logic errors before deploying for production using tools like Cypress and Vitest",
   },
   {
-    icon: "fa-brands fa-figma",
+    icon: SiFigma,
     serviceName: "UI/UX Design",
     serviceDescription:
       "Design user interfaces and prototypes using Figma and Lunacy following best practices for optimal user experiences",

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
+    "@icons-pack/react-simple-icons": "^13.13.0",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
     "class-variance-authority": "^0.7.1",

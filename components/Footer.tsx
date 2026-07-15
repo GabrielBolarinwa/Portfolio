@@ -1,78 +1,87 @@
+import {
+  SiFacebook,
+  SiGithub,
+  SiWhatsapp,
+  SiX,
+} from "@icons-pack/react-simple-icons";
+import LinkedInIcon from "@/components/svgs/LinkedIn";
+import Link from "next/link";
+
 export function Footer() {
   return (
     <footer className="footer" id="footer" role="contentinfo">
       <p className="footer-header">Bolarinwa Gabriel</p>
-      <div className="contact-info address row">
+      <div className="contact-info address flex flex-wrap">
         <p>
           Behind OAUSTECH Mega Campus, Okitipupa-Igbekebo Rd, Okitipupa, Nigeria
         </p>
       </div>
-      <div className="contact row">
-        <div className="contact-info ">
+      <div className="contact flex flex-wrap">
+        <div className="contact-info">
           <div className="social-icons-2">
-            <a
+            <Link
               title="Facebook"
               aria-label="Facebook"
               href="https://web.facebook.com/itzamazz.amazz"
               target="_blank"
               rel="noopener noreferrer nofollow"
             >
-              <span className="fa-brands fa-facebook-f"></span>
-            </a>
-            <a
+              <SiFacebook size={28} />
+            </Link>
+            <Link
               href="https://x.com/GabrielBol94988"
               target="_blank"
               rel="noopener noreferrer nofollow"
               title="Twitter (X)"
               aria-label="Twitter (X)"
             >
-              <span className="bi bi-twitter-x" title="Twitter (X)"></span>
-            </a>
-            <a
+              <SiX size={28} />
+            </Link>
+            <Link
               href="https://github.com/GabrielBolarinwa/GabrielBolarinwa"
               target="_blank"
               rel="noopener noreferrer nofollow"
               title="GitHub"
               aria-label="GitHub"
             >
-              <span className="fa-brands fa-github" title="GitHub"></span>
-            </a>
-            <a
+              <SiGithub size={28} />
+            </Link>
+            <Link
               href="https://www.linkedin.com/in/gabriel-bolarinwa-028418399"
               target="_blank"
               rel="noopener noreferrer nofollow"
               title="LinkedIn"
               aria-label="LinkedIn"
             >
-              <span className="bi bi-linkedin" title="LinkedIn"></span>
-            </a>
+              <LinkedInIcon />
+            </Link>
 
-            <a
+            <Link
               href="https://wa.me/09135976371"
               rel="noopener noreferrer nofollow"
               target="_blank"
               title="Whatsapp"
               aria-label="Whatsapp"
             >
-              <span className="fa-brands fa-whatsapp"></span>
-            </a>
+              <SiWhatsapp size={28} />
+            </Link>
           </div>
         </div>
       </div>
-      <div className="contact-info contact-me row">
-        <p>
+      <div className="contact-info contact-me flex flex-wrap">
+        <p className={"gap-4"}>
           <span className="contact-me-title">Contact Me on:</span>{" "}
-          <a href="tel:+2349135976371" className="contact-link">
+          <Link href="tel:+2349135976371" className="contact-link">
             Phone
-          </a>
+          </Link>
           {" • "}
-          <a className="contact-link" href="https://wa.me/09135976371">
+          <Link className="contact-link" href="https://wa.me/09135976371">
             Whatsapp
-          </a>
+          </Link>
           {" • "}
-          <a className="contact-link" href="mailto:gabibola955@gmail.com">
+          <Link className="contact-link" href="mailto:gabibola955@gmail.com">
             Email
-          </a>
+          </Link>
         </p>
       </div>
       <div>

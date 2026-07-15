@@ -1,5 +1,5 @@
 "use client";
-import { type RefObject, useRef } from "react";
+import React, { type RefObject, useRef } from "react";
 import SkillsAndExperience from "./SkillsAndExperience";
 
 interface Props {
@@ -27,8 +27,8 @@ export function About({ aboutRef, aboutElements }: Props) {
       id="about"
       ref={aboutRef}
     >
-      <div className="container-fluid">
-        <div className="row about-container">
+      <div className="w-full px-3 sm:px-4 md:px-5">
+        <div className="flex flex-wrap about-container w-full items-center justify-center">
           <div
             ref={setAnimationElements}
             data-animation="slideInTop"

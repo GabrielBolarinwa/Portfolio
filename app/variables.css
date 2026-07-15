@@ -12,7 +12,6 @@
 
   /*Fonts*/
   --script-font-2: var(--font-allura);
-  --display-font-2: "Magnific Chaos Personal Use", serif;
 
   /*Text*/
   --font-size-default: clamp(1rem, 0.5rem + 1vw, 2rem);
