@@ -22,7 +22,7 @@ Flowboard is a fully client-side Kanban board application built as a portfolio p
 
 ## 3. Process
 
-The project began with a documentation-first phase before a single component was written. This produced four reference documents maintained throughout the build:
+The project began with a documentation-first phase before a single component was written. This produced six reference documents maintained throughout the build:
 
 - **Tech Stack** ([reference](https://gabrielbolarinwa.gitbook.io/gabrielbolarinwa-docs/project-overview/flowboard-research-docs)) — full list of technologies to be  used for developing the application
 - **Testing Plan** ([reference](https://gabrielbolarinwa.gitbook.io/gabrielbolarinwa-docs/project-overview/flowboard-research-docs/flowboard-testing-plan)) — planned out features to be tested for feature implementation accuracy.
