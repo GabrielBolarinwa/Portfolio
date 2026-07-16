@@ -78,7 +78,7 @@ export default function RootLayout({
             <BubblesBackground />
           </div>
           <Header />
-          {children}
+          <main role="main">{children}</main>
           <Footer />
         </LoadingProvider>
       </body>
