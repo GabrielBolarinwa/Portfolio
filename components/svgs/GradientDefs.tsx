@@ -22,6 +22,11 @@ export default function GradientDefs() {
           <stop offset={"0%"} stopColor={"#1877f2"} />
           <stop offset={"100%"} stopColor={"#0c4cb3"} />
         </linearGradient>
+        <linearGradient id="grad-angular" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#E40035" />
+          <stop offset="50%" stopColor="#F6105F" />
+          <stop offset="100%" stopColor="#FD5E3A" />{" "}
+        </linearGradient>
       </defs>
     </svg>
   );
