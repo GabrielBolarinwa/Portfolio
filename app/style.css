@@ -18,7 +18,7 @@
 }
 
 @theme {
-  --color-base: #050510;
+  --color-bg-base: #050510;
   --color-card-background: rgba(20, 20, 35, 0.6);
   --color-text: #ffffff;
   --color-muted: #a0a0b0;
@@ -266,12 +266,19 @@
     }
   }
 
-  .slideInTop {
-    @apply animate-in slide-in-from-top-25 [animation-delay:calc(var(--i)*1s)] opacity-100;
+  .hoverInTop {
+    @apply [animation:hoverInTop_1s_ease] [animation-delay:calc(var(--i)*1s)];
   }
 
-  .hoverInTop {
-    @apply animate-in slide-in-from-top-25 [animation-delay:calc(var(--i)*1s)] transition-opacity;
+  @keyframes hoverInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @-webkit-keyframes lightSpeedInLeft {
@@ -377,6 +384,14 @@
     }
     100% {
       transform: scale(1);
+    }
+  }
+  @keyframes drawLine {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
     }
   }
   @-webkit-keyframes animate {
