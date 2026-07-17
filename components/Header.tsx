@@ -43,7 +43,7 @@ export function Header() {
       role="banner"
       ref={headerRef}
       className="w-full flex flex-wrap justify-center mx-auto header text-(length:--font-size-default) opacity-0 invisible"
-      data-animation="slideInTop"
+      data-animation="hoverInTop"
       style={
         {
           "--i": "0",
