@@ -60,14 +60,40 @@ export const tools = [
   },
 ];
 
-export const waecNarrative =
-  "Completed the West African Senior School Certificate Examination with notable performance in mathematics and data processing — subjects that laid an early foundation for logical and computational thinking.";
+export const waecNarrative = {
+  year: "2021 - 2024",
+  detail: "Secondary education completion",
+  text: "Completed the West African Senior School Certificate Examination with notable performance in mathematics and data processing — subjects that laid an early foundation for logical and computational thinking.",
+};
 
-export const udemyNarrative =
-  "A comprehensive frontend certification course covering the full modern frontend stack — from core HTML, CSS, and JavaScript fundamentals through to frameworks, testing, and deployment. Served as the structured complement to three years of self-directed learning.";
+export const udemyNarrative = {
+  detail: "Instructor: Supriyo ∙ Completed 2024",
+  text: "A comprehensive frontend certification course covering the full modern frontend stack — from core HTML, CSS, and JavaScript fundamentals through to frameworks, testing, and deployment. Served as the structured complement to three years of self-directed learning.",
+};
 
-export const universityNarrative =
-  "Currently pursuing a Bachelor of Science in Computer Science, building academic rigour in the theoretical foundations — algorithms, data structures, systems — that underpin production-grade engineering.";
+export const universityNarrative = {
+  year: "2025 — Present",
+  text: "Currently pursuing a Bachelor of Science in Computer Science, building academic rigour in the theoretical foundations — algorithms, data structures, systems — that underpin production-grade engineering.",
+};
+export const educationItems = [
+  {
+    year: "2021 — 2024",
+    title: "WAEC — West African Senior School Certificate",
+    detail: "Secondary education completion",
+    text: "Completed the West African Senior School Certificate Examination with notable performance in mathematics and data processing — subjects that laid an early foundation for logical and computational thinking.",
+  },
+  {
+    year: "2024",
+    title: "Udemy — The Ultimate Frontend Development Course",
+    detail: "Instructor: Supriyo ∙ Completed 2024",
+    text: "A comprehensive frontend certification course covering the full modern frontend stack — from core HTML, CSS, and JavaScript fundamentals through to frameworks, testing, and deployment. Served as the structured complement to three years of self-directed learning.",
+  },
+  {
+    year: "2025 — Present",
+    title: "B.Sc Computer Science — OAUSTECH",
+    text: "Currently pursuing a Bachelor of Science in Computer Science, building academic rigour in the theoretical foundations — algorithms, data structures, systems — that underpin production-grade engineering.",
+  },
+];
 
 export const skills = [
   {
