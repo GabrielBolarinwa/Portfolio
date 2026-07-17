@@ -7,16 +7,17 @@ interface Props {
   word: string;
   gradientWord: string;
   trigger: "load" | "scroll";
+  className?: string;
 }
 
 function Heading(props: Props) {
-  const { word, trigger, gradientWord } = props;
+  const { word, trigger, gradientWord, className } = props;
 
   const setRef = useLoadAnimation();
   const setRef2 = useScrollAnimationList();
   return (
     <h2
-      className="inline-block"
+      className={`${className} section-title`}
       ref={trigger === "load" ? setRef : setRef2}
       data-animation="slideInLeftCustom"
     >
