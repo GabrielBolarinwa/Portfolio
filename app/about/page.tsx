@@ -17,7 +17,7 @@ function About() {
   return (
     <>
       <Heading word={"About"} gradientWord="Me" trigger="load" />
-      <section className="mt-5">
+      <section className="mt-5" id="about">
         <AboutPortrait />
         <p>
           {paragraph1words.map((word, index) => (

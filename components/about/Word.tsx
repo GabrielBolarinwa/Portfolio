@@ -19,7 +19,7 @@ function Word(props: Props) {
       ref={trigger === "load" ? setRef : setRef2}
       className="duration-1000! inline-block"
       data-animation="slideInRightCustom"
-      style={{ "--i": `0.${index + 1}` } as React.CSSProperties}
+      style={{ "--i": `1.${index + 1}` } as React.CSSProperties}
     >
       {word}
     </span>

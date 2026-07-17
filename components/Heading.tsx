@@ -17,7 +17,7 @@ function Heading(props: Props) {
   const setRef2 = useScrollAnimationList();
   return (
     <h2
-      className={`${className} section-title`}
+      className={`${className || ""} section-title`}
       ref={trigger === "load" ? setRef : setRef2}
       data-animation="slideInLeftCustom"
     >

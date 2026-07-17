@@ -280,6 +280,20 @@
       transform: translateY(0);
     }
   }
+  .hoverInBottom {
+    @apply [animation:hoverInBottom_1s_ease] [animation-delay:calc(var(--i)*1s)];
+  }
+
+  @keyframes hoverInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   @-webkit-keyframes lightSpeedInLeft {
     from {
@@ -386,11 +400,8 @@
       transform: scale(1);
     }
   }
-  @keyframes drawLine {
-    from {
-      transform: scaleY(0);
-    }
-    to {
+  @keyframes fill-timeline {
+    100% {
       transform: scaleY(1);
     }
   }
@@ -837,6 +848,21 @@
   }
 
   /* Education */
+  .education-timeline::before {
+    @apply [content:""] absolute left-0 top-0 w-0.5 h-full bg-white/10;
+  }
+  .education-timeline::after {
+    @apply [content:""] absolute left-0 top-0 w-0.5 h-full bg-(image:--primary-gradient)  origin-top [transform:scaleY(1)] z-1;
+  }
+  @supports (animation-timeline: view()) {
+    .education-timeline::after {
+      @apply [transform:scaleY(0)] [animation:fill-timeline_linear_both] [animation-timeline:scroll(root)];
+      animation-range: entry 45% exit 80%;
+    }
+  }
+  .edu-card::before {
+    @apply absolute [content:""] top-6 [left:calc(var(--spacing)*-10.3)] rounded-full border-accent-neon border-2 z-3 w-[18px] h-[18px] aspect-[1] bg-bg-base block;
+  }
   .edu-card h3 {
     @apply relative;
   }

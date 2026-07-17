@@ -7,7 +7,7 @@ function ContactCard() {
   const setRef = useScrollAnimationList();
   return (
     <div
-      className="rounded-lg bg-card-background p-6 flex flex-col gap-4 border-white/20 border border-l-6 border-l-accent-pink w-full md:max-w-1/2 mt-5"
+      className="rounded-lg bg-card-background p-6 flex flex-col gap-4 border-white/20 border border-l-6 border-l-accent-pink w-full md:max-w-3/5 lg:max-w-1/2 mt-5"
       ref={setRef}
       data-animation="slideInLeftCustom"
     >
