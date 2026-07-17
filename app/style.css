@@ -498,11 +498,11 @@
   }
 
   .section-title {
-    @apply [background-image:linear-gradient(90deg,#00eaff,#00cc88)] w-fit bg-clip-text text-transparent text-center mx-auto relative inline-block my-[10px];
+    @apply w-fit relative inline-block my-[10px];
   }
 
   .section-title::after {
-    @apply [content:""] absolute top-full left-0 w-0 h-[3px] [background-image:linear-gradient(90deg,#00eaff,#00cc88)] [animation:underline_0.8s_ease_forwards];
+    @apply [content:""] absolute top-full left-0 w-0 h-[3px] bg-(image:--primary-gradient) [animation:underline_0.8s_ease_forwards];
   }
 
   .section-content {
@@ -762,14 +762,6 @@
     @apply absolute top-0 -left-[2.5%] h-full w-1.5 [content:""] bg-white duration-500;
   }
 
-  .skills_and_experience .education_item h3 {
-    @apply text-2xl font-bold tracking-wide mb-1.5;
-  }
-
-  .skills_and_experience .education_item h3::after {
-    @apply [content:""] block w-[60px] h-[3px] mt-[4px] bg-[#00eaff] rounded-[2px];
-  }
-
   .skills_and_experience .skill-list {
     @apply flex gap-8 place-content-center place-items-center flex-row flex-wrap max-sm:flex-col;
   }
@@ -843,6 +835,16 @@
     h3.service-name {
     @apply [font-size:clamp(1rem,1vw+1rem,2rem)];
   }
+
+  /* Education */
+  .edu-card h3 {
+    @apply relative;
+  }
+
+  .edu-card h3::after {
+    @apply [content:""] block w-[60px] h-[3px] mt-[4px] bg-(image:--primary-gradient) rounded-[2px];
+  }
+  /* End Education */
 
   /* Projects */
   .projects {
