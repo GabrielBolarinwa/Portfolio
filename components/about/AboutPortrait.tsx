@@ -1,4 +1,6 @@
 "use client";
+import { useLoadAnimation } from "@/src/hooks/useLoadAnimation";
+import { useWindowSize } from "@/src/hooks/useWindowSize";
 import { getCldImageUrl } from "next-cloudinary";
 
 function AboutPortrait() {
@@ -12,8 +14,14 @@ function AboutPortrait() {
     quality: "auto",
     format: "auto",
   });
+  const setRef = useLoadAnimation();
+  const { width } = useWindowSize();
   return (
-    <div className="w-full md:w-auto h-[300px] md:aspect-[1] float-left border-white/20 border rounded-lg overflow-hidden mr-5 max-md:mb-5 bg-card">
+    <div
+      className="w-full md:w-auto h-[300px] md:aspect-[1] float-left border-white/20 border rounded-lg overflow-hidden mr-5 max-md:mb-5 bg-card"
+      ref={setRef}
+      data-animation={width > 768 ? "slideInLeftCustom" : "hoverInTop"}
+    >
       <picture>
         <source media="(max-width: 768px)" srcSet={landscapeUrl} />
         <img
