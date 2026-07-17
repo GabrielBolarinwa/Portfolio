@@ -1,23 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Space_Grotesk,
-  Inter,
   Allura,
   Cinzel_Decorative,
+  Inter,
+  Space_Grotesk,
 } from "next/font/google";
 
+import { LoadingProvider } from "@/app/context/LoadingContext";
+import { BubblesBackground } from "@/components/BubblesBackground";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { Loader } from "@/components/Loader";
+import GradientDefs from "@/components/svgs/GradientDefs";
+import React from "react";
 import "./style.css";
 import "./variables.css";
-import React from "react";
-import GradientDefs from "@/components/svgs/GradientDefs";
-import { LoadingProvider } from "@/app/context/LoadingContext";
-import { HeroArea } from "@/components/HeroArea";
-import { About } from "@/components/About";
-import { BubblesBackground } from "@/components/BubblesBackground";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import useLoadingState from "@/src/hooks/useLoadingState";
-import { Loader } from "@/components/Loader";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],

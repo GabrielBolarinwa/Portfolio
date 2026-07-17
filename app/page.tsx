@@ -21,21 +21,7 @@ function App() {
     animationClass && element.classList.add(animationClass);
   }
   useEffect(() => {
-    const scrollMarginElements = [
-      aboutSection,
-      servicesSection,
-
-      projectsSection,
-    ];
     const animationElements = [];
-    const addMargins = () => {
-      scrollMarginElements.forEach((scrollMarginElement) => {
-        if (scrollMarginElement.current) {
-          (scrollMarginElement.current as HTMLElement).style.scrollMargin =
-            `var(--header-height)`;
-        }
-      });
-    };
     const observer1 = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -64,8 +50,6 @@ function App() {
         }
       });
     }
-
-    addMargins();
 
     return () => {
       observer1.disconnect();
