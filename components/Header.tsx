@@ -74,7 +74,7 @@ export function Header() {
           aria-label="Primary Navigation"
         >
           <ul
-            className="flex flex-col lg:flex-row items-center gap-2 ml-auto gap-6 py-(--size-value-big) lg:py-0 landscape:lg:py-(--size-value-small)"
+            className="flex flex-col lg:flex-row items-center ml-auto gap-6 py-(--size-value-big) lg:py-0 landscape:lg:py-(--size-value-small)"
             role="list"
           >
             <li className="nav-item" role="list">
