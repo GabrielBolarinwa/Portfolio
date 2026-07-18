@@ -1,6 +1,7 @@
 import AboutPortrait from "@/components/about/AboutPortrait";
 import ContactCard from "@/components/about/ContactCard";
 import Education from "@/components/about/Education";
+import FrontendToFullStack from "@/components/about/FrontendToFullStack";
 import Skills from "@/components/about/Skills";
 import ToolList from "@/components/about/ToolList";
 import Word from "@/components/about/Word";
@@ -46,6 +47,7 @@ function About() {
       </section>
       <Education />
       <Skills />
+      <FrontendToFullStack />
     </>
   );
 }
