@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 import useLoadingState from "./useLoadingState";
 
-export function useScrollAnimationList() {
+export function useScrollAnimationList(threshold = 0.2) {
   const refs = useRef<HTMLElement[]>([]);
   const { progress } = useLoadingState();
   useEffect(() => {
@@ -16,17 +16,19 @@ export function useScrollAnimationList() {
             obs.disconnect();
           }
         },
-        { threshold: 0.2 },
+        { threshold },
       );
       obs.observe(el);
       return obs;
     });
 
     return () => observers.forEach((obs) => obs?.disconnect());
-  }, [progress]);
+  }, [progress, threshold]);
 
   const setRef = (el: HTMLElement | null) => {
-    if (el && !refs.current.includes(el)) refs.current.push(el);
+    if (el && !refs.current.includes(el)) {
+      refs.current.push(el);
+    }
   };
 
   return setRef;

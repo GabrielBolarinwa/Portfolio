@@ -9,7 +9,7 @@ function Education() {
   return (
     <section className="mt-12" id="education">
       <Heading word="My" gradientWord="Education" trigger="scroll" />
-      <ul className="mt-5 education-timeline relative px-8 flex flex-col gap-4">
+      <ul className="mt-5 education-timeline relative px-8 flex flex-col gap-4 [view-timeline-name:--timeline] [view-timeline-axis:block] [timeline-scope:--education]">
         {educationItems.map((education) => (
           <li
             key={education.text}

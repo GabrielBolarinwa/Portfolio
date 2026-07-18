@@ -14,6 +14,7 @@ import { Play } from "lucide-react";
 
 export default function Skills() {
   const ref = useScrollAnimationList();
+  const skillBar = useScrollAnimationList(0.1);
   function progressLength(skillLevel: string) {
     if (skillLevel === "Expert") {
       return 100;
@@ -54,8 +55,8 @@ export default function Skills() {
               </div>
               <div className="bg-card-background h-2.5 px-8 w-60 ml-auto rounded-lg max-sm:hidden relative overflow-hidden">
                 <div
-                  className="inner bg-(image:--primary-gradient) absolute top-0 left-0 h-full w-(--width) scale-x-0 origin-left rounded-lg"
-                  ref={ref}
+                  className="bg-(image:--primary-gradient) absolute top-0 left-0 h-full w-(--width) scale-x-1 origin-left rounded-lg"
+                  ref={skillBar}
                   style={
                     {
                       "--width": `${progressLength(skill.skillLevel)}%`,

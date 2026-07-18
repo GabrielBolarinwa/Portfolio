@@ -867,7 +867,7 @@
   @supports (animation-timeline: view()) {
     .education-timeline::after {
       @apply [transform:scaleY(0)] [animation:fill-timeline_linear_both] [animation-timeline:scroll(root)];
-      animation-range: entry 45% exit 60%;
+      animation-range: entry 10% exit 40%;
     }
   }
   .edu-card::before {
