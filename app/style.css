@@ -435,6 +435,16 @@
       display: none;
     }
   }
+
+  .fillWidth {
+    @apply [animation:fillWidth_1s_ease-out] [animation-delay:calc(var(--i)*1s)];
+  }
+  @keyframes fillWidth {
+    to {
+      opacity: 1;
+      scale: 1 1;
+    }
+  }
   /* End Animations */
 }
 
@@ -857,7 +867,7 @@
   @supports (animation-timeline: view()) {
     .education-timeline::after {
       @apply [transform:scaleY(0)] [animation:fill-timeline_linear_both] [animation-timeline:scroll(root)];
-      animation-range: entry 45% exit 80%;
+      animation-range: entry 45% exit 60%;
     }
   }
   .edu-card::before {
@@ -871,6 +881,12 @@
     @apply [content:""] block w-[60px] h-[3px] mt-[4px] bg-(image:--primary-gradient) rounded-[2px];
   }
   /* End Education */
+
+  /* Skills */
+  .skill-accordion-trigger svg {
+    @apply ml-2!;
+  }
+  /* End Skills */
 
   /* Projects */
   .projects {

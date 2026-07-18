@@ -98,7 +98,8 @@ export const educationItems = [
 export const skills = [
   {
     icon: SiHtml5,
-    skill: "HTML",
+    iconColor: "#e34c26",
+    skill: "HTML5",
     skillLevel: "Expert",
     skillDetails: [
       "Semantic markup using the full range of HTML5 elements to communicate document structure meaningfully to browsers and assistive technologies",
@@ -109,8 +110,9 @@ export const skills = [
   },
   {
     icon: SiCss,
-    skill: "CSS",
+    skill: "CSS3",
     skillLevel: "Expert",
+    iconColor: "#663399",
     skillDetails: [
       "Layout architecture using Flexbox and CSS Grid, including complex multi-axis compositions, auto-placement, and named grid areas",
       "Fluid typography and spacing systems built with `clamp()` and CSS custom properties, scaling proportionally across viewport widths without breakpoint-specific overrides",
@@ -122,6 +124,7 @@ export const skills = [
     icon: SiJavascript,
     skill: "JavaScript",
     skillLevel: "Expert",
+    iconColor: "#f0db4f",
     skillDetails: [
       "Asynchronous patterns including Promises, async/await, AbortController-gated fetch requests, and callback-to-Promise conversion for APIs like the Geolocation interface",
       "DOM manipulation and event handling including delegation patterns, custom events, and performant scroll/resize handling via requestAnimationFrame debouncing",
@@ -132,6 +135,7 @@ export const skills = [
   {
     icon: SiTypescript,
     skill: "Typescript",
+    iconColor: "#3178c6",
     skillLevel: "Expert",
     skillDetails: [
       "Interface and type definition for third-party API response shapes, enabling compile-time safety when consuming deeply nested external data",
@@ -143,6 +147,7 @@ export const skills = [
   {
     icon: SiReact,
     skill: "React",
+    iconColor: "#61dbfb",
     skillLevel: "Expert",
     skillDetails: [
       "Component architecture patterns including compound components, render props, and controlled/uncontrolled component design",
@@ -154,6 +159,7 @@ export const skills = [
   {
     icon: SiAngular,
     skill: "Angular",
+    iconClass: "icon-angular",
     skillLevel: "Advanced",
     skillDetails: [
       "Component architecture using Angular's module system, decorators, and dependency injection container",
@@ -165,6 +171,7 @@ export const skills = [
   {
     icon: SiVuedotjs,
     skill: "Vue",
+    iconColor: "#41b883",
     skillLevel: "Expert",
     skillDetails: [
       "Composition API architecture with composables for isolating and reusing stateful logic across components — including custom fetch and browser API like geolocation composables",
