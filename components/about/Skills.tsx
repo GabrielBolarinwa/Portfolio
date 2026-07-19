@@ -2,7 +2,7 @@
 import { skills } from "@/src/constants/about";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import React from "react";
-import Heading from "../Heading";
+import Heading from "./Heading";
 import {
   Accordion,
   AccordionContent,

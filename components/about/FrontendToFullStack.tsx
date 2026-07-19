@@ -4,7 +4,7 @@ import {
   roadmapBlocks,
   transitionNarrative,
 } from "@/src/constants/about";
-import Heading from "../Heading";
+import Heading from "./Heading";
 import Word from "./Word";
 import {
   Braces,

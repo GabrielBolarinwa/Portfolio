@@ -5,7 +5,7 @@ import FrontendToFullStack from "@/components/about/FrontendToFullStack";
 import Skills from "@/components/about/Skills";
 import ToolList from "@/components/about/ToolList";
 import Word from "@/components/about/Word";
-import Heading from "@/components/Heading";
+import Heading from "@/components/about/Heading";
 import { paragraph1, paragraph2, paragraph3 } from "@/src/constants/about";
 import { Metadata } from "next";
 

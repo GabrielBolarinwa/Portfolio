@@ -1,6 +1,6 @@
 "use client";
 import { educationItems } from "@/src/constants/about";
-import Heading from "../Heading";
+import Heading from "./Heading";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import Word from "./Word";
 

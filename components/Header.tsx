@@ -96,7 +96,7 @@ export function Header() {
               </Link>
             </li>
             <li className="nav-item" role="list">
-              <Link href="#projects" className="nav-link">
+              <Link href="/projects" className="nav-link">
                 <Code size={24} className={"text-theme"} />
                 <span className="link-text">Projects</span>
               </Link>
