@@ -1,12 +1,11 @@
 "use client";
-import { RefObject, useRef } from "react";
-import { projects } from "@/src/constants";
-import Image from "next/image";
-import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
-import { Card, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardFooter } from "@/components/ui/card";
+import { projects } from "@/src/constants";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { RefObject, useRef } from "react";
 
 interface Props {
   projectsRef: RefObject<HTMLElement | null>;
@@ -29,7 +28,7 @@ export function Projects({ projectsRef }: Props) {
         <h2 className="section-title">Projects</h2>
       </div>
       <div className="px-4 w-full">
-        <ul className="flex flex-wrap my-(--size-value-normal) w-full flex justify-center items-center flex-row flex-wrap mt-0 gap-4">
+        <ul className="my-(--size-value-normal) w-full flex justify-center items-center flex-row flex-wrap mt-0 gap-4">
           {projects.map((project, index) => (
             <li
               key={`project-${index}`}

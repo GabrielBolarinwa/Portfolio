@@ -1,3 +1,4 @@
+import { Projects } from "@/types/projects";
 import {
   SiAngular,
   SiCss,
@@ -9,7 +10,7 @@ import {
 } from "@icons-pack/react-simple-icons";
 import { Speech } from "lucide-react";
 
-export const projects = {
+export const projects: Projects = {
   caseStudies: [
     {
       slug: "yc-directory",
