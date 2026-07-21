@@ -59,8 +59,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  caseStudy,
 }: Readonly<{
   children: React.ReactNode;
+  caseStudy: React.ReactNode;
 }>) {
   return (
     <html
@@ -75,7 +77,10 @@ export default function RootLayout({
             <BubblesBackground />
           </div>
           <Header />
-          <main role="main">{children}</main>
+          <main role="main">
+            {children}
+            {caseStudy}
+          </main>
           <Footer />
         </LoadingProvider>
       </body>
