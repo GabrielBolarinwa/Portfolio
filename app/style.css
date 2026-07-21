@@ -903,9 +903,12 @@
     @apply -bottom-3 bg-muted/20 h-[1px] w-full absolute left-0 block [content:""];
   }
   .case-study-card::after {
-    @apply absolute top-0 left-0 [content:""] block h-1 w-full bg-(image:--primary-gradient) scale-x-0;
+    @apply absolute top-0 rounded-t-xl left-0 [content:""] block h-1 w-full bg-(image:--primary-gradient) scale-x-0;
   }
-  .case-study-card:hover::after {
+  .minor-project-card::after {
+    @apply absolute top-0 rounded-t-xl left-1/2 -translate-x-1/2 [content:""] block h-1 w-97/100 bg-(image:--primary-gradient) scale-x-0;
+  }
+  :is(.case-study-card, .minor-project-card):hover::after {
     @apply scale-x-100;
   }
   .case-study-card:hover .case-study-icon {

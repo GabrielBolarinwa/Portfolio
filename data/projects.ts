@@ -420,7 +420,7 @@ export const projects: Projects = {
           color: SiJavascriptHex,
           class: "",
         },
-        { name: "Speech API", icon: Speech, color: "", class: "" },
+        { name: "Speech API", icon: Speech, color: "#fff", class: "" },
         { name: "CSS", icon: SiCss, color: SiCssHex, class: "" },
       ],
       liveUrl: "https://gabrielbolarinwa-text-to-speech-converter.vercel.app",

@@ -37,12 +37,14 @@ export interface MinorProject {
     height: number;
   };
   shortDescription: string;
-  tags: {
-    name: string;
-    icon: LucideIcon | IconType;
-    color: string;
-    class: string;
-  }[];
+  tags: Tag[];
   liveUrl: string;
   repoUrl: string;
+}
+
+interface Tag {
+  name: string;
+  icon: LucideIcon | IconType;
+  color: string;
+  class: string;
 }
