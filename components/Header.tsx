@@ -1,5 +1,5 @@
 "use client";
-import { Code, House, Menu, Toolbox, User } from "lucide-react";
+import { Code, Contact2, House, Menu, User } from "lucide-react";
 import Menuspy from "menuspy";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -90,9 +90,9 @@ export function Header() {
               </Link>
             </li>
             <li className="nav-item" role="list">
-              <Link href="#services" className="nav-link">
-                <Toolbox size={24} className={"text-theme"} />
-                <span className="link-text">Services</span>
+              <Link href="/contact" className="nav-link">
+                <Contact2 size={24} className={"text-theme"} />
+                <span className="link-text">Contact</span>
               </Link>
             </li>
             <li className="nav-item" role="list">
