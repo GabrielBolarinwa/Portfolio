@@ -5,7 +5,6 @@ import {
   Inter,
   Space_Grotesk,
 } from "next/font/google";
-
 import { LoadingProvider } from "@/app/context/LoadingContext";
 import { BubblesBackground } from "@/components/BubblesBackground";
 import { Footer } from "@/components/Footer";
@@ -15,6 +14,7 @@ import GradientDefs from "@/components/svgs/GradientDefs";
 import React from "react";
 import "./style.css";
 import "./variables.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -80,6 +80,7 @@ export default function RootLayout({
           <main role="main">
             {children}
             {caseStudy}
+            <Toaster />
           </main>
           <Footer />
         </LoadingProvider>

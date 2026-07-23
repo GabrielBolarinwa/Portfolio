@@ -221,6 +221,10 @@
   .projects {
     @apply scroll-m-[58px];
   }
+
+  :is(input, textarea)::placeholder {
+    @apply [font-size:inherit];
+  }
 }
 
 /*Reset End*/

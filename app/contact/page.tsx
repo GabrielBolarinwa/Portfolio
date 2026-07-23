@@ -1,11 +1,11 @@
-import Heading from "@/components/contact/Heading";
+import ContactForm from "@/components/contact/ContactForm";
+import ContactIntro from "../../components/contact/ContactIntro";
 
 export default function page() {
   return (
-    <section className="mt-12">
-      <div className="w-full text-center">
-        <Heading trigger="load" word="Get In" gradientWord="Touch" />
-      </div>
+    <section className="mt-12 flex flex-wrap gap-6 flex-row">
+      <ContactIntro />
+      <ContactForm />
     </section>
   );
 }
