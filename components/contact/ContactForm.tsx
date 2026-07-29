@@ -9,85 +9,59 @@ import { Textarea } from "../ui/textarea";
 import { contactSchema } from "@/src/schema/contact";
 import z from "zod";
 import { toast } from "sonner";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function ContactForm() {
-  const [fields, setFields] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+  const portfolioForm = useForm({
+    resolver: zodResolver(contactSchema),
+    mode: "onChange",
   });
-  const [status, setStatus] = useState<
-    "idle" | "submitting" | "success" | "error"
-  >("idle");
-  const [errors, setErrors] = useState<
-    | {
-        name?:
-          | {
-              errors: string[];
-            }
-          | undefined;
-        email?:
-          | {
-              errors: string[];
-            }
-          | undefined;
-        subject?:
-          | {
-              errors: string[];
-            }
-          | undefined;
-        message?:
-          | {
-              errors: string[];
-            }
-          | undefined;
-      }
-    | undefined
-  >({});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, touchedFields, isSubmitting },
+  } = portfolioForm;
   const [gotcha, setGotcha] = useState<string>("");
-  async function handleChange(e: React.InputEvent) {
-    if (!e.target) return;
-    const input = e.target as HTMLInputElement | HTMLTextAreaElement;
-    setFields((prev) => ({
-      ...prev,
-      [input.name]: input.value,
-    }));
-    const result = await contactSchema.safeParseAsync(fields);
-    if (!result.success) {
-      setStatus("error");
-      setErrors(z.treeifyError(result.error).properties || {});
-      return;
-    } else {
-      setStatus("idle");
-      setErrors({});
-    }
-  }
 
-  async function handleSubmit(e: React.SubmitEvent) {
-    e.preventDefault();
-    setStatus("submitting");
-    const result = await contactSchema.safeParseAsync(fields);
-    if (!result.success) {
-      setStatus("error");
-      setErrors(z.treeifyError(result.error).properties || {});
-      toast.error("Check your inputs and try again");
-      return;
-    }
+  async function onSubmit(data: z.infer<typeof contactSchema>) {
     try {
       const formSubmit = await fetch("https://formspree.io/f/mwvezgwk", {
         method: "POST",
-        headers: { "Content-Type": "application/jsson" },
-        body: JSON.stringify({ ...fields, _gotcha: gotcha }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ ...data, _gotcha: gotcha }),
       });
-      if (formSubmit.ok) {
-        setStatus("success");
-        toast.success("Your message was successfully submitted");
-      }
+      handleSubmitResponse(formSubmit);
     } catch (e) {
-      setStatus("error");
       toast.error("Form submit failed, please try again later");
       console.error(e);
+    }
+  }
+
+  async function handleSubmitResponse(res: Response) {
+    if (res.ok) {
+      toast.success(
+        "Form was successfully submitted, you'll receive a response in your email.",
+      );
+    } else {
+      switch (res.status) {
+        case 422:
+          const data = await res.json();
+          await data.errors.forEach(
+            (error: { field: string; message: string; code: string }) => {
+              toast.error(`Error: ${error.message}`);
+            },
+          );
+          break;
+        case 429:
+          toast.error(`Quota exceeded please try again later`);
+        default:
+          toast.error("Generic server error, please try again later");
+          break;
+      }
     }
   }
 
@@ -95,67 +69,83 @@ export default function ContactForm() {
     <div className="w-full md:w-[48%] bg-card-background border border-white/20 rounded-lg p-6">
       <form
         className="flex flex-col justify-between h-full gap-4"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit, () => {
+          toast.error("Please check your inputs");
+        })}
       >
         <FieldGroup className="flex justify-between gap-4 flex-col md:flex-row flex-wrap">
-          <Field data-invalid={errors?.name ? true : false} className="flex-1">
+          <Field
+            data-invalid={errors?.name ? true : false}
+            className="flex-1 focus-within:not-input:text-accent-neon"
+          >
             <FieldLabel htmlFor="name-input">Name</FieldLabel>
             <Input
-              name="name"
               id="name-input"
               type="text"
               placeholder="John Doe"
               autoComplete="name"
               className="text-sm"
               aria-invalid={errors?.name ? true : false}
-              onInput={handleChange}
+              {...register("name")}
+              onFocus={() => portfolioForm.trigger("name")}
             />
-            {errors?.name && <FieldError>{errors?.name.errors[0]}</FieldError>}
+            {touchedFields.name && errors.name && (
+              <FieldError>{errors.name.message}</FieldError>
+            )}
           </Field>
-          <Field data-invalid={errors?.email ? true : false} className="flex-1">
+          <Field
+            data-invalid={errors?.email ? true : false}
+            className="flex-1 focus-within:not-input:text-accent-neon"
+          >
             <FieldLabel htmlFor="email-input">Email</FieldLabel>
             <Input
-              name="email"
               id="email-input"
               type="email"
               placeholder="john@example.com"
               autoComplete="email"
               className="text-sm"
               aria-invalid={errors?.email ? true : false}
-              onInput={handleChange}
+              {...register("email")}
+              onFocus={() => portfolioForm.trigger("email")}
             />
-            {errors?.email && (
-              <FieldError>{errors?.email.errors[0]}</FieldError>
+            {touchedFields.email && errors.email && (
+              <FieldError>{errors.email.message}</FieldError>
             )}
           </Field>
         </FieldGroup>
-        <Field data-invalid={errors?.subject ? true : false}>
+        <Field
+          data-invalid={errors?.subject ? true : false}
+          className="focus-within:not-input:text-accent-neon"
+        >
           <FieldLabel htmlFor="subject-input">Subject</FieldLabel>
           <Input
-            name="subject"
             id="subject-input"
             type="text"
             className="text-sm"
             placeholder="Project Inquiry"
             aria-invalid={errors?.subject ? true : false}
-            onInput={handleChange}
+            {...register("subject")}
+            onFocus={() => portfolioForm.trigger("subject")}
           />
-          {errors?.subject && (
-            <FieldError>{errors?.subject.errors[0]}</FieldError>
+          {touchedFields.subject && errors.subject && (
+            <FieldError>{errors.subject.message}</FieldError>
           )}
         </Field>
-        <Field data-invalid={errors?.message ? true : false}>
+        <Field
+          data-invalid={errors?.message ? true : false}
+          className="focus-within:not-input:text-accent-neon"
+        >
           <FieldLabel htmlFor="message-input">Message</FieldLabel>
           <Textarea
-            name="message"
             id="message-input"
             className="min-h-[80px] text-sm"
             placeholder="Tell me about your project"
             aria-invalid={errors?.message ? true : false}
-            onInput={handleChange}
+            {...register("message")}
+            onFocus={() => portfolioForm.trigger("message")}
           />
-          {errors?.message && (
-            <FieldError>{errors?.message.errors[0]}</FieldError>
+          {touchedFields.message && errors.message && (
+            <FieldError>{errors.message.message}</FieldError>
           )}
         </Field>
         <input
@@ -169,11 +159,11 @@ export default function ContactForm() {
         />
         <Button
           type="submit"
-          className={`rounded-full bg-(image:--primary-gradient) text-text font-headings disabled:bg-muted disabled:text-black border hover:-translate-y-0.5 hover:shadow-neon-hover font-bold ${status === "error" && "border-destructive"} mt-4`}
-          disabled={status === "submitting"}
+          className={`rounded-full bg-(image:--primary-gradient) text-text font-headings disabled:bg-muted disabled:text-black border hover:-translate-y-0.5 hover:shadow-neon-hover font-bold ${Object.keys(errors).length > 0 && "border-destructive"} mt-4`}
+          disabled={isSubmitting}
         >
           Send Message <Send />{" "}
-          {status === "submitting" && <DashRing className="size-5 mr-8" />}
+          {isSubmitting && <DashRing className="size-5 mr-8" />}
         </Button>
       </form>
     </div>
