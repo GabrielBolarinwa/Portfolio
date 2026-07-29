@@ -4,7 +4,7 @@ import { SiGithub } from "@icons-pack/react-simple-icons";
 import { ArrowUpRightFromSquare } from "lucide-react";
 import { CldImage } from "next-cloudinary";
 import Link from "next/link";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import {
@@ -23,6 +23,13 @@ export default function CaseStudy(props: Props) {
   const { markdown, caseStudy } = props;
   const [open] = useState<boolean>(true);
   const router = useRouter();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  useLayoutEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = 0;
+    }
+  }, [markdown]);
+
   return (
     <Sheet
       open={open}
@@ -56,7 +63,10 @@ export default function CaseStudy(props: Props) {
             </p>
           </div>
         </SheetHeader>
-        <div className="flex-1 overflow-y-auto px-6 prose-sm w-full mt-2 case-study-writeup">
+        <div
+          className="flex-1 overflow-y-auto px-6 prose-sm w-full mt-2 case-study-writeup"
+          ref={containerRef}
+        >
           <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
         </div>
         <SheetFooter className="flex justify-end gap-4 w-full p-6 border-t border-zinc-800 items-center bg-bg-base flex-row">
