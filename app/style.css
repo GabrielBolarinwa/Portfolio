@@ -174,11 +174,27 @@
   }
 
   html {
-    @apply scroll-smooth overflow-x-hidden scheme-dark forced-color-adjust-none;
+    @apply scroll-smooth overflow-x-hidden scheme-dark forced-color-adjust-none [scrollbar-width:thin] [scrollbar-color:#ff0055_#050510];
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-[10px] h-[10px];
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-base;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-(image:--primary-gradient) rounded-sm border-2 border-bg-base duration-300 ease-[ease];
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply [background:linear-gradient(135deg,#08cbe8,#ff3d85)];
   }
 
   body {
-    @apply bg-main-bg text-(--color-light)! font-normal text-(length:--font-size-default)! leading-normal relative overflow-x-hidden -z-2 font-body [scroll-timeline-name:--body-scroll] [scroll-timeline-axis:block];
+    @apply bg-bg-base text-(--color-light)! font-normal text-(length:--font-size-default)! leading-normal relative overflow-x-hidden -z-2 font-body [scroll-timeline-name:--body-scroll] [scroll-timeline-axis:block];
   }
 
   main {
