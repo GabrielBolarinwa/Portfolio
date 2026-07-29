@@ -78,7 +78,7 @@ export function Header() {
             role="list"
           >
             <li className="nav-item" role="list">
-              <Link href="#main" aria-current="page" className="nav-link">
+              <Link href="/#" aria-current="page" className="nav-link">
                 <House size={24} className={"text-theme"} />{" "}
                 <span className="link-text">Home</span>
               </Link>
