@@ -3,7 +3,7 @@ import ContactIntro from "../../components/contact/ContactIntro";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact | Bolarinwa Gabriel",
+  title: "Contact | Bolarinwa Gabriel Portfolio",
 };
 export default function page() {
   return (

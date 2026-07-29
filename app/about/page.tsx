@@ -10,7 +10,7 @@ import { paragraph1, paragraph2, paragraph3 } from "@/src/constants/about";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Bolarinwa Gabriel",
+  title: "About | Bolarinwa Gabriel Portfolio",
 };
 function About() {
   const paragraph1words = paragraph1.split(" ");
