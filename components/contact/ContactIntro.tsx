@@ -13,7 +13,7 @@ export default function ContactIntro() {
       <p className="text-muted">
         Whether you&apos;re looking to collaborate on a project, discuss an
         opportunity or just want to connect — I&apos;m open to the conversation.
-        Fill out tthe form and I&apos;ll get back to you within as soon as
+        Fill out the form and I&apos;ll get back to you within as soon as
         possible.
       </p>
       <div className="flex flex-col w-full gap-6 mt-5">
