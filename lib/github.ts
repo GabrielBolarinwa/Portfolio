@@ -1,3 +1,4 @@
+import { cache } from "react";
 const GITHUB_API = "https://api.github.com";
 const GITHUB_GRAPHQL = "https://api.github.com/graphql";
 
@@ -12,11 +13,7 @@ const COMMITS_QUERY = `
   }
 `;
 
-export async function getGitHubStats(): Promise<{
-  repos: number | null;
-  commits: number | null;
-  since: number | null;
-}> {
+export const getGitHubStats = cache(async () => {
   const headers = {
     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     "Content-Type": "application/json",
@@ -58,4 +55,4 @@ export async function getGitHubStats(): Promise<{
       since: null,
     };
   }
-}
+});

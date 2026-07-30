@@ -686,7 +686,7 @@
   }
 
   .skill-tag::after {
-    @apply [content:''] absolute top-0 left-0 w-full h-full [background:linear-gradient(120deg,transparent_30%),rgba(255,255,255,0.4)_50%,transparent_70%] -translate-x-[150%] -skew-x-[20deg] pointer-events-none;
+    @apply [content:''] absolute top-0 left-0 w-full h-full [background:linear-gradient(120deg,transparent_30%),rgba(255,255,255,0.4)_50%,transparent_70%] -translate-x-[150%] -skew-x-[20deg] pointer-events-none z-3;
   }
 
   .skill-tag.fadeInCustom {
@@ -722,85 +722,7 @@
   }
 
   .cta-links .cta {
-    @apply border h-fit duration-1000 flex gap-2 font-bold py-4 text-sm px-8 rounded-full justify-center items-center hover:-translate-y-1;
-  }
-
-  /* About */
-  .about {
-    @apply mt-16;
-  }
-
-  .about-container {
-    @apply relative gap-8 items-center w-full text-center h-full;
-  }
-
-  .about-contact:any-link {
-    @apply text-center border border-white font-(family-name:--script-font-2) text-[2rem] decoration-0 bg-theme text-[#050517] py-(--size-value-small) px-(--size-value-normal) rounded-2xl font-normal;
-  }
-
-  /* Skills and Experience */
-  .skills_and_experience {
-    @apply text-white mt-16;
-  }
-
-  .skills_and_experience_header {
-    @apply w-full max-w-[1500px] relative flex items-center gap-[10px] mx-auto text-3xl font-bold;
-  }
-
-  .skills_and_experience_header span {
-    @apply text-2xl text-[#00eaff];
-  }
-
-  .skills_and_experience_header::before {
-    @apply absolute [content:""] w-full h-[4.5px] rounded-4xl left-0 -bottom-1.5 [background:_linear-gradient(90deg,_#00eaff,_#00cc88)];
-  }
-
-  .skills_and_experience ul {
-    @apply list-none;
-  }
-
-  .skills_and_experience_container {
-    @apply flex justify-center mt-4 w-full items-center;
-  }
-
-  .skills_and_experience_section {
-    @apply flex flex-col w-full;
-  }
-
-  .skills_and_experience .certificate-link {
-    @apply text-white font-bold underline;
-  }
-
-  .skills_and_experience .certificate-link:hover {
-    @apply text-theme;
-  }
-
-  .skills_and_experience .education_item {
-    --education-item-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    @apply my-5 mx-auto
-        bg-[#1b1e29] p-6 rounded-[12px] border border-[rgba(255,255,255,0.08)]
-        relative max-w-[900px] z-1 shadow-(--education-item-shadow);
-  }
-
-  .skills_and_experience .education_item::after {
-    @apply absolute top-0 -left-[2.5%] h-full w-1.5 [content:""] bg-white duration-500;
-  }
-
-  .skills_and_experience .skill-list {
-    @apply flex gap-8 place-content-center place-items-center flex-row flex-wrap max-sm:flex-col;
-  }
-
-  .skills_and_experience .skill-item {
-    @apply bg-skill-bg p-(--size-value-big) rounded-[1.5rem] border border-[rgba(148,163,184,0.7)] relative text-center max-w-[200px] max-sm:w-full;
-  }
-
-  .skills_and_experience .skill-item:hover {
-    --skill-item-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
-    @apply shadow-(--skill-item-shadow);
-  }
-
-  .skill-item .text .skill-rating {
-    @apply text-(length:--font-size-normal) bg-[rgba(6,182,212,0.15)] rounded-sm w-fit mx-auto p-(--size-value-small);
+    @apply border h-fit duration-1000 flex gap-2 font-bold py-3 text-[1rem] px-8 rounded-full justify-center items-center hover:-translate-y-1;
   }
 
   /* Services */
