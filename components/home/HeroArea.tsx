@@ -187,7 +187,7 @@ export function HeroArea() {
             "Three.js",
           ].map((tag, index) => (
             <Badge
-              className="bg-card-background border border-white/20 p-4 text-inherit hover:text-accent-neon hover:border-accent-neon/20 hover:-translate-y-0.5 translate-y-2 scale-90 relative overflow-hidden headings [transition:border-color_0.3s var(--ease-smooth)] skill-tag"
+              className="bg-card-background border border-white/20 p-4 text-inherit hover:text-accent-neon hover:border-accent-neon/20 hover:-translate-y-0 translate-y-2 scale-90 relative overflow-hidden headings [transition:border-color_0.3s var(--ease-smooth)] skill-tag"
               key={tag}
               ref={ref}
               data-animation="fadeInCustom"
