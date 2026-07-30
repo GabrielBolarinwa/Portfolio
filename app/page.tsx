@@ -1,5 +1,5 @@
 "use client";
-import { HeroArea } from "@/components/HeroArea";
+import { HeroArea } from "@/components/home/HeroArea";
 import { Projects } from "@/components/Projects";
 import { Services } from "@/components/Services";
 import { useRef } from "react";

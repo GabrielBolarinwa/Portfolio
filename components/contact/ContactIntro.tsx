@@ -36,7 +36,7 @@ export default function ContactIntro() {
           github.com/GabrielBolarinwa
         </Link>
         <Link
-          href={`mailto:gabibola955@gmail.com`}
+          href={`https://t.me/gabibola955`}
           className="flex gap-4 text-muted items-center hover:text-text group"
         >
           <span className="text-accent-neon p-2 rounded-lg border border-white/20 group-hover:bg-(image:--primary-gradient) group-hover:text-text">

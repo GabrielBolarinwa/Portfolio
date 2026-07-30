@@ -24,8 +24,8 @@
   --color-muted: #a0a0b0;
   --color-accent-neon: #00f3ff;
   --color-accent-pink: #ff0055;
-  --shadow-cyan-glow: 0 0 20px rgba(0, 243, 255, 0.3);
-  --shadow-cyan-hover: 0 5px 25px rgba(255, 0, 85, 0.3);
+  --shadow-cyan-glow: 0 0 20px rgba(0, 243, 255, 0.8);
+  --shadow-cyan-hover: 0 5px 25px #00f3ff;
   --text-xl: clamp(2.5rem, 6vw, 4.5rem);
   --text-lg: 2.5rem;
   --text-base: 1.3rem;
@@ -125,6 +125,9 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --primary-gradient: linear-gradient(135deg, #00f3ff, #ff0055);
+
+  --shadow-pink-hover: 0 0 15px rgba(255, 0, 85, 0.3);
+  --shadow-neon-hover: 0 0 20px rgba(0, 243, 255, 0.3);
 }
 
 .dark {
@@ -198,7 +201,7 @@
   }
 
   main {
-    @apply min-h-dvh [margin-top:calc(var(--header-height)+28px)] max-w-[87.8477306003%] mx-auto mb-7;
+    @apply min-h-dvh mt-(--header-height) max-w-[87.8477306003%] mx-auto mb-4;
   }
 
   img {
@@ -421,6 +424,7 @@
       transform: scale(1);
     }
   }
+
   @keyframes fill-timeline {
     100% {
       transform: scaleY(1);
@@ -629,49 +633,27 @@
 
   /* Hero Area */
   section.hero-area {
-    @apply bg-no-repeat bg-center bg-cover bg-blend-color min-h-dvh font-[inherit] mt-8;
+    @apply min-h-dvh font-[inherit];
   }
 
-  .hero-area .hero-img {
-    @apply rounded-full border-3 border-theme [animation:floatAndPulse_4s_ease-in-out_infinite,glow_4s_0.75s_ease-in-out_infinite];
+  .avatar-container.flipped .avatar-inner {
+    @apply rotate-y-180;
   }
 
-  @-webkit-keyframes glow {
-    0%,
-    100% {
-      box-shadow: 0 0 0 var(--theme-color);
-    }
-    50% {
-      box-shadow: 0 0 20px var(--theme-color);
-    }
-  }
   @keyframes glow {
     0%,
     100% {
-      box-shadow: 0 0 0 var(--theme-color);
+      box-shadow: none;
+    }
+    25% {
+      box-shadow: 0 0 20px rgba(0, 243, 255);
     }
     50% {
-      box-shadow: 0 0 20px var(--theme-color);
+      box-shadow: none;
     }
-  }
-
-  @-webkit-keyframes floatAndPulse {
-    0%,
-    100% {
-      transform: translateY(0) scale(1);
-    }
-    50% {
-      transform: translateY(-6px) scale(1.03);
-    }
-  }
-
-  @keyframes floatAndPulse {
-    0%,
-    100% {
-      transform: translateY(0) scale(1);
-    }
-    50% {
-      transform: translateY(-6px) scale(1.03);
+    75% {
+      border-color: #ff0055;
+      box-shadow: 0 0 20px #ff0055;
     }
   }
 
@@ -703,44 +685,44 @@
     }
   }
 
+  .skill-tag::after {
+    @apply [content:''] absolute top-0 left-0 w-full h-full [background:linear-gradient(120deg,transparent_30%),rgba(255,255,255,0.4)_50%,transparent_70%] -translate-x-[150%] -skew-x-[20deg] pointer-events-none;
+  }
+
+  .skill-tag.fadeInCustom {
+    @apply [animation:fadeInCustom_0.6s_cubic-bezier(0.25,0.8,0.25,1)_forwards] [animation-delay:calc(var(--i)*1s)];
+  }
+
+  .skill-tag.fadeInCustom::after {
+    @apply [animation:tag-sweep_0.9s_cubic-bezier(0.25,0.8,0.25,1)_forwards] [animation-delay:calc(var(--i)*1s)];
+  }
+
+  @keyframes fadeInCustom {
+    0% {
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes tag-sweep {
+    0% {
+      transform: translateX(-150%) skewX(-20deg);
+    }
+    100% {
+      transform: translateX(-250%) skewX(-20deg);
+    }
+  }
+
   .cta-links {
     @apply my-3 flex justify-center items-center mx-auto gap-[1.5em];
   }
 
   .cta-links .cta {
-    @apply border border-white relative text-(--color-light) z-1 block h-fit duration-1000   overflow-hidden;
-  }
-
-  .cta.cta-portfolio {
-    @apply bg-theme py-(--size-value-small) px-(--size-value-xl);
-  }
-
-  .cta.cta-portfolio:hover {
-    @apply bg-transparent;
-  }
-
-  .cta.cta-portfolio::after {
-    @apply absolute [content:""] w-full h-full bg-[rgba(0,0,0,0.5)] top-0 left-0 translate-x-full -z-1;
-  }
-
-  .cta.cta-portfolio:hover::after {
-    @apply translate-x-0;
-  }
-
-  .cta.cta-about {
-    @apply bg-[rgba(0,0,0,0.5)] py-(--size-value-small) px-(--size-value-large);
-  }
-
-  .cta.cta.cta-about:hover {
-    @apply bg-transparent;
-  }
-
-  .cta.cta-about::after {
-    @apply absolute [content:""] w-full h-full bg-theme top-0 left-0 -z-1 translate-x-full;
-  }
-
-  .cta.cta-about:hover::after {
-    @apply translate-x-0;
+    @apply border h-fit duration-1000 flex gap-2 font-bold py-4 text-sm px-8 rounded-full justify-center items-center hover:-translate-y-1;
   }
 
   /* About */
