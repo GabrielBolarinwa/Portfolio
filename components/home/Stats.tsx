@@ -18,7 +18,7 @@ async function Status() {
     },
   ];
   return (
-    <section className="grid grid-cols-6 place-items-center place-content-center gap-4 h-[50dvh]">
+    <section className="grid grid-cols-6 place-items-center place-content-center gap-4 min-h-[50dvh] p-12">
       {stats.map((stat, index) => (
         <StatsCard
           label={stat.label}
