@@ -1,4 +1,6 @@
 import type { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import {
   Allura,
   Cinzel_Decorative,
@@ -70,6 +72,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${allura.variable} ${cinzel.variable} dark`}
     >
       <body>
+        <SpeedInsights />
         <LoadingProvider>
           <GradientDefs />
           <Loader />
