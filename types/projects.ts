@@ -16,7 +16,7 @@ export interface CaseStudy {
   screenshots: Screenshot[];
 }
 
-interface Screenshot {
+export interface Screenshot {
   src: string;
   alt: string;
   width: number;

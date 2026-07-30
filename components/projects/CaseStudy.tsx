@@ -15,6 +15,8 @@ import {
   SheetTitle,
 } from "../ui/sheet";
 import { useRouter } from "next/navigation";
+import CaseStudyImageSlider from "./CaseStudyImageSlider";
+
 interface Props {
   markdown: string;
   caseStudy: CaseStudyType;
@@ -68,6 +70,7 @@ export default function CaseStudy(props: Props) {
           ref={containerRef}
         >
           <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
+          <CaseStudyImageSlider images={caseStudy.screenshots} />
         </div>
         <SheetFooter className="flex justify-end gap-4 w-full p-6 border-t border-zinc-800 items-center bg-bg-base flex-row">
           <Link
