@@ -12,7 +12,11 @@ const COMMITS_QUERY = `
   }
 `;
 
-export async function getGitHubStats() {
+export async function getGitHubStats(): Promise<{
+  repos: number | null;
+  commits: number | null;
+  since: number | null;
+}> {
   const headers = {
     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     "Content-Type": "application/json",
