@@ -214,7 +214,7 @@ export const projects: Projects = {
         "A scientific calculator implementing the shunting-yard algorithm for correct operator precedence — with full keyboard control support and a custom expression parser handling complex mathematical notation.",
       liveUrl: "https://gabrielbolarinwa-axiom.vercel.app",
       repoUrl: "https://github.com/GabrielBolarinwa/Axiom",
-      featured: true,
+      featured: false,
       screenshots: [
         {
           src: "calculator_c6f7nw",
@@ -249,7 +249,7 @@ export const projects: Projects = {
         "A PWA-enabled quiz application consuming the Open Trivia DB — with offline support via service workers, a timer-driven submission flow, and accessibility-first interaction design.",
       liveUrl: "https://gabrielbolarinwa-quizzora.vercel.app",
       repoUrl: "https://github.com/GabrielBolarinwa/Quizzora",
-      featured: true,
+      featured: false,
       screenshots: [
         {
           src: "main_jfqygo",
@@ -296,7 +296,7 @@ export const projects: Projects = {
         "A currency converter with debounced API requests, client-side exchange rate caching, and a graceful offline fallback — ensuring reliable conversions regardless of network state.",
       liveUrl: "https://gabrielbolarinwa-currencyswap.vercel.app",
       repoUrl: "https://github.com/GabrielBolarinwa/CurrencySwap",
-      featured: true,
+      featured: false,
       screenshots: [
         {
           src: "00b825bd-9f43-4eb6-9161-4ffe740e9e55_gsm6y4",
@@ -325,7 +325,7 @@ export const projects: Projects = {
         "A weather application built with Vue 3 and Pinia — surfacing current conditions, hourly breakdowns, and 2-day forecasts via WeatherAPI.com, with geolocation support, theme persistence, and Sentry error tracking.",
       liveUrl: "https://gabrielbolarinwa-horizons.vercel.app",
       repoUrl: "https://github.com/GabrielBolarinwa/Horizons",
-      featured: true,
+      featured: false,
       screenshots: [
         {
           src: "94b606c5-5f1f-441b-8f86-93f47ab17d75_mnmagm",
