@@ -1,6 +1,6 @@
 "use client";
 import { useLoadAnimation } from "@/src/hooks/useLoadAnimation";
-import Heading from "../Heading";
+import Heading from "./Heading";
 
 export default function ProjectsHeading() {
   const ref = useLoadAnimation();
