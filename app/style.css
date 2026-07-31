@@ -692,7 +692,7 @@
   }
 
   .skill-tag::after {
-    @apply [content:''] absolute top-0 left-0 w-full h-full [background:linear-gradient(120deg,transparent_30%),rgba(255,255,255,0.4)_50%,transparent_70%] -translate-x-[150%] -skew-x-[20deg] pointer-events-none z-3;
+    @apply [content:''] absolute top-0 left-0 w-full h-full [background:linear-gradient(120deg,transparent_30%,rgba(255,255,255,0.4)_50%,transparent_70%)] -translate-x-[150%] -skew-x-[20deg] pointer-events-none z-3;
   }
 
   .skill-tag.fadeInCustom {
@@ -700,7 +700,7 @@
   }
 
   .skill-tag.fadeInCustom::after {
-    @apply [animation:tag-sweep_0.9s_cubic-bezier(0.25,0.8,0.25,1)_forwards] [animation-delay:calc(var(--i)*1s)];
+    @apply [animation:tag-sweep_1.9s_cubic-bezier(0.25,0.8,0.25,1)_forwards] [animation-delay:calc(var(--i)*1.1s)];
   }
 
   @keyframes fadeInCustom {
@@ -719,7 +719,7 @@
       transform: translateX(-150%) skewX(-20deg);
     }
     100% {
-      transform: translateX(-250%) skewX(-20deg);
+      transform: translateX(450%) skewX(-20deg);
     }
   }
 
@@ -863,7 +863,7 @@
   }
 
   .footer-header {
-    @apply [background:linear-gradient(135deg,#f1f5f9,var(--theme-color))] mt-6 text-(length:--font-size-xl) bg-clip-text! font-(family-name:--font-display) text-transparent  font-normal;
+    @apply text-muted mt-6 text-lg font-(family-name:--font-display) font-normal;
   }
 
   .contact {
