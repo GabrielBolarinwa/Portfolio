@@ -1,103 +1,44 @@
-import { Bug, CheckIcon, Monitor, Signal, Smartphone } from "lucide-react";
 import {
-  SiAngular,
-  SiCss,
-  SiFigma,
-  SiHtml5,
-  SiJavascript,
-  SiReact,
-  SiTypescript,
-  SiVuedotjs,
+  SiReact
 } from "@icons-pack/react-simple-icons";
+import {
+  Gauge,
+  PencilRuler,
+  Plug2,
+  ShieldHalf
+} from "lucide-react";
 
-export const skillItems = [
-  {
-    id: "1",
-    skill: "HTML",
-    mastery: "Expert",
-    icon: SiHtml5,
-    iconColor: "#e34c26",
-  },
-  {
-    id: "2",
-    skill: "CSS",
-    mastery: "Expert",
-    icon: SiCss,
-    iconColor: "#663399",
-  },
-  {
-    id: "3",
-    skill: "Javascript",
-    mastery: "Expert",
-    icon: SiJavascript,
-    iconColor: "#f7df1e",
-  },
-  {
-    id: "4",
-    skill: "Typescript",
-    mastery: "Expert",
-    icon: SiTypescript,
-    iconColor: "#3178c6",
-  },
-  {
-    id: "5",
-    skill: "React",
-    mastery: "Expert",
-    icon: SiReact,
-    iconColor: "#61dbfb",
-  },
-  {
-    id: "6",
-    skill: "Angular",
-    mastery: "Advanced",
-    icon: SiAngular,
-    iconColor: "#e40035",
-  },
-  {
-    id: "7",
-    skill: "Vue",
-    mastery: "Expert",
-    icon: SiVuedotjs,
-    iconColor: "#41b883",
-  },
-];
 
 export const services = [
   {
-    icon: Monitor,
-    serviceName: "Web Development",
+    icon: PencilRuler,
+    serviceName: "UI/UX Implementation",
     serviceDescription:
-      "Build fast, responsive website with clean code and essential features",
+      "Design-to-code translation, responsive layouts, and building scalable design systems",
   },
   {
-    icon: Smartphone,
-    serviceName: "Web App Development",
+    icon: SiReact,
+    serviceName: "Frontend Engineering",
     serviceDescription:
-      "Build dynamic web apps with React, Angular and Vue. Get flexible PWAs that adapt to your requirements",
+      "React/Vue/Angular development TypeScript, state management and routing",
   },
   {
-    icon: Signal,
-    serviceName: "Web Performance Analysis and Optimization",
+    icon: Gauge,
+    serviceName: "Performance Optimization",
     serviceDescription:
-      "Optimize code, assets and images for faster load times and enhanced security",
+      "Lazy loading, code splitting, PWA Implementation and performance auditing",
   },
   {
-    icon: Bug,
-    serviceName: "Debugging",
+    icon: Plug2,
+    serviceName: "API Integration",
     serviceDescription:
-      "Identify and resolve bugs in codebases by tracing error sources per feature",
+      "REST APIs, JWT/OAuth authentication, and asynchronouss data handling",
   },
   {
-    icon: CheckIcon,
-    serviceName: "Code Testing",
+    icon: ShieldHalf,
+    serviceName: "Accessibility & Security",
     serviceDescription:
-      "Test code thoroughly for render and logic errors before deploying for production using tools like Cypress and Vitest",
-  },
-  {
-    icon: SiFigma,
-    serviceName: "UI/UX Design",
-    serviceDescription:
-      "Design user interfaces and prototypes using Figma and Lunacy following best practices for optimal user experiences",
+      "WCAG/ARIA compliance, XSS prevention and Content Security Policy (CSP)",
   },
 ];
 
