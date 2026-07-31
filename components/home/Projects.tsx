@@ -10,7 +10,6 @@ export function Projects() {
   const projects = projectsData.caseStudies.filter(
     (project) => project.featured,
   );
-  console.log(projects);
   return (
     <section className="projects" id="projects">
       <Heading
@@ -19,11 +18,11 @@ export function Projects() {
         headingWord="Featured"
       />
       <div className="px-4 mt-8 w-full">
-        <ul className="w-full flex flex-row flex-wrap gap-4 mx-auto">
+        <ul className="w-full flex flex-row flex-wrap gap-4 max-sm:mx-auto">
           {projects.map((project, index) => (
             <li
               key={`project-${index}`}
-              className="project w-4/5 md:w-9/20 relative hover:-translate-y-1"
+              className="project w-19/20 md:w-9/20 relative max-sm:mx-auto hover:-translate-y-1"
               data-animation="hoverInBottom"
               style={{ "--i": `1.${index + 3}` } as React.CSSProperties}
               ref={ref}

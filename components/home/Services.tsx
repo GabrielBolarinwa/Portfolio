@@ -17,15 +17,21 @@ export function Services() {
           headingGradientWord="Services"
           description="Production-grade engineering for the web"
         />
-        <ul className="flex flex-wrap gap-4 w-full flex-col md:flex-row">
-          {services.slice(0, middleIndex).map((service, index) => (
+        <ul className="flex flex-wrap gap-4 w-full flex-col max-lg:justify-center md:flex-row">
+          {services.map((service, index) => (
             <li
               key={`service-${index}`}
               className="service"
               tabIndex={0}
               style={{ "--i": `1.${index + 1}` } as React.CSSProperties}
               ref={ref}
-              data-animation={width < 768 ? "hoverInTop" : "lightSpeedInLeft"}
+              data-animation={
+                width < 768
+                  ? "hoverInTop"
+                  : index >= middleIndex
+                    ? "lightSpeedInRight"
+                    : "lightSpeedInLeft"
+              }
             >
               <div className="h-25">
                 <div className="icon-container">
@@ -33,30 +39,6 @@ export function Services() {
                 </div>
               </div>
               <div className="service-content h-40 lg:h-25">
-                <h3 className="service-name mb-4">{service.serviceName}</h3>
-                <p className="service-description">
-                  {service.serviceDescription}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <ul className="flex flex-wrap gap-4 w-full flex-col md:flex-row">
-          {services.slice(middleIndex).map((service, index) => (
-            <li
-              key={`service-${index}`}
-              className="service"
-              tabIndex={0}
-              style={{ "--i": `1.${index}` } as React.CSSProperties}
-              ref={ref}
-              data-animation={width < 768 ? "hoverInTop" : "lightSpeedInRight"}
-            >
-              <div className="h-25">
-                <div className="icon-container">
-                  <service.icon />
-                </div>
-              </div>
-              <div className="service-content h-25">
                 <h3 className="service-name mb-4">{service.serviceName}</h3>
                 <p className="service-description">
                   {service.serviceDescription}

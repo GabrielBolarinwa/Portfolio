@@ -406,7 +406,7 @@
     }
   }
   .lightSpeedInRight {
-    @apply [animation-delay:calc(var(--i)*1s)] [animation:lightSpeedInLeft_1s_ease_forwards];
+    @apply [animation-delay:calc(var(--i)*1s)] [animation:lightSpeedInRight_1s_ease_forwards];
   }
 
   .scaleIn {
