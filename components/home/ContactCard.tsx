@@ -15,7 +15,8 @@ function ContactCard() {
         className="bg-(image:--primary-gradient) py-2 px-5 flex gap-2 items-center text-sm font-bold rounded-full w-fit hover:-translate-y-1 hover:shadow-neon-hover"
         href={"/contact"}
       >
-        <ArrowRight /> Let&apos;s Talk
+        <ArrowRight />
+        Let&apos;s Talk
       </Link>
     </div>
   );
