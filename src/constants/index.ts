@@ -6,13 +6,13 @@ export const services = [
     icon: PencilRuler,
     serviceName: "UI/UX Implementation",
     serviceDescription:
-      "Translating designs into precise, responsive interface — from component-level fidelity to full design system implementation with consistent spacing, typograpghy and colour tokens across every breakpoint",
+      "Translating designs into precise, responsive interface — from component-level fidelity to full design system implementation with consistent spacing, typography and colour tokens across every breakpoint",
   },
   {
     icon: SiReact,
     serviceName: "Frontend Engineering",
     serviceDescription:
-      "Build scalable application architectures across React, Vue and Angular — with TypeScript throughout, delibrate state management strategies and routing patters that hold up as complexity grows.",
+      "Build scalable application architectures across React, Vue and Angular — with TypeScript throughout, deliberate state management strategies and routing patters that hold up as complexity grows.",
   },
   {
     icon: Gauge,
@@ -24,12 +24,12 @@ export const services = [
     icon: Plug2,
     serviceName: "API Integration",
     serviceDescription:
-      "Connecting frontends to external services reliably — REST consumption,, JWT and OAuth authentication flows, debounced and cached async data handling and graceful degradation when network conditions fail.",
+      "Connecting frontend to external services reliably — REST consumption,, JWT and OAuth authentication flows, debounced and cached async data handling and graceful degradation when network conditions fail.",
   },
   {
     icon: ShieldHalf,
     serviceName: "Accessibility & Security",
     serviceDescription:
-      "Building interfaces that meet WCAG 2.1 AA standards as a baseline, not an afterthough — with semantic markup, ARIA implementation, keyboard navigation, XSS prevention and Content Security Policy configuration applied from the start",
+      "Building interfaces that meet WCAG 2.1 AA standards as a baseline, not an afterthought — with semantic markup, ARIA implementation, keyboard navigation, XSS prevention and Content Security Policy configuration applied from the start",
   },
 ];
