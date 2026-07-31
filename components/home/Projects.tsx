@@ -36,9 +36,9 @@ export function Projects() {
       </div>
       <Link
         href="/projects"
-        className="flex gap-4 py-3 px-6 rounded-full border border-white hover:border-accent-pink hover:shadow-pink-hover hover:text-accent-pink w-fit items-center justify-center mt-8 text-center mx-auto hover:-translate-y-1"
+        className="flex gap-3 py-3 px-6 rounded-full border border-white hover:border-accent-pink hover:shadow-pink-hover hover:text-accent-pink w-fit items-center justify-center mt-8 text-center mx-auto hover:-translate-y-1 font-bold text-sm"
       >
-        <FolderOpen /> See All Projects
+        <FolderOpen /> See all projects
       </Link>
     </section>
   );
