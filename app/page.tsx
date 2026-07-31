@@ -3,6 +3,7 @@ import Status from "@/components/home/Stats";
 import { Services } from "@/components/home/Services";
 import { Suspense } from "react";
 import { Projects } from "@/components/home/Projects";
+import ContactCard from "@/components/home/ContactCard";
 function App() {
   return (
     <>
@@ -11,8 +12,8 @@ function App() {
         <Status />
       </Suspense>
       <Services />
-
       <Projects />
+      <ContactCard />
     </>
   );
 }

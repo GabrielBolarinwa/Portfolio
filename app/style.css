@@ -125,7 +125,8 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   --primary-gradient: linear-gradient(135deg, #00f3ff, #ff0055);
-
+  --color-accent-neon: #00f3ff;
+  --color-accent-pink: #ff0055;
   --shadow-pink-hover: 0 0 15px rgba(255, 0, 85, 0.3);
   --shadow-neon-hover: 0 0 20px rgba(0, 243, 255, 0.3);
 }
@@ -849,13 +850,19 @@
   .case-study-writeup a {
     @apply decoration-1 underline;
   }
+
+  /*Home Contact Card  */
+  .home-contact::after {
+    @apply [content:""] absolute top-0 left-0 w-full h-1 bg-(image:--primary-gradient) block;
+  }
+
   /* Footer */
   footer {
-    @apply flex justify-center items-center text-center flex-col flex-wrap text-[#94a3b8] text-lg pt-0 px-(--size-value-big) pb-(--size-value-big) relative w-full;
+    @apply flex justify-center items-center text-center flex-col flex-wrap pt-0 px-4 pb-4 relative w-full;
   }
 
   footer::before {
-    @apply [background:linear-gradient(90deg,transparent,var(--theme-color),transparent)] [content:""] absolute top-0 left-0 right-0 h-[1px];
+    @apply [background:linear-gradient(90deg,transparent,var(--color-accent-neon),transparent)] [content:""] absolute top-0 left-0 right-0 h-[1px];
   }
 
   footer::after {
@@ -863,15 +870,12 @@
   }
 
   .footer-header {
-    @apply text-muted mt-6 text-lg font-(family-name:--font-display) font-normal;
-  }
-
-  .contact {
-    @apply text-[1.8rem];
+    --font-size: clamp(1rem, 2vw + 0.5rem, 4rem);
+    @apply mt-6 text-(length:--font-size) font-(family-name:--font-display) font-normal;
   }
 
   .contact .contact-info {
-    @apply pt-0 px-(--size-value-big) pb-(--size-value-small);
+    @apply pt-0 px-4 pb-4;
   }
 
   .contact .social-icons-2 {
