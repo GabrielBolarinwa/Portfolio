@@ -2,6 +2,7 @@ import { HeroArea } from "@/components/home/HeroArea";
 import Status from "@/components/home/Stats";
 import { Services } from "@/components/home/Services";
 import { Suspense } from "react";
+import { Projects } from "@/components/home/Projects";
 function App() {
   return (
     <>
@@ -10,8 +11,8 @@ function App() {
         <Status />
       </Suspense>
       <Services />
-      {/* 
-        <Projects projectsRef={projectsSection} /> */}
+
+      <Projects />
     </>
   );
 }

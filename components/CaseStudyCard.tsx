@@ -27,7 +27,7 @@ export default function CaseStudyCard(props: Props) {
           className={"object-cover h-12.5 w-auto object-top"}
         />
       </div>
-      <div className="flex flex-col gap-2 mt-4 h-36 justify-center">
+      <div className="flex flex-col gap-2 mt-4 max-sm:h-55 max-md:h-45 max-sm:mx-auto h-36 justify-center">
         <h3>{project.title}</h3>
         <p className="text-muted text-sm!">{project.shortDescription}</p>
       </div>
