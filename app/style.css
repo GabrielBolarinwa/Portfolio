@@ -858,11 +858,11 @@
 
   /* Footer */
   footer {
-    @apply flex justify-center items-center text-center flex-col flex-wrap pt-0 px-4 pb-4 relative w-full;
+    @apply flex justify-between flex-wrap pt-6 px-0 md:px-12 pb-4 relative w-full text-wrap text-muted text-base gap-4;
   }
 
   footer::before {
-    @apply [background:linear-gradient(90deg,transparent,var(--color-accent-neon),transparent)] [content:""] absolute top-0 left-0 right-0 h-[1px];
+    @apply [background:linear-gradient(90deg,transparent,var(--color-accent-neon),var(--color-accent-pink),transparent)] [content:""] absolute top-0 left-0 right-0 h-[1px];
   }
 
   footer::after {
@@ -870,8 +870,8 @@
   }
 
   .footer-header {
-    --font-size: clamp(1rem, 2vw + 0.5rem, 4rem);
-    @apply mt-6 text-(length:--font-size) font-(family-name:--font-display) font-normal;
+    --font-size: clamp(1.5rem, 1vw + 0.5rem, 4rem);
+    @apply text-(length:--font-size)  text-main-text;
   }
 
   .contact .contact-info {
@@ -879,15 +879,15 @@
   }
 
   .contact .social-icons-2 {
-    @apply flex justify-center items-center flex-wrap flex-row my-4 mx-auto gap-y-4 gap-x-8 max-w-full;
+    @apply flex justify-center items-center flex-wrap flex-row mx-auto gap-8 text-sm max-w-full;
   }
 
   .contact .social-icons-2 a {
-    @apply duration-300 transition-all text-(--color-light);
+    @apply duration-300 transition-all;
   }
 
   .contact .social-icons-2 a:hover {
-    @apply -translate-y-[5px] text-theme;
+    @apply -translate-y-[5px] text-accent-neon;
   }
 
   footer.footer .contact-info.contact-me p {
@@ -895,7 +895,7 @@
   }
 
   footer.footer .contact-info.contact-me p a.contact-link:any-link {
-    @apply text-theme decoration-0 font-[500];
+    @apply text-accent-neon decoration-0 font-[500];
   }
 
   @media (prefers-reduced-motion: reduce) {
