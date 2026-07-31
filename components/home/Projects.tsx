@@ -4,6 +4,8 @@ import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import React from "react";
 import CaseStudyCard from "../CaseStudyCard";
 import Heading from "./Heading";
+import Link from "next/link";
+import { FolderOpen } from "lucide-react";
 
 export function Projects() {
   const ref = useScrollAnimationList();
@@ -17,12 +19,12 @@ export function Projects() {
         headingGradientWord="Work"
         headingWord="Featured"
       />
-      <div className="px-4 mt-8 w-full">
-        <ul className="w-full flex flex-row flex-wrap gap-4 max-sm:mx-auto">
+      <div className="px-4 mt-8 w-full flex justify-center">
+        <ul className="grid grid-cols-2 gap-4 max-sm:mx-auto">
           {projects.map((project, index) => (
             <li
               key={`project-${index}`}
-              className="project w-19/20 md:w-9/20 relative max-sm:mx-auto hover:-translate-y-1"
+              className="project col-span-2 md:col-span-1 relative max-sm:mx-auto hover:-translate-y-1"
               data-animation="hoverInBottom"
               style={{ "--i": `1.${index + 3}` } as React.CSSProperties}
               ref={ref}
@@ -32,6 +34,12 @@ export function Projects() {
           ))}
         </ul>
       </div>
+      <Link
+        href="/projects"
+        className="flex gap-4 py-3 px-6 rounded-full border border-white hover:border-accent-pink hover:shadow-pink-hover hover:text-accent-pink w-fit items-center justify-center mt-8 text-center mx-auto hover:-translate-y-1"
+      >
+        <FolderOpen /> See All Projects
+      </Link>
     </section>
   );
 }
