@@ -32,7 +32,7 @@ export function Services() {
                   <service.icon />
                 </div>
               </div>
-              <div className="service-content h-25">
+              <div className="service-content h-40 lg:h-25">
                 <h3 className="service-name mb-4">{service.serviceName}</h3>
                 <p className="service-description">
                   {service.serviceDescription}
