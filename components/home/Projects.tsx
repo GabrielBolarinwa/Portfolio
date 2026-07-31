@@ -37,6 +37,8 @@ export function Projects() {
       <Link
         href="/projects"
         className="flex gap-3 py-3 px-6 rounded-full border border-white hover:border-accent-pink hover:shadow-pink-hover hover:text-accent-pink w-fit items-center justify-center mt-8 text-center mx-auto hover:-translate-y-1 font-bold text-sm"
+        ref={ref}
+        data-animation="hoverInBottom"
       >
         <FolderOpen /> See all projects
       </Link>
