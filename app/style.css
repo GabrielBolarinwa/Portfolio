@@ -197,11 +197,11 @@
   }
 
   body {
-    @apply bg-bg-base text-(--color-light)! font-normal text-(length:--font-size-default)! leading-normal relative overflow-x-hidden -z-2 font-body [scroll-timeline-name:--body-scroll] [scroll-timeline-axis:block];
+    @apply bg-bg-base text-(--color-light)! font-normal text-(length:--font-size-default)! leading-normal relative overflow-x-hidden -z-2 font-body [scroll-timeline-name:--body-scroll] [scroll-timeline-axis:block] min-h-dvh;
   }
 
   main {
-    @apply min-h-dvh mt-(--header-height) max-w-[87.8477306003%] mx-auto mb-4;
+    @apply mt-(--header-height) max-w-[87.8477306003%] mx-auto mb-(--header-height);
   }
 
   img {

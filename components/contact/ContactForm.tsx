@@ -66,7 +66,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full md:w-[48%] bg-card-background border border-white/20 rounded-lg p-6">
+    <div className="w-full md:w-[48%] bg-card-background border border-white/20 rounded-lg p-6 mt-6">
       <form
         className="flex flex-col justify-between h-full gap-4"
         onSubmit={handleSubmit(onSubmit, () => {
