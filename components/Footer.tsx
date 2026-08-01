@@ -17,13 +17,13 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="footer" id="footer" role="contentinfo">
-      <section className="flex flex-col gap-2 items-center w-30/100 text-center">
+      <section className="md:flex flex-col gap-2 items-center w-full md:w-3/10 md:text-center">
         <h3 className="footer-header font-(family-name:--font-display) font-normal">
           Bolarinwa Gabriel
         </h3>
         <div className="contact-info address flex flex-wrap">
-          <p className="flex gap-2 items-center justify-center">
-            <MapPin /> Okitipupa, Ondo State, Nigeria
+          <p className="max-sm:mb-4 flex gap-2 items-center justify-center">
+            <MapPin size={16} /> Okitipupa, Ondo State, Nigeria
           </p>
         </div>
         <div className="contact flex flex-wrap">
@@ -60,7 +60,7 @@ export function Footer() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col gap-3 items-center w-30/100">
+      <section className="md:flex flex-col gap-3 items-center w-full md:w-3/10">
         <h3 className="footer-header">Navigation</h3>
         <ul>
           <li className="hover:text-accent-neon mb-5">
@@ -85,9 +85,9 @@ export function Footer() {
           </li>
         </ul>
       </section>
-      <section className="flex flex-col gap-3 w-30/100">
+      <section className="md:flex flex-col gap-3 items-center w-full md:w-3/10 md:text-center md:justify-center">
         <h3 className="footer-header">More</h3>
-        <ul>
+        <ul className="md:justify-center md:flex flex-col gap-4 items-center">
           <li className="hover:text-accent-neon mb-5">
             <Link href={"/pong.html"} className="flex gap-3 items-center">
               <Gamepad2 /> Play a Game
@@ -98,9 +98,9 @@ export function Footer() {
               href={"https://github.com/GabrielBolarinwa/Portfolio"}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex gap-3 items-center"
+              className="flex gap-3 items-center truncate"
             >
-              <GitFork /> View Page Repository
+              <GitFork /> View page repository
             </Link>
           </li>
         </ul>

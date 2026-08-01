@@ -871,7 +871,7 @@
 
   .footer-header {
     --font-size: clamp(1.5rem, 1vw + 0.5rem, 4rem);
-    @apply text-(length:--font-size)  text-main-text;
+    @apply text-(length:--font-size)  text-main-text max-sm:mb-4;
   }
 
   .contact .contact-info {
