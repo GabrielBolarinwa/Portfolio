@@ -193,7 +193,7 @@ export function HeroArea() {
               data-animation="fadeInCustom"
               style={
                 {
-                  "--i": `${index * 0.75 + index * 0.2}`,
+                  "--i": `${1 + index * 0.1}`,
                 } as React.CSSProperties
               }
             >
