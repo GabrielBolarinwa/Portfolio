@@ -101,7 +101,7 @@ export function HeroArea() {
 
   const text = useTypedText(texts, 80, 2500, 2800);
   return (
-    <section className="hero-area flex justify-center">
+    <section className="hero-area flex justify-center" id={"intro"}>
       <div className="flex items-center gap-4 p-4 flex-col text-center">
         <div
           className="avatar-container w-[150px] md:w-[225px] h-[150px] md:h-[225px] perspective-midrange rounded-full"

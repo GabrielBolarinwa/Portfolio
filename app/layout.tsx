@@ -18,8 +18,6 @@ import "./style.css";
 import "./variables.css";
 import { Toaster } from "@/components/ui/sonner";
 import NavProvider from "@/app/context/NavContext";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/Sidebar";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -78,7 +76,6 @@ export default function RootLayout({
         <SpeedInsights />
         <NavProvider>
           <LoadingProvider>
-            {/*<AppSidebar />*/}
             <div className="relative flex flex-1 flex-col min-h-screen w-full">
               <GradientDefs />
               <Loader />

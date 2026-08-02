@@ -1,22 +1,14 @@
 "use client";
-import { Code, Contact2, House, User } from "lucide-react";
-import Menuspy from "menuspy";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { AppSidebar } from "@/components/Sidebar";
+import { usePathname } from "next/navigation";
+import { useNav } from "@/app/context/NavContext";
 
 export function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
-  useEffect(() => {
-    const ms = new Menuspy("header", {
-      activeClass: "active",
-      enableLocationHash: false,
-      threshold: 0.5,
-    });
-    return () => {
-      ms.destroy();
-    };
-  }, []);
+  const activeRoute = usePathname();
   useEffect(() => {
     if (headerRef.current) {
       headerRef.current.style.opacity = "1";
@@ -35,6 +27,8 @@ export function Header() {
     );
   }, []);
 
+  const { sections } = useNav();
+
   return (
     <header
       role="banner"
@@ -47,61 +41,43 @@ export function Header() {
         } as React.CSSProperties
       }
     >
-      <div className="flex items-center justify-between text-white px-(--size-value-big) w-98/100 py-2">
+      <div className="flex items-center justify-between text-white px-6 w-98/100 py-3">
         <div className="navbar-logo">
           <Link href="/#" className="name-header headings">
             Bolarinwa <span>Gabriel</span>
           </Link>
         </div>
-        {/*<SidebarTrigger />*/}
-        {/*<button
-          type="button"
-          className="lg:hidden p-2 rounded-md border border-white/20"
-          ref={navbarButton}
-          onClick={() => {
-            openMenu();
-          }}
-          aria-expanded="false"
-          aria-label="Navigation Dropdown Menu"
-        >
-          <Menu />
-        </button>*/}
-        <AppSidebar />
-        <nav
-          className="hidden lg:flex items-center gap-6 nav-menu fadeInLeft"
-          id="menu"
-          aria-label="Primary Navigation"
-        >
-          <ul
-            className="flex flex-col lg:flex-row items-center ml-auto gap-6 py-(--size-value-big) lg:py-0 landscape:lg:py-(--size-value-small)"
-            role="list"
+        <div className="flex gap-6 font-medium items-center text-base">
+          <nav
+            className="hidden lg:flex items-center gap-6 nav-menu fadeInLeft"
+            id="menu"
+            aria-label="Primary Navigation"
           >
-            <li className="nav-item" role="list">
-              <Link href="/#" aria-current="page" className="nav-link">
-                <House size={24} className={"text-theme"} />{" "}
-                <span className="link-text">Home</span>
-              </Link>
-            </li>
-            <li className="nav-item" role="list">
-              <Link href="/about" className="nav-link">
-                <User size={24} className={"text-theme"} />
-                <span className="link-text">About</span>
-              </Link>
-            </li>
-            <li className="nav-item" role="list">
-              <Link href="/contact" className="nav-link">
-                <Contact2 size={24} className={"text-theme"} />
-                <span className="link-text">Contact</span>
-              </Link>
-            </li>
-            <li className="nav-item" role="list">
-              <Link href="/projects" className="nav-link">
-                <Code size={24} className={"text-theme"} />
-                <span className="link-text">Projects</span>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+            <ul
+              className="flex items-center ml-auto gap-6 text-muted"
+              role="list"
+            >
+              {sections.map((section) => (
+                <li className="nav-item" role="list" key={section.id}>
+                  <Link
+                    href={`#${section.id}`}
+                    aria-current="page"
+                    className="nav-link"
+                  >
+                    <span className="link-text">{section.label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <Link
+            href={"/projects"}
+            className={`flex gap-2 items-center py-2 px-3 bg-(image:--primary-gradient) rounded-full ${activeRoute === "projects" && "hidden"} shadow-xs text-sm shadow-accent-neon  hover:-translate-y-0.5 hover:shadow-neon-hover`}
+          >
+            <ArrowRight size={15} /> View Projects
+          </Link>
+          <AppSidebar />
+        </div>
       </div>
     </header>
   );
