@@ -7,15 +7,15 @@ import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import {
-  Sheet,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-} from "../ui/sheet";
 import { useRouter } from "next/navigation";
 import CaseStudyImageSlider from "./CaseStudyImageSlider";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface Props {
   markdown: string;
@@ -33,18 +33,18 @@ export default function CaseStudy(props: Props) {
   }, [markdown]);
 
   return (
-    <Sheet
+    <Dialog
       open={open}
       onOpenChange={(isOpen) => {
         if (!isOpen) router.back();
       }}
     >
-      <SheetContent
+      <DialogContent
         className={
-          "w-[90vw]! h-[90dvh]! fixed left-1/2 top-1/2 -translate-x-1/2 translate-y-[6.5%] rounded-lg bg-bg-base border-zinc-800 flex flex-col justify-evenly max-w-none! gap-2 border"
+          "w-[90vw]! h-[90dvh]! bg-bg-base border-zinc-800 max-w-none! border"
         }
       >
-        <SheetHeader className="text-left p-6 max-sm:px-2 w-full flex flex-row items-center justify-between gap-3 border-b border-b-zinc-800 top-0 h-[25%]">
+        <DialogHeader className="text-left p-6 max-sm:px-2 w-full flex flex-row items-center justify-between gap-3 border-b border-b-zinc-800 top-0">
           <div className="flex justify-center h-full">
             <div className="relative w-[75px] h-[75px] aspect-[1] top-1/2 -translate-y-1/2 border border-accent-neon overflow-hidden inline-flex items-center justify-center rounded-lg bg-(image:--primary-gradient) ">
               <CldImage
@@ -59,12 +59,12 @@ export default function CaseStudy(props: Props) {
             </div>
           </div>
           <div>
-            <SheetTitle className="text-base">{caseStudy.title}</SheetTitle>
+            <DialogTitle className="text-base">{caseStudy.title}</DialogTitle>
             <p className="text-sm text-muted max-h-16 truncate whitespace-normal">
               {caseStudy.shortDescription}
             </p>
           </div>
-        </SheetHeader>
+        </DialogHeader>
         <div
           className="flex-1 overflow-y-auto px-6 prose-sm w-full mt-2 case-study-writeup"
           ref={containerRef}
@@ -72,7 +72,7 @@ export default function CaseStudy(props: Props) {
           <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
           <CaseStudyImageSlider images={caseStudy.screenshots} />
         </div>
-        <SheetFooter className="flex justify-end gap-4 w-full p-6 border-t border-zinc-800 items-center bg-bg-base flex-row">
+        <DialogFooter className="flex justify-end gap-4 w-full p-6 border-t border-zinc-800 items-center bg-bg-base flex-row">
           <Link
             href={caseStudy.repoUrl}
             target="_blank"
@@ -87,8 +87,8 @@ export default function CaseStudy(props: Props) {
           >
             <ArrowUpRightFromSquare /> Open Project
           </Link>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
