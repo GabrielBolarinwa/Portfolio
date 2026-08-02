@@ -742,7 +742,7 @@
   }
 
   .services-container .service {
-    @apply flex justify-center flex-col border border-white/20 py-10 px-6 shadow-card-hover cursor-default bg-card-background relative rounded-lg h-auto w-4/5 md:w-9/20 lg:w-31/100 overflow-hidden hover:-translate-y-1 hover:bg-bg-base/50 mx-auto md:mx-0;
+    @apply flex justify-center flex-col border border-white/20 py-10 px-6 shadow-card-hover cursor-default bg-card-background relative rounded-lg h-auto w-12/13 md:w-9/20 lg:w-31/100 overflow-hidden hover:-translate-y-1 hover:bg-bg-base/50 mx-auto md:mx-0;
     @media (width: 540px) and (height: 720px) {
       @apply w-[70%];
     }
@@ -858,7 +858,7 @@
 
   /* Footer */
   footer {
-    @apply flex justify-between flex-wrap pt-6 px-0 md:px-12 pb-4 relative w-full text-wrap text-muted text-base gap-4;
+    @apply flex justify-between flex-wrap pt-6 px-0 md:px-12 pb-4 relative w-full text-wrap text-muted text-base gap-6;
   }
 
   footer::before {
@@ -871,7 +871,7 @@
 
   .footer-header {
     --font-size: clamp(1.5rem, 1vw + 0.5rem, 4rem);
-    @apply text-(length:--font-size)  text-main-text max-sm:mb-4;
+    @apply text-(length:--font-size)  text-main-text max-sm:mb-4 mb-0;
   }
 
   .contact .contact-info {
