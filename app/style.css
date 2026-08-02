@@ -202,7 +202,7 @@
   }
 
   main {
-    @apply mt-(--header-height) max-w-[87.8477306003%] mx-auto mb-(--header-height);
+    @apply mt-(--header-height) max-w-[95%] mx-auto mb-(--header-height);
   }
 
   img {

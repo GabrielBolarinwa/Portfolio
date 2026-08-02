@@ -38,7 +38,7 @@ export function Services() {
                   <service.icon />
                 </div>
               </div>
-              <div className="service-content h-50 max-sm:h-65">
+              <div className="service-content h-50 max-sm:h-60">
                 <h3 className="service-name mb-4">{service.serviceName}</h3>
                 <p className="service-description">
                   {service.serviceDescription}
