@@ -17,6 +17,7 @@ import React from "react";
 import "./style.css";
 import "./variables.css";
 import { Toaster } from "@/components/ui/sonner";
+import NavProvider from "@/app/context/NavContext";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -73,20 +74,22 @@ export default function RootLayout({
     >
       <body>
         <SpeedInsights />
-        <LoadingProvider>
-          <GradientDefs />
-          <Loader />
-          <div className="bubbles-container">
-            <BubblesBackground />
-          </div>
-          <Header />
-          <main role="main">
-            {children}
-            {caseStudy}
-            <Toaster />
-          </main>
-          <Footer />
-        </LoadingProvider>
+        <NavProvider>
+          <LoadingProvider>
+            <GradientDefs />
+            <Loader />
+            <div className="bubbles-container">
+              <BubblesBackground />
+            </div>
+            <Header />
+            <main role="main">
+              {children}
+              {caseStudy}
+              <Toaster />
+            </main>
+            <Footer />
+          </LoadingProvider>
+        </NavProvider>
       </body>
     </html>
   );
