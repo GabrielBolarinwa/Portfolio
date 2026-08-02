@@ -18,6 +18,8 @@ import "./style.css";
 import "./variables.css";
 import { Toaster } from "@/components/ui/sonner";
 import NavProvider from "@/app/context/NavContext";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/Sidebar";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -72,22 +74,25 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${allura.variable} ${cinzel.variable} dark`}
     >
-      <body>
+      <body className={"mx-0! px-0! mr-0!"}>
         <SpeedInsights />
         <NavProvider>
           <LoadingProvider>
-            <GradientDefs />
-            <Loader />
-            <div className="bubbles-container">
-              <BubblesBackground />
+            {/*<AppSidebar />*/}
+            <div className="relative flex flex-1 flex-col min-h-screen w-full">
+              <GradientDefs />
+              <Loader />
+              <div className="bubbles-container">
+                <BubblesBackground />
+              </div>
+              <Header />
+              <main role="main">
+                {children}
+                {caseStudy}
+                <Toaster />
+              </main>
+              <Footer />
             </div>
-            <Header />
-            <main role="main">
-              {children}
-              {caseStudy}
-              <Toaster />
-            </main>
-            <Footer />
           </LoadingProvider>
         </NavProvider>
       </body>

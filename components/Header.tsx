@@ -1,14 +1,11 @@
 "use client";
-import { Code, Contact2, House, Menu, User } from "lucide-react";
+import { Code, Contact2, House, User } from "lucide-react";
 import Menuspy from "menuspy";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { AppSidebar } from "@/components/Sidebar";
 
 export function Header() {
-  const navbarButton = useRef<HTMLButtonElement | null>(null);
-  const openMenu = () => {
-    navbarButton.current?.classList.toggle("open");
-  };
   const headerRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
     const ms = new Menuspy("header", {
@@ -56,7 +53,8 @@ export function Header() {
             Bolarinwa <span>Gabriel</span>
           </Link>
         </div>
-        <button
+        {/*<SidebarTrigger />*/}
+        {/*<button
           type="button"
           className="lg:hidden p-2 rounded-md border border-white/20"
           ref={navbarButton}
@@ -67,7 +65,8 @@ export function Header() {
           aria-label="Navigation Dropdown Menu"
         >
           <Menu />
-        </button>
+        </button>*/}
+        <AppSidebar />
         <nav
           className="hidden lg:flex items-center gap-6 nav-menu fadeInLeft"
           id="menu"

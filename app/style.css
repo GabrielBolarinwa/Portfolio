@@ -858,7 +858,7 @@
 
   /* Footer */
   footer {
-    @apply flex justify-between flex-wrap pt-6 px-0 md:px-12 pb-4 relative w-full text-wrap text-muted text-base gap-6;
+    @apply flex justify-between flex-wrap pt-6 px-0 md:px-12 pb-4 relative w-full text-wrap text-muted text-base gap-6 bottom-0 left-0;
   }
 
   footer::before {
