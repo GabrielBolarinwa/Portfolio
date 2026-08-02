@@ -20,6 +20,7 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
       document.readyState === "interactive" ||
       document.readyState === "complete"
     ) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       advance(33);
     } else {
       document.addEventListener("readystatechange", () => {
@@ -35,7 +36,6 @@ export function LoadingProvider({ children }: { children: React.ReactNode }) {
     }
 
     document.fonts.ready.then(() => advance(100));
-    return () => clearTimeout(safety);
   }, []);
 
   const value = useMemo(() => ({ progress }), [progress]);
