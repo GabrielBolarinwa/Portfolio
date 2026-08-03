@@ -138,7 +138,7 @@ export function HeroArea() {
           ref={ref}
           data-animation="hoverInBottom"
         >
-          Hi, I am Bolarinwa{" "}
+          Bolarinwa{" "}
           <span className="bg-(image:--primary-gradient) text-transparent bg-clip-text">
             Gabriel
           </span>
