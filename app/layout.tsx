@@ -18,6 +18,7 @@ import "./style.css";
 import "./variables.css";
 import { Toaster } from "@/components/ui/sonner";
 import NavProvider from "@/app/context/NavContext";
+import IconRail from "@/components/IconRail";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -83,6 +84,7 @@ export default function RootLayout({
                 <BubblesBackground />
               </div>
               <Header />
+              <IconRail />
               <main role="main">
                 {children}
                 {caseStudy}
