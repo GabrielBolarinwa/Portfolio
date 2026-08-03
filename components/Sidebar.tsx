@@ -7,16 +7,27 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { pages } from "@/data/routes";
+import { useScrollSpy } from "@/src/hooks/useScrollSpy";
 import { CircleDot, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 export function AppSidebar() {
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const { sections } = useNav();
+  const activeId = useScrollSpy(
+    useMemo(() => sections.map((s) => s.id), [sections]),
+    {
+      offset:
+        Number(
+          document.documentElement.style
+            .getPropertyValue("--header-height")
+            .slice(0, -2),
+        ) + 20,
+    },
+  );
   const activeRoute = usePathname();
-
   useEffect(() => {
     closeRef.current && closeRef.current.click();
   }, [activeRoute]);
@@ -61,8 +72,8 @@ export function AppSidebar() {
               {sections.map((section) => (
                 <Link
                   href={`/#${section.id}`}
-                  key={section.label}
-                  className={`flex gap-4 group items-center hover:translate-x-1 font-medium`}
+                  key={section.id}
+                  className={`flex gap-4 group items-center hover:translate-x-1 font-medium ${activeId === section.id ? "text-accent-neon" : "hover:text-main-text"}`}
                 >
                   <CircleDot className={"group-hover:text-accent-neon"} />
                   <span>{section.label}</span>

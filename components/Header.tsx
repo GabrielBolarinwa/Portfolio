@@ -1,10 +1,11 @@
 "use client";
 import { ArrowRight, Code2 } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { AppSidebar } from "@/components/Sidebar";
 import { usePathname } from "next/navigation";
 import { useNav } from "@/app/context/NavContext";
+import { useScrollSpy } from "@/src/hooks/useScrollSpy";
 
 export function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
@@ -28,6 +29,17 @@ export function Header() {
   }, []);
 
   const { sections } = useNav();
+  const activeId = useScrollSpy(
+    useMemo(() => sections.map((s) => s.id), [sections]),
+    {
+      offset:
+        Number(
+          document.documentElement.style
+            .getPropertyValue("--header-height")
+            .slice(0, -2),
+        ) + 20,
+    },
+  );
 
   return (
     <header
@@ -61,7 +73,11 @@ export function Header() {
               role="list"
             >
               {sections.map((section) => (
-                <li className="nav-item" role="list" key={section.id}>
+                <li
+                  className={`nav-item ${activeId === section.id && "active"}`}
+                  role="list"
+                  key={section.id}
+                >
                   <Link
                     href={`#${section.id}`}
                     aria-current="page"
