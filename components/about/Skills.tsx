@@ -28,7 +28,7 @@ export default function Skills() {
   }
 
   return (
-    <section className="mt-12">
+    <section className="mt-12" id="skills">
       <Heading word="Core" gradientWord="Skills" trigger="scroll" />
       <Accordion className="mt-5 gap-4" multiple>
         {skills.map((skill, index) => (

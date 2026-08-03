@@ -20,7 +20,7 @@ import React from "react";
 export default function FrontendToFullStack() {
   const ref = useScrollAnimationList();
   return (
-    <section className="mt-12 text-muted">
+    <section className="mt-12 text-muted" id="journey">
       <Heading
         word="From Frontend to"
         gradientWord="Full Stack"
