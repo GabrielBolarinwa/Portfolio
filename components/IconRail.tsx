@@ -13,7 +13,7 @@ function IconRail() {
   return (
     <div
       className={
-        "fixed top-1/2 -translate-y-1/2 right-3 z-12 text-muted flex items-center flex-col gap-8"
+        "fixed top-1/2 -translate-y-1/2 right-3 z-12 text-muted lg:flex items-center flex-col gap-8 hidden"
       }
     >
       <p
