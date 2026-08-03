@@ -25,11 +25,9 @@ export function useScrollAnimationList(threshold = 0.2) {
     return () => observers.forEach((obs) => obs?.disconnect());
   }, [progress, threshold]);
 
-  const setRef = (el: HTMLElement | null) => {
+  return (el: HTMLElement | null) => {
     if (el && !refs.current.includes(el)) {
       refs.current.push(el);
     }
   };
-
-  return setRef;
 }
