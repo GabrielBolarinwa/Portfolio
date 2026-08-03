@@ -63,32 +63,34 @@ export function Header() {
           </Link>
         </div>
         <div className="flex gap-6 font-medium items-center text-base">
-          <nav
-            className="hidden lg:flex items-center gap-6 nav-menu fadeInLeft"
-            id="menu"
-            aria-label="Primary Navigation"
-          >
-            <ul
-              className="flex items-center ml-auto gap-6 text-muted"
-              role="list"
+          {sections.length > 0 && (
+            <nav
+              className="hidden lg:flex items-center gap-6 nav-menu fadeInLeft"
+              id="menu"
+              aria-label="Primary Navigation"
             >
-              {sections.map((section) => (
-                <li
-                  className={`nav-item ${activeId === section.id && "active"}`}
-                  role="list"
-                  key={section.id}
-                >
-                  <Link
-                    href={`#${section.id}`}
-                    aria-current="page"
-                    className="nav-link"
+              <ul
+                className="flex items-center ml-auto gap-6 text-muted"
+                role="list"
+              >
+                {sections.map((section) => (
+                  <li
+                    className={`nav-item ${activeId === section.id && "active"}`}
+                    role="list"
+                    key={section.id}
                   >
-                    <span className="link-text">{section.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+                    <Link
+                      href={`#${section.id}`}
+                      aria-current="page"
+                      className="nav-link"
+                    >
+                      <span className="link-text">{section.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
           <Link
             href={"/projects"}
             className={`flex gap-2 items-center py-2 px-3 bg-(image:--primary-gradient) rounded-full ${activeRoute === "projects" && "hidden"} shadow-xs text-sm shadow-accent-neon  hover:-translate-y-0.5 hover:shadow-neon-hover`}
