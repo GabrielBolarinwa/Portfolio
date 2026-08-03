@@ -259,6 +259,9 @@
   .icon-angular {
     @apply [fill:url(#grad-angular)];
   }
+  .gradient-icon{
+    @apply [fill:url(#grad-app)]
+  }
   /* End SVG Gradient Defs */
   /* Animations */
   .slideInLeftCustom {
@@ -582,7 +585,7 @@
   }
 
   .header .navbar-logo a.name-header {
-    @apply decoration-0 text-[1.685rem] duration-[590ms] text-transparent bg-(image:--primary-gradient) bg-clip-text;
+    @apply decoration-0 text-[1.685rem] duration-[590ms] text-transparent bg-(image:--primary-gradient) bg-clip-text flex gap-2;
   }
 
   .header .navbar-logo a.name-header:hover {

@@ -1,5 +1,5 @@
 "use client";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Code2 } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import { AppSidebar } from "@/components/Sidebar";
@@ -43,8 +43,11 @@ export function Header() {
     >
       <div className="flex items-center justify-between text-white px-6 w-98/100 py-3">
         <div className="navbar-logo">
-          <Link href="/#" className="name-header headings">
-            Bolarinwa <span>Gabriel</span>
+          <Link
+            href="/#"
+            className="name-header headings flex gap-2 items-center"
+          >
+            <Code2 className={"text-main-text gradient-icon"} /> BG
           </Link>
         </div>
         <div className="flex gap-6 font-medium items-center text-base">
