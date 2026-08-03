@@ -1,25 +1,13 @@
-import {
-  BriefcaseBusiness,
-  CircleDot,
-  Home,
-  Mail,
-  Menu,
-  User,
-} from "lucide-react";
+import { CircleDot, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { useNav } from "@/app/context/NavContext";
+import { pages } from "@/data/routes";
 
 export function AppSidebar() {
   const { sections } = useNav();
-  const pages = [
-    { title: "Home", href: "/", icon: Home },
-    { title: "About", href: "/about", icon: User },
-    { title: "Contact", href: "/contact", icon: Mail },
-    { title: "Projects", href: "/projects", icon: BriefcaseBusiness },
-  ];
 
   const activeRoute = usePathname();
 
@@ -66,7 +54,7 @@ export function AppSidebar() {
             {pages.map((page) => (
               <Link
                 href={page.href}
-                key={page.title}
+                key={page.href}
                 className={`flex gap-4 group items-center hover:translate-x-1 font-medium ${page.href === activeRoute ? "text-accent-neon" : "hover:text-main-text"}`}
               >
                 <page.icon className={"group-hover:text-accent-neon"} />
