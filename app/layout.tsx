@@ -19,6 +19,7 @@ import "./variables.css";
 import { Toaster } from "@/components/ui/sonner";
 import NavProvider from "@/app/context/NavContext";
 import IconRail from "@/components/IconRail";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -77,21 +78,23 @@ export default function RootLayout({
         <SpeedInsights />
         <NavProvider>
           <LoadingProvider>
-            <div className="relative flex flex-1 flex-col min-h-screen w-full">
-              <GradientDefs />
-              <Loader />
-              <div className="bubbles-container">
-                <BubblesBackground />
+            <TooltipProvider>
+              <div className="relative flex flex-1 flex-col min-h-screen w-full">
+                <GradientDefs />
+                <Loader />
+                <div className="bubbles-container">
+                  <BubblesBackground />
+                </div>
+                <Header />
+                <IconRail />
+                <main role="main">
+                  {children}
+                  {caseStudy}
+                  <Toaster />
+                </main>
+                <Footer />
               </div>
-              <Header />
-              <IconRail />
-              <main role="main">
-                {children}
-                {caseStudy}
-                <Toaster />
-              </main>
-              <Footer />
-            </div>
+            </TooltipProvider>
           </LoadingProvider>
         </NavProvider>
       </body>
