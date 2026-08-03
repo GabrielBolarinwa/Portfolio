@@ -6,7 +6,7 @@ import ProjectSectionHeading from "./ProjectSectionHeading";
 export default function MinorProjectsSection() {
   const ref = useScrollAnimationList();
   return (
-    <section className="mt-12 w-full">
+    <section className="mt-12 w-full" id="minor-projects">
       <ProjectSectionHeading word="MINOR PROJECTS" bracketWord="MINOR" />
       <ul className="mt-8 w-full flex items-center max-lg:justify-center flex-row flex-wrap  gap-4">
         {projects.minorProjects.map((project, index) => (
