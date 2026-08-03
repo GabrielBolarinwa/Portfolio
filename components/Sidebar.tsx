@@ -64,39 +64,44 @@ export function AppSidebar() {
           }
         />
         {sections.length > 0 && (
-          <div className="flex flex-col gap-6 mt-8">
+          <nav className="flex flex-col gap-6 mt-8">
             <p className={"font-bold uppercase tracking-widest text-sm"}>
               Sections
             </p>
-            <nav className={"flex flex-col gap-4"}>
+            <ul className={"flex flex-col gap-4"}>
               {sections.map((section) => (
-                <Link
-                  href={`/#${section.id}`}
+                <li
+                  className={`group hover:translate-x-1 font-medium ${activeId === section.id ? "text-accent-neon" : "hover:text-main-text"}`}
                   key={section.id}
-                  className={`flex gap-4 group items-center hover:translate-x-1 font-medium ${activeId === section.id ? "text-accent-neon" : "hover:text-main-text"}`}
                 >
-                  <CircleDot className={"group-hover:text-accent-neon"} />
-                  <span>{section.label}</span>
-                </Link>
+                  <Link
+                    href={`/#${section.id}`}
+                    className={`flex gap-4 items-center`}
+                  >
+                    <CircleDot className={"group-hover:text-accent-neon"} />
+                    <span>{section.label}</span>
+                  </Link>
+                </li>
               ))}
-            </nav>
-          </div>
-        )}
-        <div className="flex flex-col gap-6 mt-6">
-          <p className={"font-bold uppercase tracking-widest text-sm"}>Pages</p>
-          <nav className={"flex flex-col gap-4"}>
-            {pages.map((page) => (
-              <Link
-                href={page.href}
-                key={page.href}
-                className={`flex gap-4 group items-center hover:translate-x-1 font-medium ${page.href === activeRoute ? "text-accent-neon" : "hover:text-main-text"}`}
-              >
-                <page.icon className={"group-hover:text-accent-neon"} />
-                <span>{page.title}</span>
-              </Link>
-            ))}
+            </ul>
           </nav>
-        </div>
+        )}
+        <nav className="flex flex-col gap-6 mt-6">
+          <p className={"font-bold uppercase tracking-widest text-sm"}>Pages</p>
+          <ul className={"flex flex-col gap-4"}>
+            {pages.map((page) => (
+              <li
+                className={` group hover:translate-x-1 font-medium ${page.href === activeRoute ? "text-accent-neon" : "hover:text-main-text"}`}
+                key={page.href}
+              >
+                <Link href={page.href} className={`flex gap-4 items-center `}>
+                  <page.icon className={"group-hover:text-accent-neon"} />
+                  <span>{page.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </SheetContent>
     </Sheet>
   );
