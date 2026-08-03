@@ -1,16 +1,25 @@
-import { CircleDot, Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
 import { useNav } from "@/app/context/NavContext";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { pages } from "@/data/routes";
+import { CircleDot, Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 export function AppSidebar() {
+  const closeRef = useRef<HTMLButtonElement | null>(null);
   const { sections } = useNav();
-
   const activeRoute = usePathname();
 
+  useEffect(() => {
+    closeRef.current && closeRef.current.click();
+  }, [activeRoute]);
   return (
     <Sheet>
       <SheetTrigger
@@ -30,16 +39,28 @@ export function AppSidebar() {
           "flex flex-col gap-6 text-base! max-w-[270px]! text-muted p-6 font-headings"
         }
         side={"right"}
+        showCloseButton={false}
       >
+        <SheetClose
+          render={
+            <Button
+              variant={"ghost"}
+              ref={closeRef}
+              className={"absolute top-5 right-2 hover:bg-white/50 px-1.5"}
+            >
+              <X />
+            </Button>
+          }
+        />
         {sections.length > 0 && (
-          <div className="flex flex-col gap-6 mt-12">
+          <div className="flex flex-col gap-6 mt-8">
             <p className={"font-bold uppercase tracking-widest text-sm"}>
               Sections
             </p>
             <nav className={"flex flex-col gap-4"}>
               {sections.map((section) => (
                 <Link
-                  href={section.id}
+                  href={`/#${section.id}`}
                   key={section.label}
                   className={`flex gap-4 group items-center hover:translate-x-1 font-medium`}
                 >
@@ -50,7 +71,7 @@ export function AppSidebar() {
             </nav>
           </div>
         )}
-        <div className="flex flex-col gap-6 mt-12">
+        <div className="flex flex-col gap-6 mt-6">
           <p className={"font-bold uppercase tracking-widest text-sm"}>Pages</p>
           <nav className={"flex flex-col gap-4"}>
             {pages.map((page) => (
