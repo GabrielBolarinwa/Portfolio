@@ -44,11 +44,10 @@
   --spacing-sm: 0.9rem;
   --spacing-xs: 0.6rem;
   --leading-tight: 1.1;
-  --rounded-md: 16px;
-  --rounded-lg: 30px;
-  --rounded-base: 12px;
-  --rounded-sm: 10px;
-  --rounded-full: 50%;
+  --radius-md: 16px;
+  --radius-lg: 30px;
+  --radius-base: 12px;
+  --radius-sm: 10px;
   --shadow-pink-hover: 0 0 15px rgba(255, 0, 85, 0.3);
   --shadow-neon-hover: 0 0 20px rgba(0, 243, 255, 0.3);
   --shadow-card-hover: 0 10px 30px rgba(0, 0, 0, 0.3);
@@ -497,7 +496,7 @@
   }
 
   .btn-card:focus-visible {
-    @apply outline-2 outline-accent-pink outline-offset-2 rounded-[30px]
+    @apply outline-2 outline-accent-pink outline-offset-2 rounded-[30px];
   }
 }
 
@@ -686,7 +685,7 @@
   }
 
   .skill-tag:focus-visible {
-    @apply outline-2 outline-accent-pink outline-offset-2 rounded-[30px]
+    @apply outline-2 outline-accent-pink outline-offset-2 rounded-[30px];
   }
 
   .skill-tag::after {
@@ -758,7 +757,7 @@
   }
 
   .service .icon-container {
-    @apply p-6 h-fit w-fit aspect-square mb-4 rounded-lg bg-bg/50 flex justify-center items-center text-accent-neon border border-accent-neon;
+    @apply p-6 h-fit w-fit aspect-square mb-4 rounded-sm bg-bg/50 flex justify-center items-center text-accent-neon border border-accent-neon;
   }
 
   .service:hover .icon-container {

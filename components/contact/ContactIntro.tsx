@@ -21,7 +21,7 @@ export default function ContactIntro() {
           href={`mailto:gabibola955@gmail.com`}
           className="flex gap-4 text-muted items-center hover:text-text group"
         >
-          <span className="text-accent-neon p-2 rounded-lg border border-white/20 group-hover:bg-(image:--primary-gradient) group-hover:text-text">
+          <span className="text-accent-neon p-2 rounded-sm border border-white/20 group-hover:bg-(image:--primary-gradient) group-hover:text-text">
             <Mail />
           </span>{" "}
           gabibola955@gmail.com
@@ -30,7 +30,7 @@ export default function ContactIntro() {
           href={`https://github.com/GabrielBolarinwa`}
           className="flex gap-4 text-muted items-center hover:text-text group"
         >
-          <span className="text-accent-neon p-2 rounded-lg border border-white/20 group-hover:bg-(image:--primary-gradient) group-hover:text-text">
+          <span className="text-accent-neon p-2 rounded-sm border border-white/20 group-hover:bg-(image:--primary-gradient) group-hover:text-text">
             <SiGithub />
           </span>{" "}
           github.com/GabrielBolarinwa
@@ -39,7 +39,7 @@ export default function ContactIntro() {
           href={`https://t.me/gabibola955`}
           className="flex gap-4 text-muted items-center hover:text-text group"
         >
-          <span className="text-accent-neon p-2 rounded-lg border border-white/20 group-hover:bg-(image:--primary-gradient) group-hover:text-text">
+          <span className="text-accent-neon p-2 rounded-sm border border-white/20 group-hover:bg-(image:--primary-gradient) group-hover:text-text">
             <SiTelegram />
           </span>{" "}
           t.me/gabibola955

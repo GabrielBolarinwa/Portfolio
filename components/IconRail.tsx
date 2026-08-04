@@ -55,7 +55,7 @@ function IconRail() {
                   }
                   href={page.href}
                   aria-label={page.title}
-                  className={`rail-link p-2 rounded-lg border border-white/20 bg-card ${activeRoute === page.href && "border-accent-neon text-accent-neon"} hover:bg-(image:--primary-gradient) hover:text-main-text hover:scale-105 invisible`}
+                  className={`rail-link p-2 rounded-sm border border-white/20 bg-card ${activeRoute === page.href && "border-accent-neon text-accent-neon"} hover:bg-(image:--primary-gradient) hover:text-main-text hover:scale-105 invisible`}
                 >
                   <page.icon />
                 </Link>

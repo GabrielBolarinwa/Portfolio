@@ -36,7 +36,7 @@ export function AppSidebar(props: Props) {
         render={
           <Button
             variant={"outline"}
-            className="p-2 bg-transparent text-main-text rounded-md border border-white/20 lg:hidden"
+            className="p-2 bg-transparent text-main-text rounded-sm border border-white/20 lg:hidden"
             aria-expanded="false"
             aria-label="Sidebar Menu"
           >
