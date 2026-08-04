@@ -47,6 +47,7 @@ export default function StatsCard(props: Props) {
       ref={cardRef}
       data-animation="hoverInBottom"
       style={{ "--i": `0.${index + 1}` } as React.CSSProperties}
+      tabIndex={0}
     >
       <p className="bg-(image:--primary-gradient) bg-clip-text text-transparent headings font-bold text-lg">
         {value

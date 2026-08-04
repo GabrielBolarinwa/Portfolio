@@ -27,6 +27,7 @@ async function Status() {
           label={stat.label}
           value={stat.value}
           index={index}
+
           key={`${stat.value}-${index}`}
         />
       ))}

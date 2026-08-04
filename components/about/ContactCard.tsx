@@ -17,7 +17,7 @@ function ContactCard() {
         opportunities to be part of your vision.
       </p>
       <Link
-        className="p-4 border-white/50 border w-fit rounded-full text-sm flex gap-2 items-center justify-center hover:scale-105 hover:shadow-pink-hover hover:border-accent-pink hover:-translate-y-1 active:scale-100"
+        className="p-4 border-white/50 border w-fit rounded-full text-sm flex gap-2 items-center justify-center hover:scale-105 hover:shadow-pink-hover hover:border-accent-pink hover:-translate-y-1 active:scale-100 btn-card"
         href={"/contact"}
       >
         <Send size={20.8} color="transparent" fill="#fff" /> Get In Touch

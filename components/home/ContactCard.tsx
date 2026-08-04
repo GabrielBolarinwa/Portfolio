@@ -12,7 +12,7 @@ function ContactCard() {
     >
       <h3 className="text-lg">Have a project in mind?</h3>
       <Link
-        className="bg-(image:--primary-gradient) py-2 px-5 flex gap-2 items-center text-sm font-bold rounded-full w-fit hover:-translate-y-1 hover:shadow-neon-hover"
+        className="bg-(image:--primary-gradient) py-2 px-5 flex gap-2 items-center text-sm font-bold rounded-full w-fit hover:-translate-y-1 hover:shadow-neon-hover btn-card"
         href={"/contact"}
       >
         <ArrowRight />

@@ -35,7 +35,7 @@ export default function CaseStudyCard(props: Props) {
         <Link
           href={`/projects/case-studies/${project.slug}`}
           className={
-            "w-full border-white/20 border text-white hover:bg-accent-pink hover:border-accent-pink hover:shadow-pink-hover  flex gap-1 justify-center px-6 py-2 rounded-full items-center truncate"
+            "w-full border-white/20 border text-white hover:bg-accent-pink hover:border-accent-pink hover:shadow-pink-hover  flex gap-1 justify-center px-6 py-2 rounded-full items-center truncate btn-card"
           }
         >
           View Case Study <ArrowRight size={16} />

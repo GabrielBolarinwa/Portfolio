@@ -1,12 +1,12 @@
 "use client";
-import { pages } from "@/data/routes";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { pages } from "@/data/routes";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useRef } from "react";
 
 function IconRail() {
@@ -42,23 +42,23 @@ function IconRail() {
       >
         Pages
       </p>
-      <ul className={"flex flex-col gap-6 items-center"}>
+      <nav className={"flex flex-col gap-6 items-center"}>
         {pages.map((page, index) => (
           <Tooltip key={page.href}>
             <TooltipTrigger
               render={
-                <li
-                  ref={setIconRailAnimationElements}
-                  className={`p-2 rounded-lg border border-white/20 bg-card ${activeRoute === page.href && "border-accent-neon text-accent-neon"} hover:bg-(image:--primary-gradient) hover:text-main-text hover:scale-105 invisible`}
+                <Link
                   data-animation={"slideInRightCustom"}
+                  ref={setIconRailAnimationElements}
                   style={
                     { "--i": `1.${index * 0.2 + 1}` } as React.CSSProperties
                   }
+                  href={page.href}
+                  aria-label={page.title}
+                  className={`rail-link p-2 rounded-lg border border-white/20 bg-card ${activeRoute === page.href && "border-accent-neon text-accent-neon"} hover:bg-(image:--primary-gradient) hover:text-main-text hover:scale-105 invisible`}
                 >
-                  <Link href={page.href} aria-label={page.title}>
-                    <page.icon />
-                  </Link>
-                </li>
+                  <page.icon />
+                </Link>
               }
             />
             <TooltipContent
@@ -69,7 +69,7 @@ function IconRail() {
             </TooltipContent>
           </Tooltip>
         ))}
-      </ul>
+      </nav>
     </div>
   );
 }

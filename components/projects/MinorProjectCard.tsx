@@ -35,7 +35,7 @@ export default function MinorProjectCard(props: Props) {
         <Link
           href={project.liveUrl}
           className={
-            "w-full border-white/20 border text-white hover:bg-accent-pink hover:border-accent-pink hover:shadow-pink-hover flex gap-2 justify-center px-6 py-2 rounded-full items-center"
+            "w-full border-white/20 border text-white hover:bg-accent-pink hover:border-accent-pink hover:shadow-pink-hover flex gap-2 justify-center px-6 py-2 rounded-full items-center btn-card"
           }
         >
           Open Project <ArrowUpRightFromSquare size={16} />
@@ -43,7 +43,7 @@ export default function MinorProjectCard(props: Props) {
         <Link
           href={project.repoUrl}
           className={
-            "w-full border-white/20 border text-white hover:bg-[#333333] hover:scale-x-105 hover:shadow-md flex gap-2 justify-center px-6 py-2 rounded-full items-center"
+            "w-full border-white/20 border text-white hover:bg-[#333333] hover:scale-x-105 hover:shadow-md flex gap-2 justify-center px-6 py-2 rounded-full items-center btn-card"
           }
         >
           <SiGithub size={16} /> GitHub

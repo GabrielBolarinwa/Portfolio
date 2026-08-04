@@ -193,9 +193,10 @@ export function HeroArea() {
               data-animation="fadeInCustom"
               style={
                 {
-                  "--i": `${1 + index * 0.1}`,
+                  "--i": `${1.5 + index * 0.1}`,
                 } as React.CSSProperties
               }
+              tabIndex={0}
             >
               {tag}
             </Badge>
