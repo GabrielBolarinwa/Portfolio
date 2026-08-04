@@ -16,7 +16,7 @@ export default function CaseStudyCard(props: Props) {
         "bg-card-background case-study-card relative hover:bg-bg-base/50 overflow-hidden p-6 gap-2 border hover:shadow-md hover:border-accent-neon"
       }
     >
-      <div className=" relative w-[75px] h-auto aspect-square border border-accent-neon overflow-hidden flex items-center justify-center rounded-lg case-study-icon">
+      <div className=" relative w-[75px] h-auto aspect-square border border-accent-neon overflow-hidden flex items-center justify-center rounded-sm case-study-icon">
         <CldImage
           src={project.icon.src}
           alt={project.icon.alt}
