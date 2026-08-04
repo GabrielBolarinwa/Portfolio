@@ -13,18 +13,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef } from "react";
 
-export function AppSidebar() {
+interface Props {
+  headerHeight: number;
+}
+export function AppSidebar(props: Props) {
+  const { headerHeight } = props;
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const { sections } = useNav();
   const activeId = useScrollSpy(
     useMemo(() => sections.map((s) => s.id), [sections]),
     {
-      offset:
-        Number(
-          document.documentElement.style
-            .getPropertyValue("--header-height")
-            .slice(0, -2),
-        ) + 20,
+      offset: headerHeight,
     },
   );
   const activeRoute = usePathname();

@@ -1,7 +1,7 @@
 "use client";
 import { ArrowRight, Code2 } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AppSidebar } from "@/components/Sidebar";
 import { usePathname } from "next/navigation";
 import { useNav } from "@/app/context/NavContext";
@@ -10,6 +10,8 @@ import { useScrollSpy } from "@/src/hooks/useScrollSpy";
 export function Header() {
   const headerRef = useRef<HTMLElement | null>(null);
   const activeRoute = usePathname();
+  const [innerHeight, setInnerHeight] = useState(0);
+
   useEffect(() => {
     if (headerRef.current) {
       headerRef.current.style.opacity = "1";
@@ -19,25 +21,21 @@ export function Header() {
       );
     }
   }, []);
+
   useEffect(() => {
     if (!headerRef.current) return;
-    const innerHeight = headerRef.current.offsetHeight;
+    setInnerHeight(headerRef.current.offsetHeight + 20 || 50);
     document.documentElement.style.setProperty(
       "--header-height",
       `${innerHeight}px`,
     );
-  }, []);
+  }, [innerHeight]);
 
   const { sections } = useNav();
   const activeId = useScrollSpy(
     useMemo(() => sections.map((s) => s.id), [sections]),
     {
-      offset:
-        Number(
-          document.documentElement.style
-            .getPropertyValue("--header-height")
-            .slice(0, -2),
-        ) + 20,
+      offset: innerHeight || 80,
     },
   );
 
@@ -97,7 +95,7 @@ export function Header() {
           >
             <ArrowRight size={15} /> View Projects
           </Link>
-          <AppSidebar />
+          <AppSidebar headerHeight={innerHeight} />
         </div>
       </div>
     </header>
