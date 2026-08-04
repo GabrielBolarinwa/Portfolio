@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pong — Bolarinwa Gabriel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Oxanium:wght@300;600;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cyan: #06b6d4;
+      --pink: #ff2d75;
+      --bg: #050517;
+      --surface: rgba(255,255,255,0.03);
+      --border: rgba(6,182,212,0.2);
+      --text: #e2e8f0;
+      --mono: 'Share Tech Mono', monospace;
+      --display: 'Oxanium', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Scanline overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.07) 2px,
+        rgba(0,0,0,0.07) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* Ambient glow */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 50%, rgba(6,182,212,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(255,45,117,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Screens ── */
+    .screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 10;
+      padding: 2rem;
+      transition: opacity 0.4s, visibility 0.4s;
+    }
+
+    .screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    /* ── Start & Game Over shared card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      max-width: 460px;
+      width: 100%;
+      backdrop-filter: blur(12px);
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    }
+
+    .logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: 0.15em;
+      background: linear-gradient(135deg, var(--cyan) 30%, var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+    }
+
+    .tagline {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      margin-top: 0.35rem;
+    }
+
+    /* ── Option groups ── */
+    .option-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .option-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+
+    .option-pills {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      flex: 1;
+      padding: 0.5rem 0;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      color: rgba(255,255,255,0.4);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .pill:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    .pill.active {
+      background: rgba(6,182,212,0.12);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 12px rgba(6,182,212,0.2);
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      padding: 0.75rem 2.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      text-transform: uppercase;
+      width: 100%;
+    }
+
+    .btn-primary {
+      background: var(--cyan);
+      color: var(--bg);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: #08d4f5;
+      box-shadow: 0 0 24px rgba(6,182,212,0.4);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.3); color: var(--text); }
+
+    /* ── Game over ── */
+    .result-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      letter-spacing: 0.1em;
+    }
+
+    .result-title.win { color: var(--cyan); }
+    .result-title.lose { color: var(--pink); }
+
+    .score-display {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-family: var(--display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 600;
+    }
+
+    .score-display .divider {
+      color: rgba(255,255,255,0.2);
+      font-size: 1.5rem;
+    }
+
+    .score-you { color: var(--cyan); }
+    .score-ai { color: var(--pink); }
+
+    .result-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+    }
+
+    .btn-row { display: flex; gap: 0.75rem; width: 100%; }
+    .btn-row .btn { width: auto; flex: 1; }
+
+    @media (max-width: 400px) {
+      .btn-row { flex-direction: column; }
+      .btn-row .btn { flex: unset; width: 100%; }
+    }
+
+    /* ── Canvas wrapper ── */
+    #game-screen {
+      position: relative;
+      z-index: 5;
+    }
+
+    #game-screen.hidden { display: none; }
+
+    .canvas-wrap {
+      position: relative;
+    }
+
+    .canvas-wrap {
+      width: min(700px, 100vw - 2rem);
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      box-shadow:
+        0 0 40px rgba(6,182,212,0.08),
+        0 0 1px rgba(6,182,212,0.5);
+      touch-action: none;
+    }
+
+    /* Difficulty badge */
+    .hud {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.4rem 0;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+    }
+
+    .hud .diff-badge {
+      color: var(--cyan);
+    }
+
+    /* back link */
+    .back-link {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.2);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--cyan); }
+  </style>
+</head>
+<body>
+
+  <!-- START SCREEN -->
+  <main class="screen" id="start-screen" aria-label="Game start screen">
+    <div class="card">
+      <div>
+        <div class="logo">PONG</div>
+        <div class="tagline">Bolarinwa Gabriel // 404</div>
+      </div>
+
+      <div class="option-group">
+        <div class="option-label">Difficulty</div>
+        <div class="option-pills" id="diff-pills">
+          <button class="pill" data-diff="easy" aria-pressed="false">Easy</button>
+          <button class="pill active" data-diff="medium" aria-pressed="true">Medium</button>
+          <button class="pill" data-diff="hard" aria-pressed="false">Hard</button>
+        </div>
+      </div>
+
+      <div class="option-group">
+        <div class="option-label">First to</div>
+        <div class="option-pills" id="limit-pills">
+          <button class="pill" data-limit="5" aria-pressed="false">5</button>
+          <button class="pill active" data-limit="10" aria-pressed="true">10</button>
+          <button class="pill" data-limit="20" aria-pressed="false">20</button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" id="start-btn">Start Game</button>
+      <a href="/" class="back-link">← Back to site</a>
+    </div>
+  </main>
+
+  <!-- GAME SCREEN -->
+  <section class="screen hidden" id="game-screen" aria-label="Game in progress">
+    <div class="canvas-wrap">
+      <div class="hud">
+        <span>You</span>
+        <span class="diff-badge" id="hud-diff">Medium</span>
+        <span>AI</span>
+      </div>
+      <canvas id="pong" width="700" height="450" role="img" aria-label="Pong game canvas"></canvas>
+    </div>
+  </section>
+
+  <!-- GAME OVER SCREEN -->
+  <section class="screen hidden" id="gameover-screen" aria-label="Game over screen" aria-live="polite">
+    <div class="card">
+      <div class="result-title" id="result-title">You Win</div>
+      <div class="result-sub">Final Score</div>
+      <div class="score-display">
+        <span class="score-you" id="final-player">0</span>
+        <span class="divider">—</span>
+        <span class="score-ai" id="final-ai">0</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="rematch-btn">Rematch</button>
+        <button class="btn btn-ghost" id="menu-btn">Menu</button>
+      </div>
+      <a href="/" class="back-link">← Back to site</a>
+    </div>
+  </section>
+
+<script>
+  // ── Config ──────────────────────────────────────────────
+  const PADDLE_WIDTH = 12;
+  const PADDLE_HEIGHT = 90;
+  const BALL_RADIUS = 10;
+  const PLAYER_X = 20;
+  const FPS = 60;
+
+  const DIFF_CONFIG = {
+    easy:   { baseSpeed: 3.0,  maxSpeed: 4.5,  scale: 0.1,  deadZone: 55, reactionDelay: 18, positionError: 30 },
+    medium: { baseSpeed: 5.5,  maxSpeed: 7.5,  scale: 0.2,  deadZone: 28, reactionDelay: 8,  positionError: 14 },
+    hard:   { baseSpeed: 8.0,  maxSpeed: 11.0, scale: 0.3,  deadZone: 12, reactionDelay: 3,  positionError: 6  },
+  };
+
+  // ── State ────────────────────────────────────────────────
+  let difficulty = 'medium';
+  let scoreLimit = 10;
+  let animId = null;
+  let gameRunning = false;
+  let aiDelayCounter = 0;
+  let aiTargetY = 0;
+
+  // ── Audio ────────────────────────────────────────────────
+  let audioCtx = null;
+
+  function getAudio() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+  }
+
+  function playBlip(freq = 440, duration = 0.05) {
+    try {
+      const ctx = getAudio();
+      if (ctx.state === 'suspended') ctx.resume();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'square';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.06, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+      osc.start();
+      osc.stop(ctx.currentTime + duration);
+    } catch(e) {}
+  }
+
+  // ── Canvas ───────────────────────────────────────────────
+  const canvas = document.getElementById('pong');
+  const ctx = canvas.getContext('2d');
+
+  // ── Game objects ─────────────────────────────────────────
+  let player, ai, ball;
+
+  function initObjects() {
+    const cfg = DIFF_CONFIG[difficulty];
+    player = {
+      x: PLAYER_X,
+      y: canvas.height / 2 - PADDLE_HEIGHT / 2,
+      width: PADDLE_WIDTH,
+      height: PADDLE_HEIGHT,
+      score: 0,
+    };
+    ai = {
+      x: canvas.width - PLAYER_X - PADDLE_WIDTH,
+      y: canvas.height / 2 - PADDLE_HEIGHT / 2,
+      width: PADDLE_WIDTH,
+      height: PADDLE_HEIGHT,
+      score: 0,
+      speed: cfg.baseSpeed,
+    };
+    ball = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      radius: BALL_RADIUS,
+      speed: cfg.baseSpeed,
+      velocityX: cfg.baseSpeed,
+      velocityY: cfg.baseSpeed * 0.6,
+    };
+    aiDelayCounter = 0;
+    aiTargetY = canvas.height / 2;
+  }
+
+  // ── Draw helpers ─────────────────────────────────────────
+  function drawNet() {
+    for (let i = 0; i < canvas.height; i += 30) {
+      ctx.fillStyle = 'rgba(6,182,212,0.2)';
+      ctx.fillRect(canvas.width / 2 - 1, i, 2, 16);
+    }
+  }
+
+  function drawPaddle(p, color) {
+    // Glow
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 12;
+    ctx.fillStyle = color;
+    ctx.fillRect(p.x, p.y, p.width, p.height);
+    ctx.shadowBlur = 0;
+  }
+
+  function drawBall() {
+    ctx.shadowColor = '#fff';
+    ctx.shadowBlur = 10;
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+
+  function drawScore() {
+    ctx.fillStyle = 'rgba(255,255,255,0.15)';
+    ctx.font = `bold 56px 'Oxanium', monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText(player.score, canvas.width / 4, 70);
+    ctx.fillText(ai.score, 3 * canvas.width / 4, 70);
+  }
+
+  // ── Collision ─────────────────────────────────────────────
+  function collision(b, p) {
+    return (
+      b.x - b.radius < p.x + p.width &&
+      b.x + b.radius > p.x &&
+      b.y - b.radius < p.y + p.height &&
+      b.y + b.radius > p.y
+    );
+  }
+
+  // ── Reset ball ────────────────────────────────────────────
+  function resetBall(towardPlayer) {
+    const cfg = DIFF_CONFIG[difficulty];
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    ball.speed = cfg.baseSpeed;
+    ball.velocityX = (towardPlayer ? -1 : 1) * cfg.baseSpeed;
+    ball.velocityY = (Math.random() > 0.5 ? 1 : -1) * (cfg.baseSpeed * 0.5 + Math.random() * 2);
+  }
+
+  // ── Update ────────────────────────────────────────────────
+  function update() {
+    ball.x += ball.velocityX;
+    ball.y += ball.velocityY;
+
+    // Wall bounce
+    if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+      ball.velocityY = -ball.velocityY;
+      playBlip(200, 0.04);
+    }
+
+    // Player collision
+    if (collision(ball, player)) {
+      let cp = (ball.y - (player.y + player.height / 2)) / (player.height / 2);
+      let angle = cp * (Math.PI / 4);
+      ball.velocityX = ball.speed * Math.cos(angle);
+      ball.velocityY = ball.speed * Math.sin(angle);
+      ball.speed += 0.3;
+      playBlip(440, 0.05);
+    }
+
+    // AI collision
+    if (collision(ball, ai)) {
+      let cp = (ball.y - (ai.y + ai.height / 2)) / (ai.height / 2);
+      let angle = cp * (Math.PI / 4);
+      ball.velocityX = -ball.speed * Math.cos(angle);
+      ball.velocityY = ball.speed * Math.sin(angle);
+      ball.speed += 0.3;
+      playBlip(330, 0.05);
+    }
+
+    // Scoring
+    if (ball.x - ball.radius < 0) {
+      ai.score++;
+      playBlip(120, 0.15);
+      if (ai.score >= scoreLimit) { endGame(); return; }
+      resetBall(false);
+    } else if (ball.x + ball.radius > canvas.width) {
+      player.score++;
+      playBlip(660, 0.1);
+      if (player.score >= scoreLimit) { endGame(); return; }
+      resetBall(true);
+    }
+
+    // AI movement — scales with player score, imperfect tracking
+    const cfg = DIFF_CONFIG[difficulty];
+    ai.speed = Math.min(cfg.baseSpeed + player.score * cfg.scale, cfg.maxSpeed);
+
+    aiDelayCounter++;
+    if (aiDelayCounter >= cfg.reactionDelay) {
+      aiDelayCounter = 0;
+      const error = (Math.random() * 2 - 1) * cfg.positionError;
+      aiTargetY = ball.y + error;
+    }
+
+    const aiCenter = ai.y + ai.height / 2;
+    if (aiTargetY < aiCenter - cfg.deadZone) {
+      ai.y -= ai.speed;
+    } else if (aiTargetY > aiCenter + cfg.deadZone) {
+      ai.y += ai.speed;
+    }
+    ai.y = Math.max(0, Math.min(canvas.height - ai.height, ai.y));
+  }
+
+  // ── Render ────────────────────────────────────────────────
+  function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawNet();
+    drawScore();
+    drawPaddle(player, '#06b6d4');
+    drawPaddle(ai, '#ff2d75');
+    drawBall();
+  }
+
+  // ── Loop ──────────────────────────────────────────────────
+  function loop() {
+    if (!gameRunning) return;
+    update();
+    render();
+    animId = requestAnimationFrame(loop);
+  }
+
+  // ── Input control (mouse + touch) ────────────────────────
+  function setPlayerY(clientY) {
+    const rect = canvas.getBoundingClientRect();
+    // Scale from CSS pixels to canvas internal resolution
+    const scaleY = canvas.height / rect.height;
+    const canvasY = (clientY - rect.top) * scaleY;
+    player.y = Math.max(0, Math.min(canvas.height - player.height, canvasY - player.height / 2));
+  }
+
+  canvas.addEventListener('mousemove', e => setPlayerY(e.clientY));
+
+  canvas.addEventListener('touchmove', e => {
+    e.preventDefault();
+    setPlayerY(e.touches[0].clientY);
+  }, { passive: false });
+
+  // ── Screens ───────────────────────────────────────────────
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+  }
+
+  // ── Pill selectors ────────────────────────────────────────
+  document.getElementById('diff-pills').addEventListener('click', e => {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+    document.querySelectorAll('#diff-pills .pill').forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('aria-pressed', 'false');
+    });
+    pill.classList.add('active');
+    pill.setAttribute('aria-pressed', 'true');
+    difficulty = pill.dataset.diff;
+  });
+
+  document.getElementById('limit-pills').addEventListener('click', e => {
+    const pill = e.target.closest('.pill');
+    if (!pill) return;
+    document.querySelectorAll('#limit-pills .pill').forEach(p => {
+      p.classList.remove('active');
+      p.setAttribute('aria-pressed', 'false');
+    });
+    pill.classList.add('active');
+    pill.setAttribute('aria-pressed', 'true');
+    scoreLimit = parseInt(pill.dataset.limit);
+  });
+
+  // ── Start ─────────────────────────────────────────────────
+  document.getElementById('start-btn').addEventListener('click', () => {
+    startGame();
+  });
+
+  function startGame() {
+    initObjects();
+    document.getElementById('hud-diff').textContent =
+      difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+    showScreen('game-screen');
+    gameRunning = true;
+    if (animId) cancelAnimationFrame(animId);
+    loop();
+  }
+
+  // ── End ───────────────────────────────────────────────────
+  function endGame() {
+    gameRunning = false;
+    cancelAnimationFrame(animId);
+
+    const playerWon = player.score >= scoreLimit;
+    const title = document.getElementById('result-title');
+    title.textContent = playerWon ? 'You Win' : 'You Lose';
+    title.className = 'result-title ' + (playerWon ? 'win' : 'lose');
+    document.getElementById('final-player').textContent = player.score;
+    document.getElementById('final-ai').textContent = ai.score;
+
+    setTimeout(() => showScreen('gameover-screen'), 300);
+  }
+
+  document.getElementById('rematch-btn').addEventListener('click', () => {
+    startGame();
+  });
+
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    showScreen('start-screen');
+  });
+</script>
+</body>
+</html>
