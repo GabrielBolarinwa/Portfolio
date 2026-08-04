@@ -20,6 +20,7 @@ import { Toaster } from "@/components/ui/sonner";
 import NavProvider from "@/app/context/NavContext";
 import IconRail from "@/components/IconRail";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SerwistProvider } from "@serwist/turbopack/react";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -75,28 +76,30 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${allura.variable} ${cinzel.variable} dark`}
     >
       <body className={"mx-0! px-0! mr-0!"}>
-        <SpeedInsights />
-        <NavProvider>
-          <LoadingProvider>
-            <TooltipProvider>
-              <div className="relative flex flex-1 flex-col min-h-screen w-full">
-                <GradientDefs />
-                <Loader />
-                <div className="bubbles-container">
-                  <BubblesBackground />
+        <SerwistProvider swUrl={"/serwist/sw.js"}>
+          <SpeedInsights />
+          <NavProvider>
+            <LoadingProvider>
+              <TooltipProvider>
+                <div className="relative flex flex-1 flex-col min-h-screen w-full">
+                  <GradientDefs />
+                  <Loader />
+                  <div className="bubbles-container">
+                    <BubblesBackground />
+                  </div>
+                  <Header />
+                  <IconRail />
+                  <main role="main">
+                    {children}
+                    {caseStudy}
+                    <Toaster />
+                  </main>
+                  <Footer />
                 </div>
-                <Header />
-                <IconRail />
-                <main role="main">
-                  {children}
-                  {caseStudy}
-                  <Toaster />
-                </main>
-                <Footer />
-              </div>
-            </TooltipProvider>
-          </LoadingProvider>
-        </NavProvider>
+              </TooltipProvider>
+            </LoadingProvider>
+          </NavProvider>
+        </SerwistProvider>
       </body>
     </html>
   );
