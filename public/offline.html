@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0"
+	      name="viewport">
+	<title>Offline | Bolarinwa Gabriel</title>
+	<link href="https://fonts.googleapis.com"
+	      rel="preconnect">
+	<link crossorigin
+	      href="https://fonts.gstatic.com"
+	      rel="preconnect">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+	      rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+	      rel="stylesheet">
+	<style>
+		:root {
+			--bg-color: #050517;
+			--card-bg: rgba(20, 20, 35, 0.6);
+			--cyan: #06b6d4;
+			--pink: #ff2d75;
+			--text-main: #f9eff0;
+			--text-muted: #a0a0b0;
+			--gradient: linear-gradient(135deg, var(--cyan), var(--pink));
+			--ease-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
+		}
+		
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		html {
+			scroll-behavior: smooth;
+		}
+		
+		body {
+			font-family: "Inter", sans-serif;
+			background-color: var(--bg-color);
+			color: var(--text-main);
+			overflow-x: hidden;
+			line-height: 1.6;
+		}
+		
+		h1, h2, h3, h4, h5, h6 {
+			font-family: "Space Grotesk", sans-serif;
+		}
+		
+		/* Custom Scrollbar */
+		html {
+			scrollbar-width: thin;
+			scrollbar-color: var(--pink) var(--bg-color);
+		}
+		
+		::-webkit-scrollbar {
+			width: 10px;
+			height: 10px;
+		}
+		
+		::-webkit-scrollbar-track {
+			background: var(--bg-color);
+		}
+		
+		::-webkit-scrollbar-thumb {
+			background: var(--gradient);
+			border-radius: 10px;
+			border: 2px solid var(--bg-color);
+			transition: background 0.3s ease;
+		}
+		
+		::-webkit-scrollbar-thumb:hover {
+			background: linear-gradient(135deg, #08cbe8, #ff3d85);
+		}
+		
+		::-webkit-scrollbar-button {
+			display: none;
+		}
+		
+		/* Orb Background Canvas */
+		#orb-canvas {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: -10;
+			pointer-events: none;
+		}
+		
+		.content-wrapper {
+			position: relative;
+			z-index: 0;
+		}
+		
+		@media (prefers-reduced-motion: reduce) {
+			#orb-canvas {
+				display: none;
+			}
+			
+			body {
+				background-image: radial-gradient(ellipse 90% 70% at 18% 32%, rgba(6, 182, 212, 0.35) 0%, transparent 75%),
+				radial-gradient(ellipse 90% 70% at 82% 68%, rgba(255, 45, 117, 0.30) 0%, transparent 75%);
+			}
+		}
+		
+		/* Navigation & Sidebar (Synced) */
+		nav.top-nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1.2rem 5%;
+			background: rgba(5, 5, 23, 0.8);
+			backdrop-filter: blur(12px);
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+		}
+		
+		.logo {
+			font-family: "Space Grotesk", sans-serif;
+			font-size: 1.5rem;
+			font-weight: 700;
+			background: var(--gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			text-decoration: none;
+		}
+		
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 2rem;
+		}
+		
+		.nav-links {
+			display: flex;
+			list-style: none;
+			gap: 2rem;
+			align-items: center;
+		}
+		
+		.nav-links a {
+			color: var(--text-muted);
+			text-decoration: none;
+			font-weight: 500;
+			transition: color 0.4s var(--ease-smooth);
+			position: relative;
+			display: flex;
+			align-items: center;
+			gap: 0.4rem;
+			font-family: "Inter", sans-serif;
+		}
+		
+		.nav-links a:hover {
+			color: var(--text-main);
+		}
+		
+		.menu-btn {
+			display: none;
+			font-size: 1.5rem;
+			cursor: pointer;
+			color: var(--text-main);
+			background: none;
+			border: none;
+			transition: transform 0.3s var(--ease-smooth);
+			z-index: 1001;
+		}
+		
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			padding: 0.9rem 2rem;
+			border-radius: 30px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: transform 0.4s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth), background 0.4s var(--ease-smooth), border-color 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
+			font-family: "Inter", sans-serif;
+			cursor: pointer;
+			border: none;
+		}
+		
+		.btn-primary {
+			background: var(--gradient);
+			color: #fff;
+			box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+		}
+		
+		.btn-outline {
+			border: 1px solid var(--text-muted);
+			color: var(--text-main);
+			background: rgba(255, 255, 255, 0.02);
+		}
+		
+		.nav-cta {
+			padding: 0.6rem 1.2rem;
+			font-size: 0.9rem;
+		}
+		
+		.btn-primary:hover {
+			transform: translateY(-3px) scale(1.02);
+			box-shadow: 0 8px 30px rgba(6, 182, 212, 0.6);
+		}
+		
+		.btn-outline:hover {
+			border-color: var(--pink);
+			color: var(--pink);
+			box-shadow: 0 5px 20px rgba(255, 45, 117, 0.3);
+			transform: translateY(-3px) scale(1.02);
+		}
+		
+		/* Mobile Adjustments */
+		@media (max-width: 1024px) {
+			.nav-links {
+				display: none;
+			}
+			
+			.menu-btn {
+				display: block;
+			}
+			
+			.nav-right {
+				gap: 1rem;
+			}
+			
+			.nav-cta {
+				display: inline-flex !important;
+				padding: 0.5rem 1rem;
+				font-size: 0.8rem;
+			}
+		}
+		
+		/* Icon Rail */
+		.icon-rail {
+			position: fixed;
+			top: 50%;
+			right: 1.5rem;
+			transform: translateY(-50%);
+			z-index: 50;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 2rem;
+		}
+		
+		.rail-label {
+			writing-mode: vertical-rl;
+			transform: rotate(180deg);
+			color: var(--text-muted);
+			font-size: 0.7rem;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			font-family: "Inter", sans-serif;
+		}
+		
+		.rail-links {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			list-style: none;
+		}
+		
+		.rail-link {
+			position: relative;
+			display: flex;
+			justify-content: center;
+		}
+		
+		.rail-link a {
+			font-size: 0;
+			padding: 0;
+		}
+		
+		.rail-link i {
+			font-size: 1.1rem;
+			width: auto;
+			padding: 0.8rem;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			background: rgba(20, 20, 35, 0.6);
+			color: var(--text-muted);
+			transition: all 0.4s var(--ease-smooth);
+		}
+		
+		.rail-link.active-route i {
+			background: rgba(6, 182, 212, 0.1);
+			border-color: var(--cyan);
+			color: var(--cyan);
+			box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+		}
+		
+		.rail-link:hover i {
+			background: var(--gradient);
+			color: #fff;
+			border-color: transparent;
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+			transform: scale(1.1);
+		}
+		
+		.rail-link .tooltip {
+			position: absolute;
+			right: 100%;
+			top: 50%;
+			transform: translateY(-50%) translateX(10px);
+			margin-right: 15px;
+			padding: 0.4rem 0.8rem;
+			background: var(--bg-color);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 6px;
+			font-size: 0.8rem;
+			color: var(--text-main);
+			white-space: nowrap;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s var(--ease-smooth);
+			pointer-events: none;
+		}
+		
+		.rail-link:hover .tooltip {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(-50%) translateX(0);
+		}
+		
+		@media (max-width: 1024px) {
+			.icon-rail {
+				display: none;
+			}
+		}
+		
+		/* Mobile Sidebar Drawer */
+		.overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.7);
+			backdrop-filter: blur(4px);
+			z-index: 999;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.4s var(--ease-smooth), visibility 0.4s var(--ease-smooth);
+		}
+		
+		.overlay.active {
+			opacity: 1;
+			visibility: visible;
+		}
+		
+		.sidebar {
+			background: rgba(10, 10, 25, 0.95);
+			backdrop-filter: blur(16px);
+			border-right: 1px solid rgba(255, 255, 255, 0.05);
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 75%;
+			max-width: 320px;
+			height: 100vh;
+			z-index: 1000;
+			padding: 5rem 2rem 2rem 2rem;
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+			transition: left 0.5s var(--ease-smooth);
+			overflow-y: auto;
+		}
+		
+		.sidebar.active {
+			left: 0;
+		}
+		
+		.sidebar-section h4 {
+			color: var(--text-muted);
+			font-size: 0.8rem;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			margin-bottom: 1.5rem;
+			font-family: "Inter", sans-serif;
+		}
+		
+		.sidebar-links {
+			list-style: none;
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+		}
+		
+		.sidebar-links a {
+			color: var(--text-muted);
+			text-decoration: none;
+			font-size: 1.1rem;
+			font-weight: 500;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			transition: color 0.3s var(--ease-smooth), padding-left 0.3s var(--ease-smooth);
+			font-family: "Space Grotesk", sans-serif;
+			position: relative;
+		}
+		
+		.sidebar-links a i {
+			width: 20px;
+			text-align: center;
+			transition: color 0.3s var(--ease-smooth);
+		}
+		
+		.sidebar-links a:hover {
+			color: #fff;
+			padding-left: 8px;
+		}
+		
+		.sidebar-links a:hover i {
+			color: var(--cyan);
+		}
+		
+		.sidebar-links a.active-route {
+			color: var(--cyan);
+		}
+		
+		.sidebar-links a.active-route i {
+			color: var(--cyan);
+		}
+		
+		.sidebar-links a.active-route::before {
+			content: "";
+			position: absolute;
+			left: -2rem;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 4px;
+			height: 24px;
+			background: var(--gradient);
+			border-radius: 2px;
+		}
+		
+		/* Layout */
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 4rem 5%;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 70vh;
+		}
+		
+		.offline-icon {
+			font-size: 5rem;
+			color: var(--pink);
+			margin-bottom: 2rem;
+			animation: float 3s infinite ease-in-out;
+		}
+		
+		@keyframes float {
+			0%, 100% {
+				transform: translateY(0);
+			}
+			50% {
+				transform: translateY(-10px);
+			}
+		}
+		
+		.offline-heading {
+			font-size: 2.5rem;
+			margin-bottom: 1rem;
+			font-weight: 700;
+		}
+		
+		.gradient-text {
+			background: var(--gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+		
+		.offline-text {
+			color: var(--text-muted);
+			max-width: 500px;
+			margin: 0 auto 2.5rem;
+			font-size: 1.1rem;
+		}
+		
+		.btn-group {
+			display: flex;
+			gap: 1rem;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		
+		/* Accessibility Focus States */
+		*:focus {
+			outline: none;
+		}
+		
+		*:focus-visible {
+			outline: 2px solid var(--cyan);
+			outline-offset: 4px;
+			border-radius: 8px;
+			transition: outline-offset 0.2s var(--ease-smooth), box-shadow 0.2s var(--ease-smooth);
+		}
+		
+		.btn:focus-visible {
+			outline: 2px solid var(--text-main);
+			outline-offset: 2px;
+			border-radius: 30px;
+			box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+		}
+		
+		.nav-links a:focus-visible, .sidebar-links a:focus-visible, .footer-link:focus-visible {
+			outline: 2px solid var(--cyan);
+			outline-offset: 4px;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(6, 182, 212, 0.3);
+		}
+		
+		.rail-link a:focus-visible, .social-link:focus-visible {
+			outline: 2px solid var(--pink);
+			outline-offset: 4px;
+			border-radius: 12px;
+			box-shadow: 0 0 15px rgba(255, 45, 117, 0.4);
+		}
+	</style>
+</head>
+<body>
+<canvas aria-hidden="true"
+        id="orb-canvas"></canvas>
+
+<div class="content-wrapper">
+	<div class="overlay"
+	     id="overlay"></div>
+	<nav class="top-nav">
+		<a class="logo"
+		   href="index.html"><i class="fa-solid fa-code"></i> BG</a>
+		<div class="nav-right">
+			<ul class="nav-links">
+				<li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+				<li><a href="about.html"><i class="fa-solid fa-user"></i> About</a></li>
+				<li><a href="projects.html"><i class="fa-solid fa-briefcase"></i> Projects</a></li>
+				<li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+			</ul>
+			<a class="btn btn-primary nav-cta"
+			   href="projects.html"><i class="fa-solid fa-arrow-right"></i> View Projects</a>
+			<button aria-label="Open Menu"
+			        class="menu-btn"
+			        id="menu-btn"><i class="fa-solid fa-bars"></i></button>
+		</div>
+	</nav>
+	
+	<div class="icon-rail">
+		<span class="rail-label">Pages</span>
+		<ul class="rail-links">
+			<li class="rail-link">
+				<a href="index.html"><i class="fa-solid fa-house"></i></a><span class="tooltip">Home</span>
+			</li>
+			<li class="rail-link">
+				<a href="about.html"><i class="fa-solid fa-user"></i></a><span class="tooltip">About</span>
+			</li>
+			<li class="rail-link">
+				<a href="projects.html"><i class="fa-solid fa-briefcase"></i></a><span class="tooltip">Projects</span>
+			</li>
+			<li class="rail-link">
+				<a href="contact.html"><i class="fa-solid fa-envelope"></i></a><span class="tooltip">Contact</span>
+			</li>
+		</ul>
+	</div>
+	
+	<aside class="sidebar"
+	       id="sidebar">
+		<div class="sidebar-section">
+			<h4>Pages</h4>
+			<ul class="sidebar-links">
+				<li><a class="sidebar-close"
+				       href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+				<li><a class="sidebar-close"
+				       href="about.html"><i class="fa-solid fa-user"></i> About</a></li>
+				<li><a class="sidebar-close"
+				       href="projects.html"><i class="fa-solid fa-folder-open"></i> Projects</a>
+				</li>
+				<li><a class="sidebar-close"
+				       href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+			</ul>
+		</div>
+	</aside>
+	
+	<div class="container">
+		<div class="offline-icon"><i class="fa-solid fa-wifi"></i></div>
+		<h1 class="offline-heading">You're <span class="gradient-text">Offline</span></h1>
+		<p class="offline-text">It looks like you've lost your internet connection. Don't worry, you
+			can still play a game while you wait to reconnect.</p>
+		
+		<div class="btn-group">
+			<a class="btn btn-primary"
+			   href="pong.html"><i class="fa-solid fa-gamepad"></i> Play a game?</a>
+			<a class="btn btn-outline"
+			   href="index.html"><i class="fa-solid fa-rotate-right"></i> Try Again</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	// Mobile Sidebar Logic
+	const menuBtn = document.getElementById('menu-btn');
+	const sidebar = document.getElementById('sidebar');
+	const overlay = document.getElementById('overlay');
+	const closeBtns = document.querySelectorAll('.sidebar-close');
+	const toggleSidebar = (open) => {
+		if (open) {
+			sidebar.classList.add('active');
+			overlay.classList.add('active');
+			menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+		} else {
+			sidebar.classList.remove('active');
+			overlay.classList.remove('active');
+			menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+		}
+	};
+	menuBtn.addEventListener('click', () => toggleSidebar( !sidebar.classList.contains('active')));
+	overlay.addEventListener('click', () => toggleSidebar(false));
+	closeBtns.forEach(btn => btn.addEventListener('click', () => toggleSidebar(false)));
+	
+	// Orb Background Logic (v2 Prototype + DPR Scaling)
+	const canvas = document.getElementById('orb-canvas');
+	const ctx = canvas.getContext('2d');
+	const CYAN = [ 6, 182, 212 ];
+	const PINK = [ 255, 45, 117 ];
+	let W, H, dpr, orbs = [], rafId;
+	let smoothScroll = 0;
+	let targetScroll = 0;
+	const IDLE_THRESHOLD = 800;
+	let lastScrollTime = - Infinity;
+	let idleBlend = 0;
+	let clampMargin = 0;
+	const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	
+	function orbRadius() {
+		return Math.min(W, H) * 0.38;
+	}
+	
+	function initOrbs() {
+		const r = orbRadius();
+		const centerY = H / 2;
+		const displacement = H * 0.18;
+		orbs = [
+			{
+				x: W * 0.18,
+				centerY,
+				initOffsetY: - displacement,
+				r,
+				color: CYAN,
+				opacity: 0.35,
+				scrollFactor: 0.3,
+				driftR: 18,
+				driftSpeed: 0.0006,
+				driftPhase: 0
+			},
+			{
+				x: W * 0.82,
+				centerY,
+				initOffsetY: + displacement,
+				r,
+				color: PINK,
+				opacity: 0.30,
+				scrollFactor: - 0.3,
+				driftR: 14,
+				driftSpeed: 0.0005,
+				driftPhase: Math.PI
+			}
+		];
+	}
+	
+	function drawOrb(o, rawY, driftX, driftY) {
+		const [ cr, cg, cb ] = o.color;
+		const x = o.x + driftX;
+		const y = Math.max(clampMargin, Math.min(H - clampMargin, rawY)) + driftY;
+		const grad = ctx.createRadialGradient(x, y, 0, x, y, o.r);
+		grad.addColorStop(0, `rgba(${cr},${cg},${cb},${o.opacity})`);
+		grad.addColorStop(0.35, `rgba(${cr},${cg},${cb},${o.opacity * 0.6})`);
+		grad.addColorStop(0.7, `rgba(${cr},${cg},${cb},${o.opacity * 0.15})`);
+		grad.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+		ctx.beginPath();
+		ctx.arc(x, y, o.r, 0, Math.PI * 2);
+		ctx.fillStyle = grad;
+		ctx.fill();
+	}
+	
+	window.addEventListener('scroll', () => {
+		targetScroll = window.scrollY;
+		lastScrollTime = performance.now();
+	}, {passive: true});
+	
+	function scrollProgress() {
+		const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+		return maxScroll > 0 ? smoothScroll / maxScroll : 0;
+	}
+	
+	const DEAD_START = 0.325;
+	const DEAD_END = 0.675;
+	
+	function orbYFromProgress(progress, o) {
+		let offset;
+		if (progress <= DEAD_START) {
+			const t = progress / DEAD_START;
+			offset = o.initOffsetY * (1 - t);
+		} else if (progress <= DEAD_END) {
+			offset = 0;
+		} else {
+			const t = (progress - DEAD_END) / (1 - DEAD_END);
+			offset = - o.initOffsetY * t;
+		}
+		return o.centerY + offset;
+	}
+	
+	function draw(ts) {
+		smoothScroll += (targetScroll - smoothScroll) * 0.07;
+		const remPx = parseFloat(getComputedStyle(document.documentElement).fontSize);
+		clampMargin = 12 * remPx;
+		const isIdle = (ts - lastScrollTime) > IDLE_THRESHOLD;
+		idleBlend += ((isIdle ? 1 : 0) - idleBlend) * 0.02;
+		const prog = scrollProgress();
+		ctx.clearRect(0, 0, W, H);
+		orbs.forEach(o => {
+			const angle = ts * o.driftSpeed + o.driftPhase;
+			const driftX = Math.cos(angle) * o.driftR * idleBlend;
+			const driftY = Math.sin(angle) * o.driftR * idleBlend;
+			drawOrb(o, orbYFromProgress(prog, o), driftX, driftY);
+		});
+		rafId = requestAnimationFrame(draw);
+	}
+	
+	function resize() {
+		dpr = window.devicePixelRatio || 1;
+		W = window.innerWidth;
+		H = window.innerHeight;
+		canvas.width = W * dpr;
+		canvas.height = H * dpr;
+		canvas.style.width = `${W}px`;
+		canvas.style.height = `${H}px`;
+		ctx.scale(dpr, dpr);
+	}
+	
+	function init() {
+		resize();
+		initOrbs();
+		rafId = requestAnimationFrame(draw);
+	}
+	
+	window.addEventListener('resize', () => {
+		cancelAnimationFrame(rafId);
+		resize();
+		initOrbs();
+		rafId = requestAnimationFrame(draw);
+	});
+	
+	if ( !prefersReducedMotion) {
+		init();
+	}
+</script>
+</body>
+</html>
