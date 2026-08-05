@@ -52,7 +52,7 @@
   --shadow-neon-hover: 0 0 20px rgba(0, 243, 255, 0.3);
   --shadow-card-hover: 0 10px 30px rgba(0, 0, 0, 0.3);
   --animate-glow: textGlow 3s infinite;
-  @keyframes glow {
+  @keyframes textGlow {
     0%,
     100% {
       text-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
@@ -277,6 +277,11 @@
     @apply [fill:url(#grad-app)];
   }
   /* End SVG Gradient Defs */
+
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-(image:--primary-gradient);
+  }
+
   /* Animations */
   .slideInLeftCustom {
     @apply [animation:slideInLeftCustom_2s_ease]  [animation-delay:calc(var(--i)*1s)]!;

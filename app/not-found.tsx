@@ -10,7 +10,7 @@ function NotFound() {
     >
       <h1
         className={
-          "text-transparent bg-clip-text bg-(image:--primary-gradient) [animation:glow_3s_0.75s_ease-in-out_infinite]"
+          "text-transparent bg-clip-text bg-(image:--primary-gradient) animate-glow delay-75"
         }
       >
         404
