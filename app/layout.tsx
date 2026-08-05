@@ -1,26 +1,25 @@
-import type { Metadata, Viewport } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata, Viewport } from "next";
 
+import { LoadingProvider } from "@/app/context/LoadingContext";
+import NavProvider from "@/app/context/NavContext";
+import { BubblesBackground } from "@/components/BubblesBackground";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import IconRail from "@/components/IconRail";
+import { Loader } from "@/components/Loader";
+import GradientDefs from "@/components/svgs/GradientDefs";
+import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import {
   Allura,
   Cinzel_Decorative,
   Inter,
   Space_Grotesk,
 } from "next/font/google";
-import { LoadingProvider } from "@/app/context/LoadingContext";
-import { BubblesBackground } from "@/components/BubblesBackground";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { Loader } from "@/components/Loader";
-import GradientDefs from "@/components/svgs/GradientDefs";
 import React from "react";
 import "./style.css";
 import "./variables.css";
-import { Toaster } from "@/components/ui/sonner";
-import NavProvider from "@/app/context/NavContext";
-import IconRail from "@/components/IconRail";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { SerwistProvider } from "@serwist/turbopack/react";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -76,30 +75,28 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${allura.variable} ${cinzel.variable} dark`}
     >
       <body className={"mx-0! px-0! mr-0!"}>
-        <SerwistProvider swUrl={"/serwist/sw.js"}>
-          <SpeedInsights />
-          <NavProvider>
-            <LoadingProvider>
-              <TooltipProvider>
-                <div className="relative flex flex-1 flex-col min-h-screen w-full">
-                  <GradientDefs />
-                  <Loader />
-                  <div className="bubbles-container">
-                    <BubblesBackground />
-                  </div>
-                  <Header />
-                  <IconRail />
-                  <main role="main">
-                    {children}
-                    {caseStudy}
-                    <Toaster />
-                  </main>
-                  <Footer />
+        <SpeedInsights />
+        <NavProvider>
+          <LoadingProvider>
+            <TooltipProvider>
+              <div className="relative flex flex-1 flex-col min-h-screen w-full">
+                <GradientDefs />
+                <Loader />
+                <div className="bubbles-container">
+                  <BubblesBackground />
                 </div>
-              </TooltipProvider>
-            </LoadingProvider>
-          </NavProvider>
-        </SerwistProvider>
+                <Header />
+                <IconRail />
+                <main role="main">
+                  {children}
+                  {caseStudy}
+                  <Toaster />
+                </main>
+                <Footer />
+              </div>
+            </TooltipProvider>
+          </LoadingProvider>
+        </NavProvider>
       </body>
     </html>
   );
