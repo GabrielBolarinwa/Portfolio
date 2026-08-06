@@ -20,6 +20,7 @@ import {
 import React from "react";
 import "./style.css";
 import "./variables.css";
+import { ServiceWorkerRegister } from "./sw-register";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -76,6 +77,7 @@ export default function RootLayout({
     >
       <body className={"mx-0! px-0! mr-0!"}>
         <SpeedInsights />
+        <ServiceWorkerRegister />
         <NavProvider>
           <LoadingProvider>
             <TooltipProvider>
