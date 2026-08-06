@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 
 import { LoadingProvider } from "@/app/context/LoadingContext";
 import NavProvider from "@/app/context/NavContext";
-import { BubblesBackground } from "@/components/BubblesBackground";
+import { OrbBackground } from "@/components/OrbBackground";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import IconRail from "@/components/IconRail";
@@ -84,7 +84,7 @@ export default function RootLayout({
               <GradientDefs />
               <Loader />
               <div className="bubbles-container">
-                <BubblesBackground />
+                <OrbBackground />
               </div>
               <Header />
               <IconRail />
