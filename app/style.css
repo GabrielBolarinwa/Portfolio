@@ -61,6 +61,18 @@
       text-shadow: 0 0 20px #ff005560;
     }
   }
+  --animate-float: float 10s infinite;
+  @keyframes float {
+    0% {
+      transform: translateY(-20px);
+    }
+    50% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
   --font-body: var(--font-inter);
   --font-headings: var(--font-space-grotesk);
   --font-heading: var(--font-space-grotesk);

@@ -5,7 +5,7 @@ import Link from "next/link";
 function Page() {
   return (
     <div className="flex gap-6 items-center justify-center text-center flex-col">
-      <Wifi className="text-destructive" size={80} />
+      <Wifi className="text-destructive animate-float" size={80} />
       <h1>
         You&apos;re <span className="gradient-text">Offline</span>
       </h1>
