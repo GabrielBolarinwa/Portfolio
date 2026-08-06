@@ -81,21 +81,19 @@ export default function RootLayout({
         <NavProvider>
           <LoadingProvider>
             <TooltipProvider>
-              <div className="relative flex flex-1 flex-col min-h-screen w-full">
-                <GradientDefs />
-                <Loader />
-                <div className="bubbles-container">
-                  <BubblesBackground />
-                </div>
-                <Header />
-                <IconRail />
-                <main role="main">
-                  {children}
-                  {caseStudy}
-                  <Toaster />
-                </main>
-                <Footer />
+              <GradientDefs />
+              <Loader />
+              <div className="bubbles-container">
+                <BubblesBackground />
               </div>
+              <Header />
+              <IconRail />
+              <main role="main">
+                {children}
+                {caseStudy}
+                <Toaster />
+              </main>
+              <Footer />
             </TooltipProvider>
           </LoadingProvider>
         </NavProvider>

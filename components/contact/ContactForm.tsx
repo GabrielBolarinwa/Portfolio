@@ -66,7 +66,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-full md:w-[48%] bg-card-background border border-white/20 rounded-lg p-6 mt-6">
+    <div className="w-full md:w-[48%] bg-card-background border border-white/20 rounded-md p-6 mt-6">
       <form
         className="flex flex-col justify-between h-full gap-4"
         onSubmit={handleSubmit(onSubmit, () => {
@@ -84,7 +84,7 @@ export default function ContactForm() {
               type="text"
               placeholder="John Doe"
               autoComplete="name"
-              className="text-sm"
+              className="text-sm md:rounded-sm!"
               aria-invalid={errors?.name ? true : false}
               {...register("name")}
               onFocus={() => portfolioForm.trigger("name")}
@@ -103,7 +103,7 @@ export default function ContactForm() {
               type="email"
               placeholder="john@example.com"
               autoComplete="email"
-              className="text-sm"
+              className="text-sm md:rounded-sm!"
               aria-invalid={errors?.email ? true : false}
               {...register("email")}
               onFocus={() => portfolioForm.trigger("email")}

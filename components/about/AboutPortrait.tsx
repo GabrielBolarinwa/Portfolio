@@ -18,7 +18,7 @@ function AboutPortrait() {
   const { width } = useWindowSize();
   return (
     <div
-      className="w-full md:w-auto h-[300px] md:aspect-[1] float-left border-white/20 border rounded-lg overflow-hidden mr-5 max-md:mb-5 bg-card"
+      className="w-full md:w-auto h-[300px] md:aspect-[1] float-left border-white/20 border rounded-md overflow-hidden mr-5 max-md:mb-5 bg-card"
       ref={setRef}
       data-animation={width > 768 ? "slideInLeftCustom" : "hoverInTop"}
     >

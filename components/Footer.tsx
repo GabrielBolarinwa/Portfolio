@@ -60,7 +60,7 @@ export function Footer() {
           </div>
         </div>
       </section>
-      <div className="flex flex-wrap justify-between w-full gap-y-6">
+      <div className="flex flex-wrap max-sm:flex-col justify-between w-full gap-y-6">
         <section className="flex flex-col items-center flex-1 flex-wrap">
           <h3 className="footer-header">Navigation</h3>
           <ul className="flex flex-col flex-wrap max-h-27 gap-y-5 gap-x-25">

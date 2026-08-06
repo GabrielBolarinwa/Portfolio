@@ -67,11 +67,13 @@ export default function Skills() {
                 ></div>
               </div>
             </AccordionTrigger>
-            <AccordionContent className={"pl-8 gap-4 flex flex-col mt-1"}>
+            <AccordionContent
+              className={"pl-2 md:pl-8 gap-4 flex flex-col mt-1"}
+            >
               {skill.skillDetails.map((detail) => (
-                <li className="list-none items-center  flex gap-2" key={detail}>
-                  <Play className="text-accent-neon" size={16} />
-                  {detail}
+                <li className="list-none items-center flex gap-2" key={detail}>
+                  <Play className="text-accent-neon size-4 w-4 h-4" size={16} />
+                  <span>{detail}</span>
                 </li>
               ))}
             </AccordionContent>

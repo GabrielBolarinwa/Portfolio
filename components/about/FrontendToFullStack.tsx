@@ -46,7 +46,7 @@ export default function FrontendToFullStack() {
 
       <div className="mt-8 flex gap-4 flex-wrap">
         <div
-          className="flex flex-col bg-card-background p-6 rounded-lg w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
+          className="flex flex-col bg-card-background p-6 rounded-md w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
           ref={ref}
           data-animation="hoverInBottom"
           style={{ "--i": `1.1` } as React.CSSProperties}
@@ -61,7 +61,7 @@ export default function FrontendToFullStack() {
           </ul>
         </div>
         <div
-          className="flex flex-col bg-card-background p-6 rounded-lg w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
+          className="flex flex-col bg-card-background p-6 rounded-md w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
           ref={ref}
           data-animation="hoverInBottom"
           style={{ "--i": `1.2` } as React.CSSProperties}
@@ -76,7 +76,7 @@ export default function FrontendToFullStack() {
           </ul>
         </div>
         <div
-          className="flex flex-col bg-card-background p-6 rounded-lg w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
+          className="flex flex-col bg-card-background p-6 rounded-md w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
           ref={ref}
           data-animation="hoverInBottom"
           style={{ "--i": `1.3` } as React.CSSProperties}
@@ -91,7 +91,7 @@ export default function FrontendToFullStack() {
           </ul>
         </div>
         <div
-          className="flex flex-col bg-card-background p-6 rounded-lg w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
+          className="flex flex-col bg-card-background p-6 rounded-md w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
           ref={ref}
           data-animation="hoverInBottom"
           style={{ "--i": `1.4` } as React.CSSProperties}
@@ -106,7 +106,7 @@ export default function FrontendToFullStack() {
           </ul>
         </div>
         <div
-          className="flex flex-col bg-card-background p-6 rounded-lg w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
+          className="flex flex-col bg-card-background p-6 rounded-md w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
           ref={ref}
           data-animation="hoverInBottom"
           style={{ "--i": `1.5` } as React.CSSProperties}
@@ -121,7 +121,7 @@ export default function FrontendToFullStack() {
           </ul>
         </div>
         <div
-          className="flex flex-col bg-card-background p-6 rounded-lg w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
+          className="flex flex-col bg-card-background p-6 rounded-md w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4"
           ref={ref}
           data-animation="hoverInBottom"
           style={{ "--i": `1.6` } as React.CSSProperties}
@@ -136,7 +136,7 @@ export default function FrontendToFullStack() {
           </ul>
         </div>
         <div
-          className="flex flex-col bg-card-background p-6 rounded-lg w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4 opacity-50!"
+          className="flex flex-col bg-card-background p-6 rounded-md w-full md:w-[45%] lg:w-[30%] border border-white/20 hover:border-accent-neon hover:-translate-y-2 font-(family-name:--font-headings) h-70 gap-4 opacity-50!"
           ref={ref}
           data-animation="hoverInBottom"
           style={{ "--i": `1.7` } as React.CSSProperties}

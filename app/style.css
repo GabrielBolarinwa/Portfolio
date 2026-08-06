@@ -765,7 +765,7 @@
   }
 
   .services-container .service {
-    @apply flex justify-center flex-col border border-white/20 py-10 px-6 shadow-card-hover cursor-default bg-card-background relative rounded-lg h-auto w-12/13 md:w-9/20 lg:w-31/100 overflow-hidden hover:-translate-y-1 hover:bg-bg-base/50 mx-auto md:mx-0;
+    @apply flex justify-center flex-col border border-white/20 py-10 px-6 shadow-card-hover cursor-default bg-card-background relative rounded-md h-auto w-12/13 md:w-9/20 lg:w-31/100 overflow-hidden hover:-translate-y-1 hover:bg-bg-base/50 mx-auto md:mx-0;
     @media (width: 540px) and (height: 720px) {
       @apply w-[70%];
     }

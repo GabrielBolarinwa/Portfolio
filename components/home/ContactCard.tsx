@@ -6,7 +6,7 @@ function ContactCard() {
   const ref = useScrollAnimationList();
   return (
     <div
-      className="flex flex-col items-center gap-4 justify-center mx-auto bg-card-background home-contact border border-white/20 rounded-lg w-full text-center mt-16 h-auto py-8 overflow-hidden relative"
+      className="flex flex-col items-center gap-4 justify-center mx-auto bg-card-background home-contact border border-white/20 rounded-md w-full text-center mt-16 h-auto py-8 overflow-hidden relative"
       ref={ref}
       data-animation="hoverInBottom"
     >

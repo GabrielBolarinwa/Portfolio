@@ -13,7 +13,7 @@ function Education() {
         {educationItems.map((education) => (
           <li
             key={education.text}
-            className="edu-card bg-card-background flex flex-col gap-2 w-full md:w-4/5 lg:3/5 p-6 rounded-lg border-white/20 border relative z-3"
+            className="edu-card bg-card-background flex flex-col gap-2 w-full md:w-4/5 lg:3/5 p-6 rounded-md border-white/20 border relative z-3"
             ref={ref}
             data-animation="hoverInBottom"
           >

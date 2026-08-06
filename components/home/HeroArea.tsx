@@ -207,13 +207,13 @@ export function HeroArea() {
           ref={ref}
           data-animation="hoverInBottom"
         >
-          <Link
+          <a
             href="/BolarinwaGabriel_Resume.pdf"
             download
             className="cta bg-(image:--primary-gradient) hover:shadow-cyan-hover border-white/30"
           >
             <FileDown /> Resume
-          </Link>
+          </a>
           <Link
             href="/contact"
             className="cta border-white hover:shadow-pink-hover hover:text-accent-pink hover:border-accent-pink"
