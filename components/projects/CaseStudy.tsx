@@ -41,12 +41,12 @@ export default function CaseStudy(props: Props) {
     >
       <DialogContent
         className={
-          "w-[90vw]! h-[90dvh]! bg-bg-base border-zinc-800 max-w-none! border"
+          "w-[90vw]! max-sm:h-[98dvh]! h-[90dvh]! bg-bg-base border-zinc-800 max-w-none! border p-0!"
         }
       >
         <DialogHeader className="text-left p-6 max-sm:px-2 w-full flex flex-row items-center justify-between gap-3 border-b border-b-zinc-800 top-0">
           <div className="flex justify-center h-full">
-            <div className="relative w-[75px] h-[75px] aspect-[1] top-1/2 -translate-y-1/2 border border-accent-neon overflow-hidden inline-flex items-center justify-center rounded-lg bg-(image:--primary-gradient) ">
+            <div className="relative w-[75px] h-[75px] aspect-[1] top-1/2 -translate-y-1/2 border border-accent-neon overflow-hidden inline-flex items-center justify-center rounded-md bg-(image:--primary-gradient) ">
               <CldImage
                 src={caseStudy.icon.src}
                 alt={caseStudy.icon.alt}
@@ -66,13 +66,13 @@ export default function CaseStudy(props: Props) {
           </div>
         </DialogHeader>
         <div
-          className="flex-1 overflow-y-auto px-6 prose-sm w-full mt-2 case-study-writeup"
+          className="flex-1 overflow-y-auto px-6 max-sm:px-2 prose-sm w-full mt-2 case-study-writeup"
           ref={containerRef}
         >
           <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
           <CaseStudyImageSlider images={caseStudy.screenshots} />
         </div>
-        <DialogFooter className="flex justify-end gap-4 w-full p-6 border-t border-zinc-800 items-center bg-bg-base flex-row">
+        <DialogFooter className="flex justify-end gap-4 w-full p-6 max-sm:px-2 border-t border-zinc-800 items-center bg-bg-base flex-row">
           <Link
             href={caseStudy.repoUrl}
             target="_blank"

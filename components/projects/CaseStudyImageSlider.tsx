@@ -25,7 +25,7 @@ export default function CaseStudyImageSlider(props: Props) {
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           navigation={{ nextEl: ".custom-next", prevEl: ".custom-prev" }}
-          className="rounded-2xl bg-bg border border-bg h-64 overflow-hidden  max-w-[500px]"
+          className="rounded-md bg-bg border border-bg h-64 overflow-hidden  max-w-[500px]"
         >
           {images.map((image) => (
             <SwiperSlide key={image.src}>
@@ -62,7 +62,7 @@ export default function CaseStudyImageSlider(props: Props) {
           <SwiperSlide key={image.src}>
             {({ isActive }) => (
               <div
-                className={`cursor-pointer rounded-lg h-20 flex items-center justify-center text-xs font-medium border transition-all overflow-hidden ${isActive ? "border-accent-neon bg-bg" : "border-transparent bg-bg/60"}`}
+                className={`cursor-pointer rounded-sm h-20 flex items-center justify-center text-xs font-medium border transition-all overflow-hidden ${isActive ? "border-accent-neon bg-bg" : "border-transparent bg-bg/60"}`}
               >
                 <CldImage
                   src={image.src}
