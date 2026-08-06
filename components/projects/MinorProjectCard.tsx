@@ -15,7 +15,7 @@ export default function MinorProjectCard(props: Props) {
   return (
     <Card
       className={
-        "bg-card-background overflow-hidden p-0 gap-2 hover:shadow-(--project-card-shadow) text-center minor-project-card hover:bg-bg-base"
+        "bg-card-background overflow-hidden p-0 gap-2 hover:shadow-(--project-card-shadow) text-center minor-project-card hover:bg-bg-base hover:-translate-y-1"
       }
     >
       <div className="relative h-[250px]">

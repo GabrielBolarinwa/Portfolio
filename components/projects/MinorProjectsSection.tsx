@@ -15,7 +15,7 @@ export default function MinorProjectsSection() {
             style={{ "--i": `1.${index + 1}` } as React.CSSProperties}
             data-animation="hoverInBottom"
             key={project.title}
-            className="w-19/20 md:w-9/20 lg:w-31/100 relative hover:-translate-y-1"
+            className="w-19/20 md:w-9/20 lg:w-31/100 relative"
           >
             <MinorProjectCard project={project} />
           </li>

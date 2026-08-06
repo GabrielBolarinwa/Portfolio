@@ -220,7 +220,23 @@
   }
 
   body {
-    @apply bg-bg-base text-(--color-light)! font-normal text-(length:--font-size-default)! leading-normal relative overflow-x-hidden -z-2 font-body [scroll-timeline-name:--body-scroll] [scroll-timeline-axis:block] min-h-dvh;
+    @apply bg-bg-base text-(--color-light)! font-normal text-(length:--font-size-default)! leading-normal relative overflow-x-hidden -z-2 font-body [scroll-timeline-name:--body-scroll] [scroll-timeline-axis:block] min-h-dvh bg-no-repeat bg-cover bg-fixed bg-center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      background-image:
+        radial-gradient(
+          ellipse 80% 60% at 18% 32%,
+          rgba(6, 182, 212, 0.18) 0%,
+          transparent 70%
+        ),
+        radial-gradient(
+          ellipse 80% 60% at 82% 68%,
+          rgba(255, 45, 117, 0.16) 0%,
+          transparent 70%
+        );
+    }
   }
 
   main {
@@ -533,60 +549,12 @@
     @apply fixed top-0 left-0 flex justify-center items-center z-11 bg-[#000] w-full h-dvh;
   }
 
-  .loader-container.page-loaded {
-    @apply [animation:hide_1s_linear_2.5s_forwards,_animateBg_10s_linear_infinite];
-  }
-
-  .loader {
-    @apply absolute top-1/2 left-1/2 -translate-1/2 w-[100px] h-[100px] aspect-[1] md:w-[150px]  md:h-[150px];
-  }
-
-  .loader .face {
-    @apply absolute border-2 border-[#121212] [animation:animate_1.5s_linear_infinite];
-  }
-
-  .loader .face.face1 {
-    --face-1-shadow: 0 0 10px rgba(0, 0, 0, 1);
-    @apply top-0 left-0 right-0 bottom-0 shadow-(--face-1-shadow) border-b-transparent border-r-transparent border-t-2 border-l-2 border-[#ffff00] rounded-full [inset:0];
-  }
-
-  .loader .face.face2 {
-    --face-2-shadow: 0 0 10px rgba(0, 0, 0, 1);
-    @apply top-[20px] left-[20px] right-[20px] bottom-[20px] shadow-(--face-2-shadow) bg-[#090909] border-t-transparent border-l-transparent border-r-2 border-b-2 border-[#00ffff] shimmer-reverse rounded-full [inset:30] md:top-[30px] md:left-[30px] md:right-[30px] md:bottom-[30px];
-  }
-
-  .loader .face .circle {
-    @apply absolute [top:calc(50%-1px)] left-1/2 w-1/2 h-0.5 origin-left;
-  }
-
-  .loader .face.face1 .circle {
-    @apply -rotate-45;
-  }
-
-  .loader .face.face2 .circle {
-    @apply -rotate-45;
-  }
-
-  .loader .face .circle::before {
-    @apply [content:""] absolute w-[10px] h-[10px] rounded-full bg-white -top-[4px] -right-[6px];
-  }
-
-  .loader .face.face1 .circle::before {
-    --shadow-circle1:
-      0 0 20px #ff0, 0 0 40px #ff0, 0 0 60px #ff0, 0 0 80px #ff0,
-      0 0 100px #ff0, 0 0 0 5px rgba(255, 255, 0, 0.1);
-    @apply bg-[#ffff00] shadow-(--shadow-circle1);
-  }
-
-  .loader .face.face2 .circle::before {
-    --shadow-circle2:
-      0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff, 0 0 80px #0ff,
-      0 0 100px #0ff, 0 0 0 5px rgba(3, 169, 244, 0.1);
-    @apply bg-[#00ffff] shadow-(--shadow-circle2);
+  .loader-inner {
+    @apply absolute top-1/2 left-1/2 -translate-1/2 aspect-[1];
   }
 
   .bubbles-container {
-    @apply w-screen min-h-dvh overflow-hidden fixed -z-1 inset-0 pointer-events-none;
+    @apply w-screen min-h-dvh overflow-hidden fixed -z-1 inset-0 pointer-events-none motion-reduce:hidden;
   }
 
   .social-icons {
