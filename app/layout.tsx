@@ -3,11 +3,11 @@ import type { Metadata, Viewport } from "next";
 
 import { LoadingProvider } from "@/app/context/LoadingContext";
 import NavProvider from "@/app/context/NavContext";
-import { OrbBackground } from "@/components/OrbBackground";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import IconRail from "@/components/IconRail";
-import { Loader } from "@/components/Loader";
+import { OrbBackground } from "@/components/OrbBackground";
+import { PageLoader } from "@/components/PageLoader";
 import GradientDefs from "@/components/svgs/GradientDefs";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -19,8 +19,8 @@ import {
 } from "next/font/google";
 import React from "react";
 import "./style.css";
-import "./variables.css";
 import { ServiceWorkerRegister } from "./sw-register";
+import "./variables.css";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -82,7 +82,7 @@ export default function RootLayout({
           <LoadingProvider>
             <TooltipProvider>
               <GradientDefs />
-              <Loader />
+              <PageLoader />
               <div className="bubbles-container">
                 <OrbBackground />
               </div>
