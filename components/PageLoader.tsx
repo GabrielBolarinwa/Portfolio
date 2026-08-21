@@ -23,13 +23,19 @@ const PATH_G_COUNTER2 =
 export function PageLoader() {
   const { progress } = useLoadingState();
 
-  const overlayRef = useRef<HTMLDivElement>(null);
-  const clipBRef = useRef<SVGRectElement>(null);
-  const clipGRef = useRef<SVGRectElement>(null);
-  const barRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
+  const clipBRef = useRef<SVGRectElement | null>(null);
+  const clipGRef = useRef<SVGRectElement | null>(null);
+  const barRef = useRef<HTMLDivElement | null>(null);
   const displayRef = useRef(0);
   const targetRef = useRef(0);
   const rafRef = useRef<number>(0);
+  const displayProgress = useAnimatedCounter(
+    progress === 100 ? progress : 0,
+    progress === 100,
+    1000,
+  );
+  const dismissedRef = useRef(false);
 
   useEffect(() => {
     targetRef.current = progress;
@@ -37,6 +43,7 @@ export function PageLoader() {
 
   useEffect(() => {
     const tick = () => {
+      if (dismissedRef.current) return;
       const diff = targetRef.current - displayRef.current;
       displayRef.current += Math.abs(diff) > 0.05 ? diff * 0.04 : diff;
 
@@ -69,6 +76,7 @@ export function PageLoader() {
         "transitionend",
         () => {
           el.style.display = "none";
+          dismissedRef.current = true;
         },
         { once: true },
       );
@@ -133,7 +141,7 @@ export function PageLoader() {
           />
         </div>
         <p className="text-center mx-auto mt-5 text-sm text-muted">
-          Loading {useAnimatedCounter(progress, true, 1000)}%
+          Loading {displayProgress}%
         </p>
       </div>
     </div>
