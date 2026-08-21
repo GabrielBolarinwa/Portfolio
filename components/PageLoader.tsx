@@ -107,20 +107,16 @@ export function PageLoader() {
               </clipPath>
             </defs>
 
-            {/* Ghost B */}
             <path fill="rgba(255,255,255,0.08)" d={PATH_B} />
 
-            {/* Ghost G */}
             <path
               fill="rgba(255,255,255,0.08)"
               fillRule="evenodd"
               d={`${PATH_G_OUTER} ${PATH_G_COUNTER1} ${PATH_G_COUNTER2}`}
             />
 
-            {/* Coloured B — clipped */}
             <path fill="#06b6d4" clipPath="url(#clipB)" d={PATH_B} />
 
-            {/* Coloured G — clipped, evenodd punches counters */}
             <path
               fill="#ff2d75"
               fillRule="evenodd"
@@ -130,7 +126,6 @@ export function PageLoader() {
           </g>
         </svg>
 
-        {/* Progress bar */}
         <div className="mt-5 h-[5px] w-[150px] md:w-[200px] rounded-full bg-white/10 overflow-hidden">
           <div
             ref={barRef}
