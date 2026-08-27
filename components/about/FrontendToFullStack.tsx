@@ -4,7 +4,6 @@ import {
   roadmapBlocks,
   transitionNarrative,
 } from "@/src/constants/about";
-import Heading from "./Heading";
 import Word from "./Word";
 import {
   Braces,
@@ -16,16 +15,18 @@ import {
 } from "lucide-react";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import React from "react";
+import Heading from "../Heading";
 
 export default function FrontendToFullStack() {
   const ref = useScrollAnimationList();
   return (
     <section className="mt-12 text-muted" id="journey">
       <Heading
-        word="From Frontend to"
-        gradientWord="Full Stack"
+        headingWord="From Frontend to"
+        headingGradientWord="Fullstack"
         trigger="scroll"
-        className="text-main-text"
+        className="gradient-underline text-main-text"
+        animationClass="slideInLeftCustom"
       />
       <div className="mt-8">
         <p>

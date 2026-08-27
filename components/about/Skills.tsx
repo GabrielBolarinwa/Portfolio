@@ -2,7 +2,6 @@
 import { skills } from "@/src/constants/about";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import React from "react";
-import Heading from "./Heading";
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +10,7 @@ import {
 } from "../ui/accordion";
 import { Badge } from "../ui/badge";
 import { Play } from "lucide-react";
+import Heading from "../Heading";
 
 export default function Skills() {
   const ref = useScrollAnimationList();
@@ -29,7 +29,13 @@ export default function Skills() {
 
   return (
     <section className="mt-12" id="skills">
-      <Heading word="Core" gradientWord="Skills" trigger="scroll" />
+      <Heading
+        headingWord="Core"
+        headingGradientWord="Skills"
+        className="text-main-text gradient-underline"
+        animationClass="slideInLeftCustom"
+        trigger="scroll"
+      />
       <Accordion className="mt-5 gap-4" multiple>
         {skills.map((skill, index) => (
           <AccordionItem

@@ -3,13 +3,19 @@ import { useLoadAnimation } from "@/src/hooks/useLoadAnimation";
 import { SiGithub, SiTelegram } from "@icons-pack/react-simple-icons";
 import { Mail } from "lucide-react";
 import Link from "next/link";
-import Heading from "./Heading";
+import Heading from "../Heading";
 
 export default function ContactIntro() {
   const ref = useLoadAnimation();
   return (
     <div className="w-full md:w-[48%]" ref={ref} data-animation="hoverInBottom">
-      <Heading trigger="load" word="Get In" gradientWord="Touch" />
+      <Heading
+        trigger="load"
+        headingWord="Get In"
+        headingGradientWord="Touch"
+        animationClass="slideInLeftCustom"
+        className="gradient-underline"
+      />
       <p className="text-muted">
         Whether you&apos;re looking to collaborate on a project, discuss an
         opportunity or just want to connect — I&apos;m open to the conversation.

@@ -1,5 +1,6 @@
 "use client";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
+import BaseHeading from "../Heading";
 
 interface Props {
   headingWord: string;
@@ -16,12 +17,13 @@ function Heading(props: Props) {
       ref={ref}
       data-animation="hoverInTop"
     >
-      <h2 className="text-center section-title">
-        {headingWord}{" "}
-        <span className="bg-clip-text text-transparent bg-(image:--primary-gradient)">
-          {headingGradientWord}
-        </span>
-      </h2>
+      <BaseHeading
+        headingWord={headingWord}
+        headingGradientWord={headingGradientWord}
+        animationClass="hoverInBottom"
+        className="text-center gradient-underline"
+        trigger="scroll"
+      />
       <p className="text-muted">{description}</p>
     </div>
   );

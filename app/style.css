@@ -310,6 +310,14 @@
     @apply text-transparent bg-clip-text bg-(image:--primary-gradient);
   }
 
+  .gradient-underline {
+    @apply relative;
+  }
+
+  .gradient-underline::after {
+    @apply [content:""] absolute top-full left-0 w-0 h-[3px] bg-(image:--primary-gradient) [animation:underline_0.8s_ease_forwards];
+  }
+
   /* Animations */
   .slideInLeftCustom {
     @apply [animation:slideInLeftCustom_2s_ease]  [animation-delay:calc(var(--i)*1s)]!;
@@ -563,10 +571,6 @@
 
   .section-title {
     @apply w-fit relative inline-block my-[10px];
-  }
-
-  .section-title::after {
-    @apply [content:""] absolute top-full left-0 w-0 h-[3px] bg-(image:--primary-gradient) [animation:underline_0.8s_ease_forwards];
   }
 
   .section-content {

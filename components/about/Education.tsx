@@ -1,14 +1,20 @@
 "use client";
 import { educationItems } from "@/src/constants/about";
-import Heading from "./Heading";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import Word from "./Word";
+import Heading from "../Heading";
 
 function Education() {
   const ref = useScrollAnimationList();
   return (
     <section className="mt-12" id="education">
-      <Heading word="My" gradientWord="Education" trigger="scroll" />
+      <Heading
+        headingWord="My"
+        animationClass="slideInLeftCustom"
+        className="gradient-underline"
+        headingGradientWord="Education"
+        trigger="scroll"
+      />
       <ul className="mt-5 education-timeline relative px-8 flex flex-col gap-4 [view-timeline-name:--timeline] [view-timeline-axis:block] [timeline-scope:--education]">
         {educationItems.map((education) => (
           <li
