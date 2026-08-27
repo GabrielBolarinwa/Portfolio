@@ -81,7 +81,7 @@ export function Footer() {
             </li>
             <li className="hover:text-accent-neon">
               <Link href={"/contact"} className="flex gap-3 items-center">
-                <Mail /> Home
+                <Mail /> Contact
               </Link>
             </li>
           </ul>

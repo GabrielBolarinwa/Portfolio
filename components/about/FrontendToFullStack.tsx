@@ -146,7 +146,7 @@ export default function FrontendToFullStack() {
             On the Horizon
           </h3>
           <ul>
-            {roadmapBlocks.devops.map((block) => (
+            {roadmapBlocks.onthehorizon.map((block) => (
               <li key={block}>{block}</li>
             ))}
           </ul>
