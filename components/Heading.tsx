@@ -1,6 +1,7 @@
 "use client";
 import { useLoadAnimation } from "@/src/hooks/useLoadAnimation";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
+import { JSX } from "react";
 
 interface Props {
   headingWord: string;
@@ -8,6 +9,7 @@ interface Props {
   className?: string;
   animationClass?: string;
   trigger?: "load" | "scroll";
+  heading?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 function Heading(props: Props) {
@@ -17,11 +19,13 @@ function Heading(props: Props) {
     trigger,
     className,
     animationClass,
+    heading = 2,
   } = props;
+  const Tag = `h${heading}` as keyof JSX.IntrinsicElements;
   const setRef = useScrollAnimationList();
   const setRef2 = useLoadAnimation();
   return (
-    <h2
+    <Tag
       className={`section-title ${className || ""}`}
       ref={trigger ? (trigger === "load" ? setRef : setRef2) : null}
       data-animation={animationClass || ""}
@@ -38,7 +42,7 @@ function Heading(props: Props) {
           {headingGradientWord}
         </span>
       )}
-    </h2>
+    </Tag>
   );
 }
 
