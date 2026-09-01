@@ -8,7 +8,7 @@ import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 
 function CreativeTools() {
   const skillBar = useScrollAnimationList(0.1);
-
+  const ref = useScrollAnimationList();
   return (
     <div className={"mt-5"}>
       <Heading
@@ -26,6 +26,9 @@ function CreativeTools() {
         {creativeTools.map((creativeTool, index) => (
           <li
             key={creativeTool.skill}
+            ref={ref}
+            data-animation={"slideInRightCustom"}
+            style={{ "--i": `0.${index * 2}` } as React.CSSProperties}
             className={
               "flex justify-center flex-col rounded-md h-auto w-12/13 md:w-9/20 lg:w-31/100 hover:-translate-y-1"
             }
