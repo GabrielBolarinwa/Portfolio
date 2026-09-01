@@ -1,4 +1,5 @@
 import {
+  IconType,
   SiAngular,
   SiCss,
   SiCypress,
@@ -8,6 +9,8 @@ import {
   SiJavascript,
   SiJest,
   SiLunacy,
+  SiPython,
+  SiPythonHex,
   SiReact,
   SiShadcnui,
   SiThreedotjs,
@@ -15,6 +18,7 @@ import {
   SiVite,
   SiVuedotjs,
 } from "@icons-pack/react-simple-icons";
+import { Activity, Clapperboard, ImageUpscale } from "lucide-react";
 
 export const paragraph1 =
   "I'm Gabriel Bolarinwa, a self-taught frontend developer based in Nigeria with a focus on building performant, accessible, and visually deliberate web experiences. My path into software wasn't conventional — I started exploring development in 2022 alongside a demanding academic schedule and without the hardware to go deep. In 2025, I committed fully: new machine, structured roadmap, and a clear standard for what I expected of my own work.";
@@ -23,7 +27,7 @@ export const paragraph2 =
   "Roughly 90% of what I know came from YouTube, documentation, and deliberate practice — with structured learning from a full frontend certification course filling in the gaps. That self-directed nature shaped how I work: I research before I build, I document before I code, and I hold my output to a production standard regardless of whether a project has a client or a deadline.";
 
 export const paragraph3 =
-  "Every project in this portfolio was built as a self-imposed engineering challenge — not to fill a resume, but to close the gap between where my skills were and the standard I was holding myself to. The case studies reflect that: deliberate stack choices, honest trade-offs, and real post-mortems on what I'd change.";
+  "Every project in this portfolio was built as a self-imposed engineering challenge — not to fill a resume, but to close the gap between where my frontendSkills were and the standard I was holding myself to. The case studies reflect that: deliberate stack choices, honest trade-offs, and real post-mortems on what I'd change.";
 
 export const tools = [
   {
@@ -60,21 +64,6 @@ export const tools = [
   },
 ];
 
-export const waecNarrative = {
-  year: "2021 - 2024",
-  detail: "Secondary education completion",
-  text: "Completed the West African Senior School Certificate Examination with notable performance in mathematics and data processing — subjects that laid an early foundation for logical and computational thinking.",
-};
-
-export const udemyNarrative = {
-  detail: "Instructor: Supriyo ∙ Completed 2024",
-  text: "A comprehensive frontend certification course covering the full modern frontend stack — from core HTML, CSS, and JavaScript fundamentals through to frameworks, testing, and deployment. Served as the structured complement to three years of self-directed learning.",
-};
-
-export const universityNarrative = {
-  year: "2025 — Present",
-  text: "Currently pursuing a Bachelor of Science in Computer Science, building academic rigour in the theoretical foundations — algorithms, data structures, systems — that underpin production-grade engineering.",
-};
 export const educationItems = [
   {
     year: "2021 — 2024",
@@ -95,7 +84,7 @@ export const educationItems = [
   },
 ];
 
-export const skills = [
+export const frontendSkills = [
   {
     icon: SiHtml5,
     iconColor: "#e34c26",
@@ -179,6 +168,63 @@ export const skills = [
       "Reactive template patterns using v-model, computed properties, watch, watchEffect, and storeToRefs for maintaining Vue's reactivity across store boundaries",
       "Vue's lifecycle hooks and async component patterns for managing loading states, skeleton placeholders, and deferred content rendering",
     ],
+  },
+];
+
+export const creativeTools = [
+  {
+    icon: ImageUpscale,
+    skill: "Photoshop",
+    skillDetail:
+      "Retouching and compositing using selection, healing, and brush toolsets — applied to UI asset preparation, mockup production, image optimisation for web, and frame-based animation.",
+    skillLevel: "Intermediate",
+  },
+  {
+    icon: Clapperboard,
+    skill: "KDENLive",
+    skillDetail:
+      "Non-linear video editing covering cuts, transitions, keyframe animation, audio splitting, text animation, and green screen compositing — primarily used for project walkthroughs and demo production.",
+    skillLevel: "Intermediate",
+  },
+  {
+    icon: Activity,
+    skill: "Audacity",
+    skillDetail:
+      "Audio post-processing including recording, noise reduction, compression, and peak normalisation — used for cleaning and mixing narration and short-form audio.",
+    skillLevel: "Intermediate",
+  },
+];
+
+export const currentlyLearning: {
+  icon: IconType;
+  iconColor: string;
+  skill: string;
+  skillLevel: string;
+  covered: string[];
+  upcoming: string;
+  iconClass?: string;
+}[] = [
+  {
+    icon: SiPython,
+    iconColor: SiPythonHex,
+    skill: "Python",
+    skillLevel: "Beginner",
+    covered: [
+      "Syntax, data types and variables",
+      "Functions and scope",
+      "Control flow (if/else, for and while loops)",
+      "Error handling (try/except)",
+      "Object Oriented Programming (OOP) Basics",
+      "Inheritance, Polymorphism and Encapsulation",
+      "Abstraction, Composition and Class Nesting",
+      "Aggregation and Composition",
+      "Class Methods and Decorators",
+      "Lambda, Sorting, Recursions",
+      "List comprehension and Generators",
+      "File I/O",
+    ],
+    upcoming:
+      "Modules and package management (pip and virtualenv),  virtual environments, asyncio for async python programming, Data Structures and Algorithms (DSA) in Python, Python Design Patterns",
   },
 ];
 
