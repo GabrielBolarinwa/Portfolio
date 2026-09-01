@@ -27,7 +27,7 @@ export const paragraph2 =
   "Roughly 90% of what I know came from YouTube, documentation, and deliberate practice — with structured learning from a full frontend certification course filling in the gaps. That self-directed nature shaped how I work: I research before I build, I document before I code, and I hold my output to a production standard regardless of whether a project has a client or a deadline.";
 
 export const paragraph3 =
-  "Every project in this portfolio was built as a self-imposed engineering challenge — not to fill a resume, but to close the gap between where my frontendSkills were and the standard I was holding myself to. The case studies reflect that: deliberate stack choices, honest trade-offs, and real post-mortems on what I'd change.";
+  "Every project in this portfolio was built as a self-imposed engineering challenge — not to fill a resume, but to close the gap between where my skills were and the standard I was holding myself to. The case studies reflect that: deliberate stack choices, honest trade-offs, and real post-mortems on what I'd change.";
 
 export const tools = [
   {
