@@ -273,9 +273,7 @@
     @apply outline-2 outline-offset-8 duration-200 outline-accent-neon rounded-sm;
   }
 
-  .services,
-  .stats,
-  .projects {
+  section {
     @apply scroll-m-(--header-height);
   }
 
