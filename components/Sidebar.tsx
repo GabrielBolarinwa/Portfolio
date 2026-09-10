@@ -74,7 +74,7 @@ export function AppSidebar(props: Props) {
                   key={section.id}
                 >
                   <Link
-                    href={`/#${section.id}`}
+                    href={`#${section.id}`}
                     className={`flex gap-4 items-center focus-visible:outline-2 focus-visible:outline-accent-neon focus-visible:outline-offset-4 focus-visible:rounded-sm focus-visible:[box-shadow:0_0_10px_rgba(6,182,212,0.3)]`}
                   >
                     <CircleDot className={"group-hover:text-accent-neon"} />
