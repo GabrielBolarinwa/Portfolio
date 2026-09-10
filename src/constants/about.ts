@@ -18,7 +18,7 @@ import {
   SiVite,
   SiVuedotjs,
 } from "@icons-pack/react-simple-icons";
-import { Activity, Clapperboard, ImageUpscale } from "lucide-react";
+import { Activity, Clapperboard, ImageUpscale, Network } from "lucide-react";
 
 export const paragraph1 =
   "I'm Gabriel Bolarinwa, a self-taught frontend developer based in Nigeria with a focus on building performant, accessible, and visually deliberate web experiences. My path into software wasn't conventional — I started exploring development in 2022 alongside a demanding academic schedule and without the hardware to go deep. In 2025, I committed fully: new machine, structured roadmap, and a clear standard for what I expected of my own work.";
@@ -208,23 +208,36 @@ export const currentlyLearning: {
     icon: SiPython,
     iconColor: SiPythonHex,
     skill: "Python",
-    skillLevel: "Beginner",
+    skillLevel: "Intermediate",
     covered: [
-      "Syntax, data types and variables",
-      "Functions and scope",
-      "Control flow (if/else, for and while loops)",
-      "Error handling (try/except)",
+      "Syntax, data types, variables, functions and scope",
+      "Control flow (if/else, for and while loops) and exception handling (try/except)",
       "Object Oriented Programming (OOP) Basics",
       "Inheritance, Polymorphism and Encapsulation",
-      "Abstraction, Composition and Class Nesting",
-      "Aggregation and Composition",
+      "Abstraction, Composition, Class Nesting, Aggregation and Composition",
       "Class Methods and Decorators",
       "Lambda, Sorting, Recursions",
       "List comprehension and Generators",
       "File I/O",
+      "Modules, package management (pip, uv and virtualenv) and virtual environments",
+      "asyncio for async python programming",
     ],
     upcoming:
-      "Modules and package management (pip and virtualenv),  virtual environments, asyncio for async python programming, Data Structures and Algorithms (DSA) in Python, Python Design Patterns",
+      "Data Structures and Algorithms (DSA) in Python, Python Design Patterns",
+  },
+  {
+    icon: Network,
+    iconColor: "#44377D",
+    skill: "Data Structures and Algorithms",
+    skillLevel: "Beginner",
+    covered: [
+      "Big O Notation",
+      "Linked Lists and Hash Tables",
+      "Stacks and Queues",
+      "Trees and Binary Trees",
+    ],
+    upcoming:
+      "Graphs, Binary Search, Sorting Algorithms (Bubble, Quick, Insertion, Merge, Shell, Selection), Dynamic Programming, Heaps, Graph Algorithms",
   },
 ];
 
