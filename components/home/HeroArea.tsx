@@ -73,18 +73,18 @@ export function HeroArea() {
 
   const avatar = useRef<HTMLDivElement | null>(null);
   const flipInterval = useRef<NodeJS.Timeout | null>(null);
-  function startAutoFlip() {
-    flipInterval.current = setInterval(() => {
-      if (!avatar.current) return;
 
-      avatar.current.classList.toggle("flipped");
-    }, 5000);
-  }
   const { progress } = useLoadingState();
   const ref = useLoadAnimation();
   useEffect(() => {
     if (progress < 100) return;
+    const startAutoFlip = () => {
+      flipInterval.current = setInterval(() => {
+        if (!avatar.current) return;
 
+        avatar.current.classList.toggle("flipped");
+      }, 5000);
+    };
     startAutoFlip();
     const handleAvatarClick = () => {
       if (flipInterval.current) clearInterval(flipInterval.current);
