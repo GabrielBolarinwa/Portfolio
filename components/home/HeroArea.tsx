@@ -8,7 +8,7 @@ import {
 import { FileDown, Send } from "lucide-react";
 import { CldImage } from "next-cloudinary";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Badge } from "../ui/badge";
 import useLoadingState from "@/src/hooks/useLoadingState";
 import { useLoadAnimation } from "@/src/hooks/useLoadAnimation";
