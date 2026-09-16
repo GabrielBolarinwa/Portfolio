@@ -1,11 +1,11 @@
 "use client";
 import { projects as projectsData } from "@/data/projects";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
+import { FolderOpen } from "lucide-react";
 import React from "react";
 import CaseStudyCard from "../CaseStudyCard";
+import LinkTag from "../LinkTag";
 import Heading from "./Heading";
-import Link from "next/link";
-import { FolderOpen } from "lucide-react";
 
 export function Projects() {
   const ref = useScrollAnimationList();
@@ -34,14 +34,15 @@ export function Projects() {
           ))}
         </ul>
       </div>
-      <Link
+      <LinkTag
         href="/projects"
-        className="flex gap-3 py-3 px-6 rounded-full border border-white hover:border-accent-pink hover:shadow-pink-hover hover:text-accent-pink w-fit items-center justify-center mt-8 text-center mx-auto hover:-translate-y-1 font-bold text-sm"
-        ref={ref}
+        className="text-center mx-auto hover:-translate-y-1 font-bold text-sm mt-8"
+        variant="secondary"
+        trigger="scroll"
         data-animation="hoverInBottom"
       >
         <FolderOpen /> See all projects
-      </Link>
+      </LinkTag>
     </section>
   );
 }

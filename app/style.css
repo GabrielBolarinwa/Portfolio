@@ -293,17 +293,20 @@
   .icon-facebook {
     @apply [fill:url(#grad-facebook)];
   }
+
   .icon-whatsapp {
     @apply [fill:url(#grad-whatsapp)];
   }
+
   .icon-angular {
     @apply [fill:url(#grad-angular)];
   }
+
   .gradient-icon {
     @apply [fill:url(#grad-app)];
   }
-  /* End SVG Gradient Defs */
 
+  /* End SVG Gradient Defs */
   .gradient-text {
     @apply text-transparent bg-clip-text bg-(image:--primary-gradient);
   }
@@ -526,6 +529,7 @@
   .fillWidth {
     @apply [animation:fillWidth_1s_ease-out] [animation-delay:calc(var(--i)*1s)];
   }
+
   @keyframes fillWidth {
     to {
       opacity: 1;
@@ -533,7 +537,6 @@
     }
   }
   /* End Animations */
-
   li.nav-item a.nav-link:focus-visible,
   footer a:focus-visible {
     @apply outline-2 outline-accent-neon outline-offset-4 rounded-sm [box-shadow:0_0_10px_rgba(6,182,212,0.3)];
@@ -546,6 +549,18 @@
 
   .btn-card:focus-visible {
     @apply outline-2 outline-accent-pink outline-offset-2 rounded-[30px];
+  }
+
+  :is(.primary-link, .secondary-link) {
+    @apply active:scale-95;
+  }
+
+  .primary-link {
+    @apply flex gap-3 py-3 px-6 bg-(image:--primary-gradient) hover:shadow-cyan-hover rounded-full border border-white/30 w-fit items-center justify-center;
+  }
+
+  .secondary-link {
+    @apply flex gap-3 py-3 px-6 rounded-full border border-white hover:border-accent-pink hover:shadow-pink-hover hover:text-accent-pink w-fit items-center justify-center;
   }
 }
 
@@ -769,9 +784,11 @@
   .education-timeline::before {
     @apply [content:""] absolute left-0 top-0 w-0.5 h-full bg-white/10;
   }
+
   .education-timeline::after {
     @apply [content:""] absolute left-0 top-0 w-0.5 h-full bg-(image:--primary-gradient)  origin-top [transform:scaleY(1)] z-1;
   }
+
   @supports (animation-timeline: view()) {
     .education-timeline::after {
       @apply [transform:scaleY(0)] [animation:fill-timeline_linear_both] [animation-timeline:scroll(root)];
@@ -781,6 +798,7 @@
   .edu-card::before {
     @apply absolute [content:""] top-6 [left:calc(var(--spacing)*-10.3)] rounded-full border-accent-neon border-2 z-3 w-[18px] h-[18px] aspect-[1] bg-bg-base block;
   }
+
   .edu-card h3 {
     @apply relative;
   }
@@ -788,14 +806,14 @@
   .edu-card h3::after {
     @apply [content:""] block w-[60px] h-[3px] mt-[4px] bg-(image:--primary-gradient) rounded-[2px];
   }
-  /* End Education */
 
+  /* End Education */
   /* Skills */
   .skill-accordion-trigger svg {
     @apply ml-2!;
   }
-  /* End Skills */
 
+  /* End Skills */
   /* Projects */
   .projects {
     @apply overflow-hidden mt-16 relative h-auto;
@@ -804,24 +822,29 @@
   .projects-title h2 {
     @apply text-center my-4 mx-auto;
   }
-  /* End Projects */
 
+  /* End Projects */
   /* Projects Route */
   .project-section-heading::after {
     @apply -bottom-3 bg-muted/20 h-[1px] w-full absolute left-0 block [content:""];
   }
+
   .case-study-card::after {
     @apply absolute top-0 left-0 [content:""] block h-1 w-full bg-(image:--primary-gradient) scale-x-0;
   }
+
   .minor-project-card::after {
     @apply absolute top-0 left-1/2 -translate-x-1/2 [content:""] block h-1 w-full bg-(image:--primary-gradient) scale-x-0;
   }
+
   :is(.case-study-card, .minor-project-card):hover::after {
     @apply scale-x-100;
   }
+
   .case-study-card:hover .case-study-icon {
     @apply bg-(image:--primary-gradient) -rotate-[3deg];
   }
+
   /* End Projects Route */
   .case-study-writeup pre {
     @apply overflow-x-auto max-w-full whitespace-pre;
@@ -830,12 +853,15 @@
   .case-study-writeup table {
     @apply border-collapse w-full;
   }
+
   .case-study-writeup :is(th, td) {
     @apply border border-white/50 py-2 px-4;
   }
+
   .case-study-writeup li {
     @apply list-disc;
   }
+
   .case-study-writeup a {
     @apply decoration-1 underline;
   }

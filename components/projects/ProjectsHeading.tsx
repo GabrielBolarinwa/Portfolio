@@ -19,7 +19,7 @@ export default function ProjectsHeading() {
       />
       <p className="mt-4 text-muted">
         A curated collection of engineering challenges — each built to a
-        delebrate standard, documented with the decisions and trade-offs that
+        deliberate standard, documented with the decisions and trade-offs that
         shaped them
       </p>
     </div>

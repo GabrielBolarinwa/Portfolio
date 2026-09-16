@@ -1,7 +1,7 @@
 "use client";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import { Send } from "lucide-react";
-import Link from "next/link";
+import LinkTag from "../LinkTag";
 
 function ContactCard() {
   const setRef = useScrollAnimationList();
@@ -16,12 +16,9 @@ function ContactCard() {
         I&apos;m always open to discussing new projects, creative ideas or
         opportunities to be part of your vision.
       </p>
-      <Link
-        className="p-4 border-white/50 border w-fit rounded-full text-sm flex gap-2 items-center justify-center hover:scale-105 hover:shadow-pink-hover hover:border-accent-pink hover:-translate-y-1 active:scale-100 btn-card"
-        href={"/contact"}
-      >
+      <LinkTag className="p-4! text-sm!" href={"/contact"} variant="secondary">
         <Send size={20.8} color="transparent" fill="#fff" /> Get In Touch
-      </Link>
+      </LinkTag>
     </div>
   );
 }

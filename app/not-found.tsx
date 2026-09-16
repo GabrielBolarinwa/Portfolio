@@ -1,5 +1,5 @@
+import LinkTag from "@/components/LinkTag";
 import { BriefcaseBusiness, Home } from "lucide-react";
-import Link from "next/link";
 
 function NotFound() {
   return (
@@ -35,18 +35,16 @@ function NotFound() {
         ></iframe>
       </div>
       <div className="flex flex-wrap gap-4 items-center justify-center">
-        <Link
-          href={"/"}
-          className="bg-(image:--primary-gradient) py-3 px-6 flex items-center hover:shadow-neon-hover hover:-translate-y-0.5 rounded-full gap-2 font-bold text-sm"
-        >
+        <LinkTag href={"/"} className=" font-bold! text-sm!">
           <Home /> Back to Home
-        </Link>
-        <Link
+        </LinkTag>
+        <LinkTag
           href={"/projects"}
-          className="border border-main-text hover:border-accent-pink hover:-translate-y-0.5 py-3 px-6 flex items-center hover:shadow-pink-hover rounded-full gap-2 font-bold text-sm hover:text-accent-pink"
+          className=" font-bold! text-sm!"
+          variant="secondary"
         >
           <BriefcaseBusiness /> View Projects
-        </Link>
+        </LinkTag>
       </div>
     </div>
   );

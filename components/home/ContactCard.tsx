@@ -1,7 +1,7 @@
 "use client";
 import { useScrollAnimationList } from "@/src/hooks/useScrollAnimationList";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import LinkTag from "../LinkTag";
 function ContactCard() {
   const ref = useScrollAnimationList();
   return (
@@ -11,13 +11,13 @@ function ContactCard() {
       data-animation="hoverInBottom"
     >
       <h3 className="text-lg">Have a project in mind?</h3>
-      <Link
-        className="bg-(image:--primary-gradient) py-2 px-5 flex gap-2 items-center text-sm font-bold rounded-full w-fit hover:-translate-y-1 hover:shadow-neon-hover btn-card"
+      <LinkTag
+        className="btn-card py-2! text-sm! px-5! font-bold"
         href={"/contact"}
       >
         <ArrowRight />
         Let&apos;s Talk
-      </Link>
+      </LinkTag>
     </div>
   );
 }

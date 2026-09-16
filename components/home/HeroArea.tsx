@@ -12,6 +12,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Badge } from "../ui/badge";
 import useLoadingState from "@/src/hooks/useLoadingState";
 import { useLoadAnimation } from "@/src/hooks/useLoadAnimation";
+import LinkTag from "../LinkTag";
 
 function useTypedText(
   texts: string[],
@@ -207,13 +208,14 @@ export function HeroArea() {
           ref={ref}
           data-animation="hoverInBottom"
         >
-          <a
+          <LinkTag
             href="/BolarinwaGabriel_Resume.pdf"
             download
-            className="cta bg-(image:--primary-gradient) hover:shadow-cyan-hover border-white/30"
+            nextLink={false}
+            className="cta"
           >
             <FileDown /> Resume
-          </a>
+          </LinkTag>
           <Link
             href="/contact"
             className="cta border-white hover:shadow-pink-hover hover:text-accent-pink hover:border-accent-pink"

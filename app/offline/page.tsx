@@ -1,6 +1,6 @@
+import LinkTag from "@/components/LinkTag";
 import RetryButton from "@/components/offline/RetryButton";
 import { Gamepad2, Wifi } from "lucide-react";
-import Link from "next/link";
 
 function Page() {
   return (
@@ -14,12 +14,9 @@ function Page() {
         worry, you can still play a game while you wait to reconnect.
       </p>
       <div className="flex flex-wrap gap-4 items-center justify-center">
-        <Link
-          href={"/pong.html"}
-          className="bg-(image:--primary-gradient) py-3 px-6 flex items-center hover:shadow-neon-hover hover:-translate-y-0.5 rounded-full gap-2 font-bold text-sm"
-        >
+        <LinkTag href={"/pong.html"} className="font-bold! text-sm!">
           <Gamepad2 /> Play a game?
-        </Link>
+        </LinkTag>
         <RetryButton />
       </div>
     </div>
