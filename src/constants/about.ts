@@ -223,7 +223,7 @@ export const currentlyLearning: {
       "asyncio for async python programming",
     ],
     upcoming:
-      "Data Structures and Algorithms (DSA) in Python, Python Design Patterns",
+      "Data Structures and Algorithms (DSA) in Python, Python Design Patterns, FastAPI",
   },
   {
     icon: Network,
@@ -235,9 +235,11 @@ export const currentlyLearning: {
       "Linked Lists and Hash Tables",
       "Stacks and Queues",
       "Trees and Binary Trees",
+      "Graphs",
+      "Linear and Binary Search",
+      "Sorting Algorithms (Bubble, Quick, Insertion, Merge, Selection)",
     ],
-    upcoming:
-      "Graphs, Binary Search, Sorting Algorithms (Bubble, Quick, Insertion, Merge, Shell, Selection), Dynamic Programming, Heaps, Graph Algorithms",
+    upcoming: "Dynamic Programming, Heaps, Graph Algorithms",
   },
 ];
 
