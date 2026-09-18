@@ -5,7 +5,7 @@ function NotFound() {
   return (
     <div
       className={
-        "flex flex-col gap-6 items-center justify-center text-center max-w-[800px]"
+        "flex flex-col gap-6 items-center justify-center text-center max-w-[800px] mx-auto"
       }
     >
       <h1
@@ -26,11 +26,11 @@ function NotFound() {
         you&apos;re here, how about a quick game of Pong while you figure out
         your next move?
       </p>
-      <div className="bg-card-background border border-white/10 rounded-md p-4 backdrop-blur-md shadow-lg">
+      <div className="bg-card-background w-full border border-white/10 rounded-md p-4 backdrop-blur-md shadow-lg">
         <iframe
           src="/pong.html"
           className={
-            "block bg-black aspect-video rounded-sm border-none w-full h-[300px] md:h-[500px]"
+            "block md:aspect-[4/3] bg-black aspect-video rounded-sm border-none w-full h-[500px]"
           }
         ></iframe>
       </div>
