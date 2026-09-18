@@ -11,7 +11,7 @@ import { useScrollSpy } from "@/src/hooks/useScrollSpy";
 import { CircleDot, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 interface Props {
   headerHeight: number;
@@ -19,6 +19,7 @@ interface Props {
 export function AppSidebar(props: Props) {
   const { headerHeight } = props;
   const closeRef = useRef<HTMLButtonElement | null>(null);
+  const [open, setOpen] = useState(false);
   const { sections } = useNav();
   const activeId = useScrollSpy(
     useMemo(() => sections.map((s) => s.id), [sections]),
@@ -27,6 +28,7 @@ export function AppSidebar(props: Props) {
     },
   );
   const activeRoute = usePathname();
+
   useEffect(() => {
     closeRef.current && closeRef.current.click();
   }, [activeRoute]);
@@ -37,8 +39,9 @@ export function AppSidebar(props: Props) {
           <Button
             variant={"outline"}
             className="p-2 bg-transparent text-main-text rounded-sm border border-white/20 lg:hidden"
-            aria-expanded="false"
+            aria-expanded={open}
             aria-label="Sidebar Menu"
+            onClick={() => setOpen(true)}
           >
             <Menu />
           </Button>
@@ -50,6 +53,7 @@ export function AppSidebar(props: Props) {
         }
         side={"right"}
         showCloseButton={false}
+        aria-modal={true}
       >
         <SheetClose
           render={
@@ -57,6 +61,7 @@ export function AppSidebar(props: Props) {
               variant={"ghost"}
               ref={closeRef}
               className={"absolute top-5 right-2 hover:bg-white/50 px-1.5"}
+              onClick={() => setOpen(false)}
             >
               <X />
             </Button>
@@ -76,6 +81,7 @@ export function AppSidebar(props: Props) {
                   <Link
                     href={`#${section.id}`}
                     className={`flex gap-4 items-center focus-visible:outline-2 focus-visible:outline-accent-neon focus-visible:outline-offset-4 focus-visible:rounded-sm focus-visible:[box-shadow:0_0_10px_rgba(6,182,212,0.3)]`}
+                    aria-current={section.id === activeId ? "page" : ""}
                   >
                     <CircleDot className={"group-hover:text-accent-neon"} />
                     <span>{section.label}</span>
@@ -90,10 +96,14 @@ export function AppSidebar(props: Props) {
           <ul className={"flex flex-col gap-4"}>
             {pages.map((page) => (
               <li
-                className={` group hover:translate-x-1 font-medium ${page.href === activeRoute ? "text-accent-neon" : "hover:text-main-text"}`}
+                className={` group hover:translate-x-1 font-medium ${`/${page.href}` === activeRoute ? "text-accent-neon" : "hover:text-main-text"}`}
                 key={page.href}
               >
-                <Link href={page.href} className={`flex gap-4 items-center `}>
+                <Link
+                  href={page.href}
+                  className={`flex gap-4 items-center `}
+                  aria-current={page.href === activeRoute ? "page" : ""}
+                >
                   <page.icon className={"group-hover:text-accent-neon"} />
                   <span>{page.title}</span>
                 </Link>

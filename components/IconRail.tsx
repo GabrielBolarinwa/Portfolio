@@ -7,11 +7,12 @@ import {
 import { pages } from "@/data/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function IconRail() {
   const activeRoute = usePathname();
   const iconRailAnimationElements = useRef<HTMLElement[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
   const setIconRailAnimationElements = (el: HTMLElement | null) => {
     if (el && !iconRailAnimationElements.current.includes(el)) {
       iconRailAnimationElements.current.push(el);
@@ -24,6 +25,7 @@ function IconRail() {
         railElement.style.visibility = "visible";
         railElement.dataset.animation &&
           railElement.classList.add(railElement.dataset.animation);
+        setIsVisible(true);
       });
     }
   }, []);
@@ -36,6 +38,7 @@ function IconRail() {
       data-animation={"slideInRightCustom"}
     >
       <p
+        aria-hidden={true}
         className={
           "[writing-mode:vertical-rl] rotate-180 text-xs uppercase tracking-[2px]"
         }
@@ -53,9 +56,11 @@ function IconRail() {
                   style={
                     { "--i": `1.${index * 0.2 + 1}` } as React.CSSProperties
                   }
-                  href={page.href}
+                  href={`/${page.href}`}
                   aria-label={page.title}
-                  className={`rail-link p-2 rounded-sm border border-white/20 bg-card ${activeRoute === page.href && "border-accent-neon text-accent-neon"} hover:bg-(image:--primary-gradient) hover:text-main-text hover:scale-105 invisible`}
+                  tabIndex={isVisible ? 0 : -1}
+                  className={`rail-link p-2 rounded-sm border border-white/20 bg-card ${activeRoute === `/${page.href}` && "border-accent-neon text-accent-neon"} hover:bg-(image:--primary-gradient) hover:text-main-text hover:scale-105 invisible`}
+                  aria-current={activeRoute === page.href ? "page" : ""}
                 >
                   <page.icon />
                 </Link>

@@ -10,8 +10,8 @@ interface Route {
 }
 
 export const pages: Route[] = [
-  { title: "Home", href: "/", icon: Home },
-  { title: "About", href: "/about", icon: User },
-  { title: "Contact", href: "/contact", icon: Mail },
-  { title: "Projects", href: "/projects", icon: BriefcaseBusiness },
+  { title: "Home", href: "", icon: Home },
+  { title: "About", href: "about", icon: User },
+  { title: "Contact", href: "contact", icon: Mail },
+  { title: "Projects", href: "projects", icon: BriefcaseBusiness },
 ];

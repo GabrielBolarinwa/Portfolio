@@ -74,12 +74,12 @@ export function Header() {
                 {sections.map((section) => (
                   <li
                     className={`nav-item ${activeId === section.id && "active"}`}
-                    role="list"
+                    role="listitem"
                     key={section.id}
                   >
                     <Link
                       href={`#${section.id}`}
-                      aria-current="page"
+                      aria-current={activeRoute === section.id ? "page" : ""}
                       className="nav-link"
                     >
                       <span className="link-text">{section.label}</span>
